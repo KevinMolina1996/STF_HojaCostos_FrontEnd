@@ -1,0 +1,44 @@
+﻿@model AppWebHojaCosto.Models.HOJA_COSTO_SIMULADA
+
+<div>
+    <fieldset style="border-width:2px; border-style:groove; padding:10px;">
+        <legend style="padding: 2px; width:auto;">Mod y CIF</legend>
+        <div class="row">
+            <div class="col-md-8">
+                @Html.HiddenFor(x => x.TBL_SIM_MOD_CIF.SimMcCodigoN)
+                @Html.LabelFor(model => model.TBL_SIM_MOD_CIF.SimMcCostoManoObraD, new { @class = "control-label" })
+            </div>
+            <div class="col-md-4">
+                <div class="input-group mb-1">
+                    @Html.TextBoxFor(model => model.TBL_SIM_MOD_CIF.SimMcCostoManoObraD, new { name = "SimMcCostoManoObraD", id = "SimMcCostoManoObraD", @class = "form-control input-sm solonumeros" })
+                    <div class="input-group-append">
+                        <span class="input-group-text">COP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                @Html.LabelFor(model => model.TBL_SIM_MOD_CIF.SimMcCostoIndirectosD, new { @class = "control-label" })
+            </div>
+            <div class="col-md-4">
+                <div class="input-group mb-1">
+                    @Html.TextBoxFor(model => model.TBL_SIM_MOD_CIF.SimMcCostoIndirectosD, new { name = "SimMcCostoIndirectosD", id = "SimMcCostoIndirectosD", @class = "form-control input-sm solonumeros" })
+                    <div class="input-group-append">
+                        <span class="input-group-text">COP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>
+<div class="inferior_modulos">
+    <div class="row">
+        <div class="col-md-8">
+            @Html.LabelFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcTotalCIFMODD, new { @class = "control-label" })
+        </div>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcTotalCIFMODD, new { name = "SimHcTotalCIFMODD", id = "SimHcTotalCIFMODD", @class = "form-control input-sm input_totales", @readonly = "readonly" })
+        </div>
+    </div>
+</div>

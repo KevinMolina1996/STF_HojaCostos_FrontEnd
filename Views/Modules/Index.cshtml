@@ -1,0 +1,247 @@
+﻿@model IEnumerable<AppWebHojaCosto.Models.Modulos>
+@{
+    ViewBag.Title = "Index";
+}
+
+@section Scripts {
+    <script>
+
+            function CrearModulo() {
+                var params = { txtNombre: $("#txtNombre").val(), txtDescrip: $("#txtDescrip").val(), cbEstado: $("#cbEstado").prop('checked') };
+
+                $.ajax({
+                    url: '@Url.Action("CrearModulo", "Modules")',
+                    method: "post",
+                    data: params,
+                    success: function (result) {
+                        OnSuccess(result.mensaje);
+                    },
+                    error: function (request, status, error) {
+                        OnFailure(request.responseText);
+                    },
+                    async: true
+                });
+            }
+
+            function EliminarModulo() {
+                var params = { txtCodigo: $("#txtCodigoBorr").val() };
+
+                $.ajax({
+                    url: '@Url.Action("EliminarModulo", "Modules")',
+                    method: "post",
+                    data: params,
+                    success: function (result) {
+                        OnSuccess(result.mensaje);
+                    },
+                    error: function (request, status, error) {
+                        OnFailure(request.responseText);
+                    },
+                    async: true
+                });
+            }
+
+            function ActualizarModulo() {
+                var params = { intCodMod: $("#txtCodigo").val(), txtNombre: $("#txtNombre").val(), txtDescrip: $("#txtDescrip").val(), cbEstado: $("#cbEstado").prop('checked') };
+
+                $.ajax({
+                    url: '@Url.Action("ActualizarModulo", "Modules")',
+                    method: "post",
+                    data: params,
+                    success: function (result) {
+                        window.location.reload();
+                        OnSuccess(result.mensaje);
+                    },
+                    error: function (request, status, error) {
+                        OnFailure(request.responseText);
+                    },
+                    async: true
+                });
+            }
+
+            function modalActualizaMod(txtCodigo, txtNombre, txtDescrip, txtFecCre, cbEstado) {
+                $("#txtCodigo").val(txtCodigo);
+                $("#txtNombre").val(txtNombre);
+                $("#txtDescrip").val(txtDescrip);
+                $("#txtFecCre").val(txtFecCre);
+                $('#cbEstado').prop('checked', cbEstado);
+                $("#btnActualizarMod").show();
+                $("#btnCrearMod").hide();
+                $('#modalModulos').modal('show');
+            }
+
+            function abrirModal() {
+                $("#txtCodigo").val("");
+                $("#txtNombre").val("");
+                $("#txtDescrip").val("");
+                $("#txtFecCre").val("@DateTime.Now.ToString("yyyy-MM-dd")");
+                $('#cbEstado').prop('checked', true);
+                $("#btnCrearMod").show();
+                $("#btnActualizarMod").hide();
+                $('#modalModulos').modal('show');
+            }
+
+            function abrirModalBorrado(txtCodigo) {
+                $("#txtCodigoBorr").val(txtCodigo);
+                $('#modalBorrar').modal('show');
+            }
+
+            function OnSuccess(response) {
+                $(document).ready(function () {
+                    $.toast({
+                        heading: 'Exito',
+                        text: response,
+                        showHideTransition: 'fade',
+                        icon: 'success'
+                    })
+                });
+            }
+
+            function OnFailure(response) {
+                $(document).ready(function () {
+                    $.toast({
+                        heading: 'Error',
+                        text: response,
+                        showHideTransition: 'fade',
+                        icon: 'error'
+                    })
+                });
+            }
+
+    </script>
+}
+
+<br />
+<br />
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="#">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active">Modulos</li>
+</ol>
+
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fa fa-table"></i> Modulos
+        <div style="float:right">
+            <a href="" onclick="abrirModal(); return false;"><i class='fa fa-plus-circle'></i>&nbsp;Adicionar</a>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Nombre</th>
+                        <th>Descripcion</th>
+                        <th>Fecha Creacion</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.MoCodigoN</td>
+                            <td>@item.MoNombreS</td>
+                            <td>@item.MoDescripS</td>
+                            <td>@item.MoFecCreD.ToString("yyyy-MM-dd")</td>
+                            <td>
+                                @if (Convert.ToBoolean(@item.MoEstadoB))
+                                { <span>Activo</span> }
+                                else
+                                { <span>Inactivo</span> }
+                            </td>
+                            <td>
+                                <center>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <a href="" onclick="modalActualizaMod(@item.MoCodigoN, '@item.MoNombreS', '@item.MoDescripS', '@item.MoFecCreD.ToString("yyyy-MM-dd")', '@item.MoEstadoB'); return false;"><i class='fa fa-edit'></i></a>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a href="" onclick="abrirModalBorrado(@item.MoCodigoN); return false;"><i class='fa fa-trash'></i></a>
+                                        </div>
+                                    </div>
+                                </center>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>
+
+<!-- Adicionar Modulo Modal-->
+<div class="modal fade" id="modalModulos" tabindex="-1" role="dialog" aria-labelledby="modalModulos" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalModulos">Crear Modulo</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <label for="txtNombre">Nombre</label>
+                            <input id="txtCodigo" type="text" hidden />
+                            <input class="form-control" id="txtNombre" type="text" aria-describedby="nameHelp" placeholder="Nombre" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="txtDescrip">Descripcion</label>
+                            <input class="form-control" id="txtDescrip" type="text" aria-describedby="nameHelp" placeholder="Descripcion" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <label for="txtFecCre">Fecha creacion</label>
+                            <input class="form-control" id="txtFecCre" type="text" placeholder="Fecha creacion" disabled>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="cbEstado">Estado</label><br />
+                            <input class="form-control" type="checkbox" id="cbEstado" data-off-label="Inactivo" data-on-label="Activo" hidden />
+                        </div>
+                    </div>
+                </div>
+                <input id="btnCrearMod" type="submit" value="Guardar" onclick="CrearModulo();" class="btn btn-primary btn-block" style="display:none" />
+                <input id="btnActualizarMod" type="submit" value="Guardar" onclick="ActualizarModulo();" class="btn btn-primary btn-block" style="display:none" />
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal eliminar modulo -->
+<div class="modal fade" id="modalBorrar" tabindex="-1" role="dialog" aria-labelledby="modalBorrar" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalBorrar">Eliminar Modulo</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input id="txtCodigoBorr" type="text" hidden />
+                Esta seguro que desea eliminar el modulo seleccionado?
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <input type="submit" value="Eliminar" onclick="EliminarModulo();" class="btn btn-danger" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<br />
+<br />

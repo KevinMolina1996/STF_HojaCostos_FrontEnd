@@ -1,0 +1,88 @@
+﻿@model AppWebHojaCosto.Models.HOJA_COSTO_PRECOSTEO
+
+<div>
+    <fieldset style="border-width:2px; border-style:groove; padding:10px;">
+        <legend style="padding: 2px; width:auto;">Resumen Gasto y Costo por Destino de Distribuccion</legend>
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <span style="font-weight:bold; font-size:18px;">Estimado</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                @Html.HiddenFor(x => x.TBL_PRE_RES_GAS_COS_DIS.PreRdCodigoN)
+                @Html.LabelFor(model => model.TBL_PRE_RES_GAS_COS_DIS.PreRdAdminEstD, new { @class = "control-label" })
+            </div>
+            <div class="col-md-4">
+                <div class="input-group mb-1">
+                    @Html.TextBoxFor(model => model.TBL_PRE_RES_GAS_COS_DIS.PreRdAdminEstD, new { name = "PreRdAdminEstD", id = "PreRdAdminEstD", @class = "form-control input-sm solonumeros" })
+                    <div class="input-group-append">
+                        <span class="input-group-text">COP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.TBL_PRE_RES_GAS_COS_DIS.PreRdFinanEstD, new { @class = "control-label" })
+            </div>
+            <div class="col-md-4">
+                <div class="input-group mb-1">
+                    @Html.TextBoxFor(model => model.TBL_PRE_RES_GAS_COS_DIS.PreRdFinanEstD, new { name = "PreRdFinanEstD", id = "PreRdFinanEstD", @class = "form-control input-sm solonumeros" })
+                    <div class="input-group-append">
+                        <span class="input-group-text">COP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.TBL_PRE_RES_GAS_COS_DIS.PreRdMercadeoEstD, new { @class = "control-label" })
+            </div>
+            <div class="col-md-4">
+                <div class="input-group mb-1">
+                    @Html.TextBoxFor(model => model.TBL_PRE_RES_GAS_COS_DIS.PreRdMercadeoEstD, new { name = "PreRdMercadeoEstD", id = "PreRdMercadeoEstD", @class = "form-control input-sm solonumeros" })
+                    <div class="input-group-append">
+                        <span class="input-group-text">COP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.TBL_PRE_RES_GAS_COS_DIS.PreRdVentasxCanalEstD, new { @class = "control-label" })
+            </div>
+            <div class="col-md-4">
+                <div class="input-group mb-1">
+                    @Html.TextBoxFor(model => model.TBL_PRE_RES_GAS_COS_DIS.PreRdVentasxCanalEstD, new { name = "PreRdVentasxCanalEstD", id = "PreRdVentasxCanalEstD", @class = "form-control input-sm solonumeros" })
+                    <div class="input-group-append">
+                        <span class="input-group-text">COP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.TBL_PRE_HOJA_COSTO_PN.PreHcTotalGastosEstD, new { @class = "control-label" })
+            </div>
+            <div class="col-md-4">
+                <div class="input-group mb-1">
+                    @Html.TextBoxFor(model => model.TBL_PRE_HOJA_COSTO_PN.PreHcTotalGastosEstD, new { name = "PreHcTotalGastosEstD", id = "PreHcTotalGastosEstD", @class = "form-control input-sm solonumeros" })
+                    <div class="input-group-append">
+                        <span class="input-group-text">COP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>
+<div class="inferior_modulos">
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(model => model.TBL_PRE_HOJA_COSTO_PN.PreHcTotalxCanalEstD, new { @class = "control-label" })
+        </div>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.TBL_PRE_HOJA_COSTO_PN.PreHcTotalxCanalEstD, new { name = "PreHcTotalxCanalEstD", id = "PreHcTotalxCanalEstD", @class = "form-control input-sm input_totales", @readonly = "readonly" })
+        </div>
+    </div>
+</div>

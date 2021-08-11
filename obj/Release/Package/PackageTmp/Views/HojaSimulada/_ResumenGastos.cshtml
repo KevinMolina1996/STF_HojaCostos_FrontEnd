@@ -1,0 +1,134 @@
+﻿@model AppWebHojaCosto.Models.HOJA_COSTO_SIMULADA
+
+<div>
+    <fieldset style="border-width:2px; border-style:groove; padding:10px;">
+        <legend style="padding: 2px; width:auto;">Resumen Gasto y Costo por Destino de Distribuccion</legend>
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <span style="font-weight:bold; font-size:18px;">Estimado</span>
+            </div>
+            <div class="col-md-4">
+                <span style="font-weight:bold; font-size:18px;">Real</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                @Html.HiddenFor(x => x.TBL_SIM_RES_GAS_COS_DIS.SimRdCodigoN)
+                @Html.LabelFor(model => model.TBL_SIM_RES_GAS_COS_DIS.SimRdAdminEstD, new { @class = "control-label" })
+            </div>
+            <div class="col-md-4">
+                <div class="input-group mb-1">
+                    @Html.TextBoxFor(model => model.TBL_SIM_RES_GAS_COS_DIS.SimRdAdminEstD, new { name = "SimRdAdminEstD", id = "SimRdAdminEstD", @class = "form-control input-sm solonumeros" })
+                    <div class="input-group-append">
+                        <span class="input-group-text">COP</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="input-group mb-1">
+                    @Html.TextBoxFor(model => model.TBL_SIM_RES_GAS_COS_DIS.SimRdAdminRealD, new { name = "SimRdAdminRealD", id = "SimRdAdminRealD", @class = "form-control input-sm solonumeros" })
+                    <div class="input-group-append">
+                        <span class="input-group-text">COP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.TBL_SIM_RES_GAS_COS_DIS.SimRdFinanEstD, new { @class = "control-label" })
+            </div>
+            <div class="col-md-4">
+                <div class="input-group mb-1">
+                    @Html.TextBoxFor(model => model.TBL_SIM_RES_GAS_COS_DIS.SimRdFinanEstD, new { name = "SimRdFinanEstD", id = "SimRdFinanEstD", @class = "form-control input-sm solonumeros" })
+                    <div class="input-group-append">
+                        <span class="input-group-text">COP</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="input-group mb-1">
+                    @Html.TextBoxFor(model => model.TBL_SIM_RES_GAS_COS_DIS.SimRdFinanRealD, new { name = "SimRdFinanRealD", id = "SimRdFinanRealD", @class = "form-control input-sm solonumeros" })
+                    <div class="input-group-append">
+                        <span class="input-group-text">COP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.TBL_SIM_RES_GAS_COS_DIS.SimRdMercadeoEstD, new { @class = "control-label" })
+            </div>
+            <div class="col-md-4">
+                <div class="input-group mb-1">
+                    @Html.TextBoxFor(model => model.TBL_SIM_RES_GAS_COS_DIS.SimRdMercadeoEstD, new { name = "SimRdMercadeoEstD", id = "SimRdMercadeoEstD", @class = "form-control input-sm solonumeros" })
+                    <div class="input-group-append">
+                        <span class="input-group-text">COP</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="input-group mb-1">
+                    @Html.TextBoxFor(model => model.TBL_SIM_RES_GAS_COS_DIS.SimRdMercadeoRealD, new { name = "SimRdMercadeoRealD", id = "SimRdMercadeoRealD", @class = "form-control input-sm solonumeros" })
+                    <div class="input-group-append">
+                        <span class="input-group-text">COP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.TBL_SIM_RES_GAS_COS_DIS.SimRdVentasxCanalEstD, new { @class = "control-label" })
+            </div>
+            <div class="col-md-4">
+                <div class="input-group mb-1">
+                    @Html.TextBoxFor(model => model.TBL_SIM_RES_GAS_COS_DIS.SimRdVentasxCanalEstD, new { name = "SimRdVentasxCanalEstD", id = "SimRdVentasxCanalEstD", @class = "form-control input-sm solonumeros" })
+                    <div class="input-group-append">
+                        <span class="input-group-text">COP</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="input-group mb-1">
+                    @Html.TextBoxFor(model => model.TBL_SIM_RES_GAS_COS_DIS.SimRdVentasxCanalRealD, new { name = "SimRdVentasxCanalRealD", id = "SimRdVentasxCanalRealD", @class = "form-control input-sm solonumeros" })
+                    <div class="input-group-append">
+                        <span class="input-group-text">COP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcTotalGastosEstD, new { @class = "control-label" })
+            </div>
+            <div class="col-md-4">
+                <div class="input-group mb-1">
+                    @Html.TextBoxFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcTotalGastosEstD, new { name = "SimHcTotalGastosEstD", id = "SimHcTotalGastosEstD", @class = "form-control input-sm solonumeros" })
+                    <div class="input-group-append">
+                        <span class="input-group-text">COP</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="input-group mb-1">
+                    @Html.TextBoxFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcTotalGastosRealD, new { name = "SimHcTotalGastosRealD", id = "SimHcTotalGastosRealD", @class = "form-control input-sm solonumeros" })
+                    <div class="input-group-append">
+                        <span class="input-group-text">COP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>
+<div class="inferior_modulos">
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcTotalxCanalEstD, new { @class = "control-label" })
+        </div>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcTotalxCanalEstD, new { name = "SimHcTotalxCanalEstD", id = "SimHcTotalxCanalEstD", @class = "form-control input-sm input_totales", @readonly = "readonly" })
+        </div>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcTotalxCanalRealD, new { name = "SimHcTotalxCanalRealD", id = "SimHcTotalxCanalRealD", @class = "form-control input-sm input_totales", @readonly = "readonly" })
+        </div>
+    </div>
+</div>

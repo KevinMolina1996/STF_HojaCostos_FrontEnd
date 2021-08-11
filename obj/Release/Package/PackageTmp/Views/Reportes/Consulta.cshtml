@@ -1,0 +1,76 @@
+﻿@using ReportViewerForMvc;
+
+@{
+    ViewBag.Title = "Consulta Reportes";
+}
+
+@section Scripts {
+    <script>
+        $(function () {
+            $("#FechaInicio").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'yy-mm-dd'
+            });
+            $("#FechaFin").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'yy-mm-dd'
+            });
+            $("#Consultar").click(function () {
+                @*var FechaInicio = $("#FechaInicio").val();
+                var FechaFin = $("#FechaFin").val();
+
+                //ASPX page URL to load report
+                var src = @Html.Action("", "") '../Reportes/ReportControl?';
+                //We can add parameters here
+                src = src + "FechaInicio=" + FechaInicio
+                src = src + "&FechaFin=" + FechaFin
+
+                //We can append more than one parameter like below
+                //var companyId = 1
+                //src = src + "compnayID=" + companyId
+
+                //Create a dynamic iframe here and append this to div tag
+                var iframe = '<iframe id="reportFrame" width="100%" height="800px" scrolling="no" frameborder="0" src="' + src + '" allowfullscreen></iframe>';
+                $("#divReport").html(iframe);*@
+            });
+        });
+    </script>
+}
+
+<div class="container-fluid">
+    <fieldset style="border-width:2px; border-style:groove; padding:10px;">
+        <legend style="padding: 2px; width:auto;">FILTROS</legend>
+        <div class="row">
+            <div class="col-md-3">
+                <label>Tipo Reporte: </label>
+                <select class="form-control input-sm">
+                    <option value="RptComponentesPend">Reporte Componentes Pendientes</option>
+                    <option value="RptAlmaPN">Reporte Almacenamiento Estandar(PN)</option>
+                    <option value="RptAlmaPNP">Reporte Almacenamiento Estandar(PNP)</option>
+                    <option value="RptVariaciones">Reporte Variaciones</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label>Fecha Inicio: </label>
+                <input type="text" id="FechaInicio" class="form-control input-sm" autocomplete="off" />
+            </div>
+            <div class="col-md-3">
+                <label>Fecha Fin: </label>
+                <input type="text" id="FechaFin" class="form-control input-sm" autocomplete="off" />
+            </div>
+            <div class="col-md-3">
+                <div style="height:33px; width:10px;"></div>
+                <button type="submit" id="Consultar" class="btn btn-sm btn-dark"><span class="fa fa-search"></span> Consultar</button>
+                <button type="submit" class="btn btn-sm btn-dark"><span class="fa fa-undo"></span> Limpiar</button>
+            </div>
+        </div>
+    </fieldset>
+    <div class="row" id="divReport" style="margin:2px !important;">
+        @Html.ReportViewer(
+    ViewBag.ReportViewer as Microsoft.Reporting.WebForms.ReportViewer,
+    new { scrolling = "no" })
+        @*@Html.Partial("ReportControl")*@
+    </div>
+</div>

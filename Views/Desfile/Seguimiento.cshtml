@@ -1,0 +1,277 @@
+﻿
+@{
+    ViewBag.Title = "Seguimiento";
+}
+
+@section Scripts{
+    <script src="~/Scripts/JS/js-desfile.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
+}
+
+<div id="export" style="display:none;"></div>
+<div class="card mb-12">
+    <div class="card-header">
+        <i class="fa fa-table"></i> Seguimiento Referencias Desfile
+    </div>
+    <div class="card-body" style="text-align:left;">
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>IVA:</label>
+                    </div>
+                    <div class="col-md-8">
+                        <input type="number" id="iva" class="form-control input-sm" value="1.19" readonly="readonly" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+
+            <div style="text-align:right; text-decoration:underline;"><a href="javascript: void(0)" id="adicionar">+ Adicionar</a></div>
+            <table class="table table-sm table-bordered" id="tablaSegui" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th style="display:none;">Codigo</th>
+                        <th>Referencia</th>
+                        <th>Descripción</th>
+                        <th>Tipo Inventario</th>
+                        <th>Precio Mínimo</th>
+                        <th>Precio Maximo</th>
+                        <th>Precio Aprobado</th>
+                        <th>Precio Sin IVA</th>
+                        <th>Costo</th>
+                        <th>Margen Bruto</th>
+                        <th>Cantidades</th>
+                        <th>Ingreso</th>
+                        <th>Costo</th>
+                        <th>%</th>
+                        @*<th>Observaciones</th>*@
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="display:none;">
+                            @Html.TextBox("Codigo[1]", null, new { @class = "form-control input-sm cod", })
+                        </td>
+                        <td>
+                            @Html.TextBox("Referencia", null, new { @class = "form-control input-sm", })
+                        </td>
+                        <td>
+                            @Html.TextBox("Descripcion", null, new { @class = "form-control input-sm borrado", @readonly = "readonly" })
+                        </td>
+                        <td>
+                            @Html.TextBox("TipoInventario", null, new { @class = "form-control input-sm borrado", @readonly = "readonly" })
+                        </td>
+                        <td>
+                            @Html.TextBox("PreMinimo", null, new { @class = "form-control input-sm borrado", @readonly = "readonly" })
+                        </td>
+                        <td>
+                            @Html.TextBox("PreMaximo", null, new { @class = "form-control input-sm borrado", @readonly = "readonly" })
+                        </td>
+                        <td>
+                            @Html.TextBox("PrecioAprobado", null, new { @class = "form-control input-sm" })
+                        </td>
+                        <td>
+                            @Html.TextBox("PrecioAprobadoSin", null, new { @class = "form-control input-sm", @readonly = "readonly" })
+                        </td>
+                        <td>
+                            @Html.TextBox("Costo", null, new { @class = "form-control input-sm borrado", @readonly = "readonly" })
+                        </td>
+                        <td>
+                            @Html.TextBox("MargenBruto", null, new { @class = "form-control input-sm borrado", @readonly = "readonly" })
+                        </td>
+                        <td>
+                            @Html.TextBox("Cantidad", null, new { @class = "form-control input-sm" })
+                        </td>
+                        <td>
+                            @Html.TextBox("Ingreso", null, new { @class = "form-control input-sm", @readonly = "readonly" })
+                        </td>
+                        <td>
+                            @Html.TextBox("CostoCalculo", null, new { @class = "form-control input-sm", @readonly = "readonly" })
+                        </td>
+                        <td>
+                            @Html.TextBox("Margen", null, new { @class = "form-control input-sm", @readonly = "readonly" })
+                        </td>
+                        @*<td>
+                            @Html.TextBox("Observaciones", null, new { @class = "form-control input-sm" })
+                        </td>*@
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="text-align:center;">
+            <button type="submit" id="Exportar" class="btn btn-sm btn-dark"><span class="fa fa-download"></span> Exportar</button>
+        </div>
+
+        <br />
+        <br />
+
+        <div class="row" style="margin: 1px auto;">
+            <div class="col-md-6">
+
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <label>INGRESOS PN:</label>
+                    </div>
+                    <div class="col-md-8">
+                        <input id="ingresosPN" class="form-control input-sm" readonly="readonly" />
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <label>COSTO PN:</label>
+                    </div>
+                    <div class="col-md-8">
+                        <input id="costosPN" class="form-control input-sm" readonly="readonly" />
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <label>MARGEN PN:</label>
+                    </div>
+                    <div class="col-md-8">
+                        <input id="margenPN" class="form-control input-sm" readonly="readonly" />
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <label>INGRESOS PNP:</label>
+                    </div>
+                    <div class="col-md-8">
+                        <input id="ingresosPNP" class="form-control input-sm" readonly="readonly" />
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <label>COSTO PNP:</label>
+                    </div>
+                    <div class="col-md-8">
+                        <input id="costosPNP" class="form-control input-sm" readonly="readonly" />
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <label>MARGEN PNP:</label>
+                    </div>
+                    <div class="col-md-8">
+                        <input id="margenPNP" class="form-control input-sm" readonly="readonly" />
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <br />
+        <br />
+
+        <div class="row" style="margin: 1px auto;">
+            <div class="col-md-6">
+
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <label>TOTAL UNIDADES PN:</label>
+                    </div>
+                    <div class="col-md-8">
+                        <input id="totalUnidadesPN" class="form-control input-sm" readonly="readonly" />
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <label>PRECIO PROMEDIO PN:</label>
+                    </div>
+                    <div class="col-md-8">
+                        <input id="precioPromedioPN" class="form-control input-sm" readonly="readonly" />
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <label>COSTO PROMEDIO PN:</label>
+                    </div>
+                    <div class="col-md-8">
+                        <input id="costoPromedioPN" class="form-control input-sm" readonly="readonly" />
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <label>TOTAL UNIDADES PNP:</label>
+                    </div>
+                    <div class="col-md-8">
+                        <input id="totalUnidadesPNP" class="form-control input-sm" readonly="readonly" />
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <label>PRECIO PROMEDIO PNP:</label>
+                    </div>
+                    <div class="col-md-8">
+                        <input id="precioPromedioPNP" class="form-control input-sm" readonly="readonly" />
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <label>COSTO PROMEDIO PNP:</label>
+                    </div>
+                    <div class="col-md-8">
+                        <input id="costoPromedioPNP" class="form-control input-sm" readonly="readonly" />
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,169 @@
+﻿@model AppWebHojaCosto.Models.TBL_SIM_HOJA_COSTO_PNP
+
+<fieldset style="border-width:2px; border-style:groove; padding:10px;">
+    <legend style="padding: 2px; width:auto;">Definicion de Precios</legend>
+    <div class="row">
+        <div class="col-md-12">
+            @*<div class="row">
+                <div class="col-md-4 offset-md-4">
+                    <span style="font-weight:bold; font-size:18px;">Real</span>
+                </div>
+                <div class="col-md-4">
+                    <span style="font-weight:bold; font-size:18px;">Estimado</span>
+                </div>
+            </div>*@
+            <div class="row">
+                <div class="col-md-12">
+                    <h6>PRECIO MAXIMO CON IVA</h6>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    @Html.LabelFor(m => m.SimPnpPrecioMaxRealM, new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group mb-1">
+                        @Html.TextBoxFor(m => m.SimPnpPrecioMaxRealM, new { @class = "form-control input-sm" })
+                        <div class="input-group-append">
+                            <span class="input-group-text">COP</span>
+                        </div>
+                    </div>
+                    @Html.ValidationMessageFor(m => m.SimPnpPrecioMaxRealM, null, new { @class = "campos_requeridos" })
+                </div>
+                @*<div class="col-md-4">
+                    <div class="input-group mb-1">
+                        @Html.TextBoxFor(m => m.SimPnpPrecioMaxEstimadoM, new { @class = "form-control input-sm" })
+                        <div class="input-group-append">
+                            <span class="input-group-text">COP</span>
+                        </div>
+                    </div>
+                    @Html.ValidationMessageFor(m => m.SimPnpPrecioMaxEstimadoM, null, new { @class = "campos_requeridos" })
+                </div>*@
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    @Html.LabelFor(m => m.SimPnpMargenMaxBrutoRealF, new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group mb-1">
+                        @Html.TextBoxFor(m => m.SimPnpMargenMaxBrutoRealF, new { @class = "form-control input-sm" })
+                        <div class="input-group-append">
+                            <span class="input-group-text">%</span>
+                        </div>
+                    </div>
+                    @Html.ValidationMessageFor(m => m.SimPnpMargenMaxBrutoRealF, null, new { @class = "campos_requeridos" })
+                </div>
+                @*<div class="col-md-4">
+                    <div class="input-group mb-1">
+                        @Html.TextBoxFor(m => m.SimPnpMargenMaxBrutoEstimadoF, new { @class = "form-control input-sm" })
+                        <div class="input-group-append">
+                            <span class="input-group-text">%</span>
+                        </div>
+                    </div>
+                    @Html.ValidationMessageFor(m => m.SimPnpMargenMaxBrutoEstimadoF, null, new { @class = "campos_requeridos" })
+                </div>*@
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    @Html.LabelFor(m => m.SimPnpMargenMaxOpeRealF, new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group mb-1">
+                        @Html.TextBoxFor(m => m.SimPnpMargenMaxOpeRealF, new { @class = "form-control input-sm" })
+                        <div class="input-group-append">
+                            <span class="input-group-text">%</span>
+                        </div>
+                    </div>
+                    @Html.ValidationMessageFor(m => m.SimPnpMargenMaxOpeRealF, null, new { @class = "campos_requeridos" })
+                </div>
+                @*<div class="col-md-4">
+                    <div class="input-group mb-1">
+                        @Html.TextBoxFor(m => m.SimPnpMargenMaxOpeEstimadoF, new { @class = "form-control input-sm" })
+                        <div class="input-group-append">
+                            <span class="input-group-text">%</span>
+                        </div>
+                    </div>
+                    @Html.ValidationMessageFor(m => m.SimPnpMargenMaxOpeEstimadoF, null, new { @class = "campos_requeridos" })
+                </div>*@
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
+                    <h6>PRECIO MINIMO CON IVA</h6>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    @Html.LabelFor(m => m.SimPnpPrecioMinRealM, new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group mb-1">
+                        @Html.TextBoxFor(m => m.SimPnpPrecioMinRealM, new { @class = "form-control input-sm" })
+                        <div class="input-group-append">
+                            <span class="input-group-text">COP</span>
+                        </div>
+                    </div>
+                    @Html.ValidationMessageFor(m => m.SimPnpPrecioMinRealM, null, new { @class = "campos_requeridos" })
+                </div>
+                @*<div class="col-md-4">
+                    <div class="input-group mb-1">
+                        @Html.TextBoxFor(m => m.SimPnpPrecioMinEstimadoM, new { @class = "form-control input-sm" })
+                        <div class="input-group-append">
+                            <span class="input-group-text">COP</span>
+                        </div>
+                    </div>
+                    @Html.ValidationMessageFor(m => m.SimPnpPrecioMinEstimadoM, null, new { @class = "campos_requeridos" })
+                </div>*@
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    @Html.LabelFor(m => m.SimPnpMargenMinBrutoRealF, new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group mb-1">
+                        @Html.TextBoxFor(m => m.SimPnpMargenMinBrutoRealF, new { @class = "form-control input-sm" })
+                        <div class="input-group-append">
+                            <span class="input-group-text">%</span>
+                        </div>
+                    </div>
+                    @Html.ValidationMessageFor(m => m.SimPnpMargenMinBrutoRealF, null, new { @class = "campos_requeridos" })
+                </div>
+                @*<div class="col-md-4">
+                    <div class="input-group mb-1">
+                        @Html.TextBoxFor(m => m.SimPnpMargenMinBrutoEstimadoF, new { @class = "form-control input-sm" })
+                        <div class="input-group-append">
+                            <span class="input-group-text">%</span>
+                        </div>
+                    </div>
+                    @Html.ValidationMessageFor(m => m.SimPnpMargenMinBrutoEstimadoF, null, new { @class = "campos_requeridos" })
+                </div>*@
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    @Html.LabelFor(m => m.SimPnpMargenMinOpeRealF, new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group mb-1">
+                        @Html.TextBoxFor(m => m.SimPnpMargenMinOpeRealF, new { @class = "form-control input-sm" })
+                        <div class="input-group-append">
+                            <span class="input-group-text">%</span>
+                        </div>
+                    </div>
+                    @Html.ValidationMessageFor(m => m.SimPnpMargenMinOpeRealF, null, new { @class = "campos_requeridos" })
+                </div>
+                @*<div class="col-md-4">
+                    <div class="input-group mb-1">
+                        @Html.TextBoxFor(m => m.SimPnpMargenMinOpeEstimadoF, new { @class = "form-control input-sm" })
+                        <div class="input-group-append">
+                            <span class="input-group-text">%</span>
+                        </div>
+                    </div>
+                    @Html.ValidationMessageFor(m => m.SimPnpMargenMinOpeEstimadoF, null, new { @class = "campos_requeridos" })
+                </div>*@
+            </div>
+        </div>
+    </div>
+</fieldset>

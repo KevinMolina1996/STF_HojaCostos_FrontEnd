@@ -1,0 +1,510 @@
+﻿@{
+    ViewBag.Title = "DashBoard";
+}
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/JS/js-dashboard-1.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/canvg/1.4/rgbcolor.js"></script>*@
+    @*<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/stackblur-canvas/1.4.1/stackblur.js"></script>*@
+    @*<script src="https://cdn.jsdelivr.net/npm/canvg/dist/browser/canvg.js"></script>*@
+    @*<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>*@
+    <style>
+        /* clearfix */
+        tspan {
+            font-size: 10px !important;
+        }
+
+        .clear:before,
+        .clear:after {
+            content: "";
+            display: table;
+        }
+
+        .clear:after {
+            clear: both;
+        }
+
+        .clear {
+            *zoom: 1;
+        }
+
+        .wrapper {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: 30px;
+            border: 1px solid #cccccc;
+        }
+
+        .gauge {
+            display: block;
+            float: left;
+        }
+
+        #g1 {
+            width: 100%;
+        }
+
+        #g2 {
+            width: 100%;
+        }
+    </style>
+    <script>
+
+    </script>
+}
+
+<div class="container-fluid" id="descarga_div">
+    @*<a id="download" href="javascript:window.print()">Download</a>*@
+    <div class="row">
+        <div class="col-md-8">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="@Url.Action("Index","Home")">Inicio</a>
+                </li>
+            </ol>
+        </div>
+        <div class="col-md-4">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item" style="width:100%;">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div id="lista1">
+                                @Html.DropDownList("Marca", new SelectList("", "Value", "Text"), new { @id = "Marca", @class = "form-control input-sm", @required = "required" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div id="lista2">
+                                @Html.DropDownList("Coleccion", new SelectList("", "Value", "Text"), new { @id = "Coleccion", @class = "form-control input-sm", @required = "required" })
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <!-- Area Chart Example-->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-3">
+                <div class="card-header">
+                    <i class="fa fa-area-chart"></i> Estado de Costeo
+                </div>
+                <div class="card-body">
+                    <div class="row justify-content-center">
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    <div id="vel1" class="box">
+                                        <div id="g1" class="gauge"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    @Html.Hidden("PorcentajeProducido")
+                                    @Html.Hidden("TotalProducido")
+                                    <div class="gris" style="border:1px solid; width:100%; text-align:center; font-weight:bold;">Pendiente x Costo</div>
+                                    <div class="gris" style="border:1px solid; width:100%; margin-top:5px; text-align:center; font-weight:bold;">
+                                        <span id="pendiente"></span>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="gris" style="border:1px solid; width:100%; text-align:center; font-weight:bold;">Completas</div>
+                                    <div class="gris" style="border:1px solid; width:100%; margin-top:5px; text-align:center; font-weight:bold;">
+                                        <span id="completa"></span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="gris" style="border:1px solid; width:100%; margin-top:5px; text-align:center; font-weight:bold; font-size: 12px;">
+                                                <span>CON PRECIO</span><br />
+                                                <span id="producido_precio">0</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="gris" style="border:1px solid; width:100%; margin-top:5px; text-align:center; font-weight:bold; font-size: 12px;">
+                                                <span>SIN PRECIO</span><br />
+                                                <span id="producido_sin_precio">0</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    <div id="vel2" class="box">
+                                        <div id="g2" class="gauge"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    @Html.Hidden("PorcentajeNoProducido")
+                                    @Html.Hidden("TotalNoProducido")
+                                    <div class="gris" style="border:1px solid; width:100%; text-align:center; font-weight:bold;">Pendiente x Costo</div>
+                                    <div class="gris" style="border:1px solid; width:100%; margin-top:5px; text-align:center; font-weight:bold;">
+                                        <span id="pendiente_pnp"></span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="gris" style="border:1px solid; width:100%; margin-top:5px; text-align:center; font-weight:bold; font-size: 12px;">
+                                                <span>NO TRACKING</span><br />
+                                                <span id="no_tracking">0</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="gris" style="border:1px solid; width:100%; text-align:center; font-weight:bold;">Completas</div>
+                                    <div class="gris" style="border:1px solid; width:100%; margin-top:5px; text-align:center; font-weight:bold;">
+                                        <span id="completa_pnp"></span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="gris" style="border:1px solid; width:100%; margin-top:5px; text-align:center; font-weight:bold; font-size: 12px;">
+                                                <span>CON PRECIO</span><br />
+                                                <span id="no_producido_precio">0</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="gris" style="border:1px solid; width:100%; margin-top:5px; text-align:center; font-weight:bold; font-size: 12px;">
+                                                <span>SIN PRECIO</span><br />
+                                                <span id="no_producido_sin_precio">0</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-3">
+                <div class="card-header">
+                    <i class="fa fa-area-chart"></i> Referencias Aprobadas por Semana
+                </div>
+                <div class="card-body">
+                    <p style="font-weight:bold; text-decoration:underline;">FECHA: <span id="fecha_inicial"></span></p>
+                    <div class="contenedor_aprobadas">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span class="titulo-ref-aprobadas">PRODUCIDO</span>
+                                <div class="row">
+                                    <div class="col-2 borde gris">
+                                        <span>SEMANA</span>
+                                    </div>
+                                    <div class="col-1 borde gris-claro">
+                                        <span>1</span>
+                                    </div>
+                                    <div class="col-1 borde gris-claro">
+                                        <span>2</span>
+                                    </div>
+                                    <div class="col-1 borde gris-claro">
+                                        <span>3</span>
+                                    </div>
+                                    <div class="col-1 borde gris-claro">
+                                        <span>4</span>
+                                    </div>
+                                    <div class="col-1 borde gris-claro">
+                                        <span>5</span>
+                                    </div>
+                                    <div class="col-1 borde gris-claro">
+                                        <span>6</span>
+                                    </div>
+                                    <div class="col-1 borde gris-claro">
+                                        <span>7</span>
+                                    </div>
+                                    <div class="col-1 borde gris-claro">
+                                        <span>8</span>
+                                    </div>
+                                    <div class="col-1 borde gris-claro">
+                                        <span>9</span>
+                                    </div>
+                                    <div class="col-1 borde gris-claro">
+                                        <span>10</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-2 borde gris-claro">
+                                        <span>FECHAS</span>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <div id="fecha1_pn" name="reportrange" class="fecha1" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                                            <i class="fa fa-calendar"></i>&nbsp;
+                                            <span></span> <i class="fa fa-caret-down"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <div id="fecha2_pn" name="reportrange" class="fecha1" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                                            <i class="fa fa-calendar"></i>&nbsp;
+                                            <span></span> <i class="fa fa-caret-down"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <div id="fecha3_pn" name="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                                            <i class="fa fa-calendar"></i>&nbsp;
+                                            <span></span> <i class="fa fa-caret-down"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <div id="fecha4_pn" name="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                                            <i class="fa fa-calendar"></i>&nbsp;
+                                            <span></span> <i class="fa fa-caret-down"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <div id="fecha5_pn" name="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                                            <i class="fa fa-calendar"></i>&nbsp;
+                                            <span></span> <i class="fa fa-caret-down"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <div id="fecha6_pn" name="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                                            <i class="fa fa-calendar"></i>&nbsp;
+                                            <span></span> <i class="fa fa-caret-down"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <div id="fecha7_pn" name="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                                            <i class="fa fa-calendar"></i>&nbsp;
+                                            <span></span> <i class="fa fa-caret-down"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <div id="fecha8_pn" name="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                                            <i class="fa fa-calendar"></i>&nbsp;
+                                            <span></span> <i class="fa fa-caret-down"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <div id="fecha9_pn" name="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                                            <i class="fa fa-calendar"></i>&nbsp;
+                                            <span></span> <i class="fa fa-caret-down"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <div id="fecha10_pn" name="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                                            <i class="fa fa-calendar"></i>&nbsp;
+                                            <span></span> <i class="fa fa-caret-down"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-2 borde gris">
+                                        <span>No REF APROBADAS</span>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <span id="val_fecha1"></span>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <span id="val_fecha2"></span>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <span id="val_fecha3"></span>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <span id="val_fecha4"></span>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <span id="val_fecha5"></span>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <span id="val_fecha6"></span>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <span id="val_fecha7"></span>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <span id="val_fecha8"></span>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <span id="val_fecha9"></span>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <span id="val_fecha10"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span class="titulo-ref-aprobadas">NO PRODUCIDO</span>
+                                <div class="row">
+                                    <div class="col-2 borde gris">
+                                        <span>SEMANA</span>
+                                    </div>
+                                    <div class="col-1 borde gris-claro">
+                                        <span>1</span>
+                                    </div>
+                                    <div class="col-1 borde gris-claro">
+                                        <span>2</span>
+                                    </div>
+                                    <div class="col-1 borde gris-claro">
+                                        <span>3</span>
+                                    </div>
+                                    <div class="col-1 borde gris-claro">
+                                        <span>4</span>
+                                    </div>
+                                    <div class="col-1 borde gris-claro">
+                                        <span>5</span>
+                                    </div>
+                                    <div class="col-1 borde gris-claro">
+                                        <span>6</span>
+                                    </div>
+                                    <div class="col-1 borde gris-claro">
+                                        <span>7</span>
+                                    </div>
+                                    <div class="col-1 borde gris-claro">
+                                        <span>8</span>
+                                    </div>
+                                    <div class="col-1 borde gris-claro">
+                                        <span>9</span>
+                                    </div>
+                                    <div class="col-1 borde gris-claro">
+                                        <span>10</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-2 borde gris-claro">
+                                        <span>FECHAS</span>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <div id="fecha11_pnp" name="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                                            <i class="fa fa-calendar"></i>&nbsp;
+                                            <span></span> <i class="fa fa-caret-down"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <div id="fecha12_pnp" name="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                                            <i class="fa fa-calendar"></i>&nbsp;
+                                            <span></span> <i class="fa fa-caret-down"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <div id="fecha13_pnp" name="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                                            <i class="fa fa-calendar"></i>&nbsp;
+                                            <span></span> <i class="fa fa-caret-down"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <div id="fecha14_pnp" name="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                                            <i class="fa fa-calendar"></i>&nbsp;
+                                            <span></span> <i class="fa fa-caret-down"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <div id="fecha15_pnp" name="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                                            <i class="fa fa-calendar"></i>&nbsp;
+                                            <span></span> <i class="fa fa-caret-down"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <div id="fecha16_pnp" name="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                                            <i class="fa fa-calendar"></i>&nbsp;
+                                            <span></span> <i class="fa fa-caret-down"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <div id="fecha17_pnp" name="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                                            <i class="fa fa-calendar"></i>&nbsp;
+                                            <span></span> <i class="fa fa-caret-down"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <div id="fecha18_pnp" name="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                                            <i class="fa fa-calendar"></i>&nbsp;
+                                            <span></span> <i class="fa fa-caret-down"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <div id="fecha19_pnp" name="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                                            <i class="fa fa-calendar"></i>&nbsp;
+                                            <span></span> <i class="fa fa-caret-down"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <div id="fecha20_pnp" name="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                                            <i class="fa fa-calendar"></i>&nbsp;
+                                            <span></span> <i class="fa fa-caret-down"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-2 borde gris">
+                                        <span>No REF APROBADAS</span>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <span id="val_fecha11"></span>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <span id="val_fecha12"></span>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <span id="val_fecha13"></span>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <span id="val_fecha14"></span>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <span id="val_fecha15"></span>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <span id="val_fecha16"></span>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <span id="val_fecha17"></span>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <span id="val_fecha18"></span>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <span id="val_fecha19"></span>
+                                    </div>
+                                    <div class="col-1 borde">
+                                        <span id="val_fecha20"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fa fa-area-chart"></i> Pendientes Producto Producido
+        </div>
+        <div class="card-body">
+            <div class="row justify-content-center">
+                <div class="col">
+                    <div id="barra1">
+                        <canvas id="myChart" style="padding: 0;margin: auto;display: block; height:350px; width:100%;"></canvas>
+                    </div>
+                </div>
+                <div class="col">
+                    <div id="barra2">
+                        <canvas id="myChart2" style="padding: 0;margin: auto;display: block; height:350px; width:100%;"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+﻿@model AppWebHojaCosto.Models.HOJA_COSTO_PRECOSTEO
+
+<div>
+    <fieldset style="border-width:2px; border-style:groove; padding:10px;">
+        <legend style="padding: 2px; width:auto;">PROCESOS</legend>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <div style="text-align:right; text-decoration:underline;"><a href="#" id="addProcesos">+ Adicionar</a></div>
+                    <table id="tablaProcesos" class="table table-sm table-bordered" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>@Html.LabelFor(model => model.TBL_PRE_PROCESO.FirstOrDefault().PrePrDetalleS, new { @class = "control-label" })</th>
+                                <th>@Html.LabelFor(model => model.TBL_PRE_PROCESO.FirstOrDefault().PrePrCostoM, new { @class = "control-label" })</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.TBL_PRE_PROCESO != null && Model.TBL_PRE_PROCESO.Count > 0)
+                            {
+                                int j = 0;
+                                foreach (var i in Model.TBL_PRE_PROCESO)
+                                {
+                                    <tr style="border:1px solid black">
+                                        @Html.HiddenFor(a => a.TBL_PRE_PROCESO[j].PrePrCodigoN, new { @class = "PrePrCodigoN" })
+                                        @Html.HiddenFor(a => a.TBL_PRE_PROCESO[j].PreHcCodigoN)
+                                        @Html.HiddenFor(a => a.TBL_PRE_PROCESO[j].Borrado, new { @class = "Borrado" })
+                                        <td>@Html.TextBoxFor(a => a.TBL_PRE_PROCESO[j].PrePrDetalleS, new { @class = "form-control input-sm" })</td>
+                                        <td>@Html.TextBoxFor(a => a.TBL_PRE_PROCESO[j].PrePrCostoM, new { @class = "form-control input-sm PrePrCostoM solonumeros", data_nombre = "PrePrCostoM" })</td>
+                                        <td>
+                                            @if (j > 0)
+                                            {
+                                                <a href="#" class="remove">Eliminar</a>
+                                            }
+                                        </td>
+                                    </tr>
+                                    j++;
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>

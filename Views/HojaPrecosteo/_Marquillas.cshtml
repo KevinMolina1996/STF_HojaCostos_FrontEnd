@@ -1,0 +1,49 @@
+﻿@model AppWebHojaCosto.Models.HOJA_COSTO_PRECOSTEO
+
+<div>
+    <fieldset style="border-width:2px; border-style:groove; padding:10px;">
+        <legend style="padding: 2px; width:auto;">MARQUILLAS, ETIQUETAS, EMPAQUES</legend>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <div style="text-align:right; text-decoration:underline;"><a href="#" id="addMarquillas">+ Adicionar</a></div>
+                    <table id="tablaMarquillas" class="table table-sm table-bordered" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>@Html.LabelFor(model => model.TBL_PRE_ETIQ_MAR_EMP.FirstOrDefault().PreEmeNombreS, new { @class = "control-label" })</th>
+                                <th>@Html.LabelFor(model => model.TBL_PRE_ETIQ_MAR_EMP.FirstOrDefault().PreEmeCtsxMtD, new { @class = "control-label" })</th>
+                                <th>@Html.LabelFor(model => model.TBL_PRE_ETIQ_MAR_EMP.FirstOrDefault().PreEmeConF, new { @class = "control-label" })</th>
+                                <th>@Html.LabelFor(model => model.TBL_PRE_ETIQ_MAR_EMP.FirstOrDefault().PreEmeTotalD, new { @class = "control-label" })</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.TBL_PRE_ETIQ_MAR_EMP != null && Model.TBL_PRE_ETIQ_MAR_EMP.Count > 0)
+                            {
+                                int j = 0;
+                                foreach (var i in Model.TBL_PRE_ETIQ_MAR_EMP)
+                                {
+                                    <tr style="border:1px solid black">
+                                        @Html.HiddenFor(a => a.TBL_PRE_ETIQ_MAR_EMP[j].PreEmeCodigoN, new { @class = "PreEmeCodigoN" })
+                                        @Html.HiddenFor(a => a.TBL_PRE_ETIQ_MAR_EMP[j].PreHcCodigoN)
+                                        @Html.HiddenFor(a => a.TBL_PRE_ETIQ_MAR_EMP[j].Borrado, new { @class = "Borrado" })
+                                        <td>@Html.TextBoxFor(a => a.TBL_PRE_ETIQ_MAR_EMP[j].PreEmeNombreS, new { @class = "form-control input-sm" })</td>
+                                        <td>@Html.TextBoxFor(a => a.TBL_PRE_ETIQ_MAR_EMP[j].PreEmeCtsxMtD, new { @class = "form-control input-sm PreEmeCtsxMtD solonumeros", data_nombre = "PreEmeCtsxMtD" })</td>
+                                        <td>@Html.TextBoxFor(a => a.TBL_PRE_ETIQ_MAR_EMP[j].PreEmeConF, new { @class = "form-control input-sm PreEmeConF solonumeros", data_nombre = "PreEmeConF" })</td>
+                                        <td>@Html.TextBoxFor(a => a.TBL_PRE_ETIQ_MAR_EMP[j].PreEmeTotalD, new { @class = "form-control input-sm", @readonly = "readonly", data_nombre = "PreEmeTotalD" })</td>
+                                        <td>
+                                            @if (j > 0)
+                                            {
+                                                <a href="#" class="remove">Eliminar</a>
+                                            }
+                                        </td>
+                                    </tr>
+                                    j++;
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>

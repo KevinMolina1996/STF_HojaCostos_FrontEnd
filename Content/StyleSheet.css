@@ -1,0 +1,433 @@
+﻿.campos_requeridos {
+    color: #ff0000;
+}
+
+.inferior_modulos {
+    font-size: 13px;
+    font-weight: bold;
+    background: #b7b4b4;
+}
+
+legend {
+    font-size: 1.2rem !important;
+}
+
+.color_menu {
+    background: rgb(243, 156, 18) !important;
+}
+
+.negro {
+    background: #000;
+}
+
+.marca-media {
+    font-size: 3em;
+}
+
+.centrado {
+    text-align: center;
+}
+
+.img-centro {
+    max-width: 40%;
+    max-height: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.animacion_alerta {
+    animation: slidein ease-in-out 400ms infinite;
+}
+
+@keyframes slidein {
+    0% {
+        transform: none;
+    }
+
+    25% {
+        transform: rotateZ(8deg);
+    }
+
+    75% {
+        transform: rotateZ(-8deg);
+    }
+
+    100% {
+        transform: none;
+    }
+}
+
+.blanco {
+    color: #FFF;
+}
+
+.custom-combobox {
+    width: 100%;
+    position: relative;
+    display: inline-block;
+}
+
+.custom-combobox-toggle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin-right: -1px;
+    padding: 0;
+}
+
+.custom-combobox-input {
+    margin: 0;
+    padding: 5px 10px;
+}
+
+.break {
+    width: 100%;
+    height: 20px;
+}
+
+.break-1 {
+    width: 100%;
+    height: 40px;
+}
+
+.break-2 {
+    width: 100%;
+    height: 60px;
+}
+
+.break-4 {
+    width: 100%;
+    height: 80px;
+}
+
+.break-5 {
+    width: 100%;
+    height: 100px;
+}
+
+.hidden_page {
+    display: none;
+}
+
+.txt_formula_titulo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+
+#campos {
+    overflow: auto;
+    border-radius: 20px;
+    border: 1px dashed #808080;
+    padding: 20px;
+    width: 98%;
+    height: 250px;
+}
+
+#operaciones {
+    border-radius: 20px;
+    border: 1px dashed #808080;
+    padding: 20px;
+    width: 101%;
+    height: 250px;
+}
+
+.position_page {
+    padding-left: 10px;
+}
+
+.si {
+    border: 1px solid #F1C40F !important;
+    color: #F1C40F !important;
+}
+
+.cociente {
+    border: 1px solid #73C6B6 !important;
+    color: #73C6B6 !important;
+}
+
+.residuo {
+    border: 1px solid #AEB6BF !important;
+    color: #AEB6BF !important;
+}
+
+.concatenar {
+    border: 1px solid #E6B0AA !important;
+    color: #E6B0AA !important;
+}
+
+#contenedor {
+    overflow: auto;
+    border-radius: 20px;
+    /*border: 1px dashed #808080;*/
+    padding: 20px;
+    width: 100%;
+    min-height: 100px;
+    height: auto !important;
+}
+
+
+#sortable {
+    height: auto !important;
+    min-height: 100px;
+    width: auto !important;
+    min-width: 200px;
+}
+
+#formula_escrita {
+    margin-top: 1%;
+    padding: 10px 10px 10px 10px;
+    border-radius: 20px;
+    border: 1px dashed #808080;
+    width: 100%;
+}
+
+.soperaciones {
+    border-radius: 90px;
+    border: 1px solid #0094ff;
+    /*background-color: #0094ff;*/
+    color: #0094ff;
+    width: auto;
+    float: left;
+    margin-left: 1%;
+    margin-bottom: 1%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.scampos {
+    border-radius: 90px;
+    border: 1px solid #000000;
+    /*background-color: #0026ff;*/
+    color: #000000;
+    width: auto;
+    float: left;
+    margin-left: 1%;
+    margin-bottom: 1%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.tamano {
+    width: 15%;
+}
+
+.block-unable {
+    padding: 0 !important;
+}
+
+.tamano_span {
+    margin: 5px 5px 5px 5px;
+}
+
+#sortable > div {
+    width: auto !important;
+}
+
+#sortable > .soperaciones {
+    width: auto !important;
+}
+
+#text_campo_formula {
+    font-size: 15px;
+}
+
+.input_totales {
+    border: 0 !important;
+    background: transparent !important;
+    cursor: context-menu !important;
+}
+
+.wrapper {
+    position: relative;
+    width: 640px;
+    height: 480px;
+    margin: 50px auto 0 auto;
+    padding-bottom: 30px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    clear: both;
+}
+
+.box {
+    float: left;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/*.container {
+    width: 450px;
+    margin: 0 auto;
+    text-align: center;
+}*/
+
+.gauge {
+    width: 100%;
+    height: 350px;
+}
+
+.contenedor_aprobadas {
+    text-align:center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.borde {
+    font-size: 14px;
+    border: 1px solid #000;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+.gris {
+    background-color: #343a40;
+    color:#FFF;
+}
+
+.gris-claro {
+    background-color: #6c757d;
+    color: #FFF;
+}
+
+.titulo-ref-aprobadas{
+    font-size: 22px;
+    font-weight:bold;
+    text-align:left;
+}
+thead {
+    background: #FFBF00 !important;
+    font-size: 12px;
+}
+td{
+    font-size:12px;
+}
+th {
+    border-color: #000 !important;
+}
+.input-dashboard{
+    height: 25px;
+}
+.pendiente {
+    background: #F5A9BC !important;
+    font-weight:bold !important;
+}
+.nav-item > .active {
+    background: #FFBF00 !important;
+    color: #FFF !important;
+    font-weight: bold !important;
+}
+.navbar {
+    border-bottom: 0.25rem solid #ffcb6f !important;
+}
+.alinear{
+    margin-top: 50px;
+}
+.center-div {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    font-size: 4rem;
+    width: 70%;
+    height: 200px;
+    font-weight: bold;
+    color: #FFF;
+}
+.center-div-fondo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.boton-inicio {
+    background-color: #f05f40;
+    border-color: #f05f40;
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 300px;
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+    padding: 1rem 2rem;
+    color: #fff;
+    font-size: 1rem;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.ocultar{
+    display:none !important;
+}
+
+.mostrar{
+    display:normal;
+}
+
+.contenedor-fondo {
+    top: 0;
+    right: 0;
+    height: 90vh;
+    background: green;
+}
+#files {
+    overflow-y: scroll !important;
+    min-height: 320px;
+}
+
+@media (min-width: 768px) {
+    #files {
+        min-height: 0;
+    }
+}
+
+#debug {
+    overflow-y: scroll !important;
+    height: 180px;
+}
+
+.dm-uploader {
+    border: 0.25rem dashed #A5A5C7;
+    text-align: center;
+}
+
+    .dm-uploader.active {
+        border-color: red;
+        border-style: solid;
+    }
+.input-vacio {
+    background-color: #FFFFFF !important;
+    border-width: 0 !important;
+}
+.input-vacio-gris {
+    pointer-events:none !important;
+    background-color: #b7b4b4 !important;
+    border-width: 0 !important;
+}
+iframe{
+    width: 100% !important;
+    min-height: 300px !important;
+}
+
+#ReportViewer1_fixedTable{
+    width: 100% !important;
+}
+
+.derecha{
+    text-align:right;
+}
+
+.costo{
+    font-size: 22px !important;
+    font-weight: bold !important;
+}
+
+.referencia {
+    font-size: 20px !important;
+}

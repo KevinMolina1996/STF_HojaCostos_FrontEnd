@@ -1,0 +1,166 @@
+﻿<div class="collapse navbar-collapse" id="navbarResponsive">
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+    {
+        <ul class="navbar-nav navbar-sidenav" id="menu">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard Lvl 1" id="DashBoardLvl1">
+                <a class="nav-link" href="@Url.Action("Graficos", "DashBoardLvl1")">
+                    <i class="fa fa-fw fa-dashboard"></i>
+                    <span class="nav-link-text">Dashboard Lvl 1</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard Lvl 2" id="DashBoardLvl2">
+                <a class="nav-link" href="@Url.Action("Consulta", "DashBoardLvl2")">
+                    <i class="fa fa-fw fa-dashboard"></i>
+                    <span class="nav-link-text">Dashboard Lvl 2</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Hojas de costos" id="HojaCostos">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#hojas" data-parent="#menu">
+                    <i class="fa fa-fw fa-area-chart"></i>
+                    <span class="nav-link-text">Hojas de costos</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="hojas">
+                    <li id="HojaProducido">
+                        <a href="@Url.Action("Index", "HojaCostoPN/Index")">Producido</a>
+                    </li>
+                    <li id="HojaNoProducido">
+                        <a href="@Url.Action("Index", "HojaCostoPNP/Index")">No Producido</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Desfile" id="Desfile">
+                <a class="nav-link" href="@Url.Action("Seguimiento", "Desfile")">
+                    <i class="fa fa-fw fa-eye"></i>
+                    <span class="nav-link-text">Desfile</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Parametros" id="Parametros">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#parametros" data-parent="#menu">
+                    <i class="fa fa-bars"></i>
+                    <span class="nav-link-text">Parametros</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="parametros">
+                    <li id="ParametrosProducido">
+                        <a href="@Url.Action("Index", "Parametros")">Producido</a>
+                    </li>
+                    <li id="ParametrosPrecosteo">
+                        <a href="@Url.Action("Consulta", "ParametrosPre")">Precosteo</a>
+                    </li>
+                    <li id="ParametrosNoProducido">
+                        <a href="@Url.Action("Index", "ParametrosPnp")">No Producido</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Reportes" id="Reportes">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#reportes" data-parent="#menu">
+                    <i class="fa fa-fw fa-table"></i>
+                    <span class="nav-link-text">Reportes</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="reportes">
+                    <li id="ReporteVariaciones">
+                        <a href="@Url.Action("Consulta", "ReporteVariaciones")">Reporte Variaciones</a>
+                    </li>
+                    <li id="ReporteComponentes">
+                        <a href="@Url.Action("Consulta", "ReporteComponentes")">Reporte Componentes Pendientes</a>
+                    </li>
+                    <li id="ReporteEstandarProducido">
+                        <a href="@Url.Action("Consulta", "ReporteEstandarProducido")">Reporte Almacenamiento Estandar(PN)</a>
+                    </li>
+                    <li id="ReporteEstandarNoProducido">
+                        <a href="@Url.Action("Consulta", "ReporteEstandarNoProducido")">Reporte Almacenamiento Estandar(PNP)</a>
+                    </li>
+                </ul>
+            </li>
+            @*<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Reportes" id="Reportes">
+                    <a class="nav-link" href="@Url.Action("Consulta", "Reportes")">
+                        <i class="fa fa-fw fa-table"></i>
+                        <span class="nav-link-text">Reportes</span>
+                    </a>
+                </li>*@
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Cargues" id="Cargues">
+                <a class="nav-link" href="@Url.Action("Index", "Cargues")">
+                    <i class="fa fa-fw fa-upload"></i>
+                    <span class="nav-link-text">Cargues</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Sincronización" id="Sincronizacion">
+                <a class="nav-link" href="@Url.Action("Parametrizar", "Sincronizacion")">
+                    <i class="fa fa-fw fa-retweet"></i>
+                    <span class="nav-link-text">Sincronización</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Administración" id="Administracion">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#admin" data-parent="#menu">
+                    <i class="fa fa-fw fa-wrench"></i>
+                    <span class="nav-link-text">Administración</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="admin">
+                    <li id="FormulasPrecosteo">
+                        <a href="@Url.Action("Consulta", "FormulaPre")">Formulas Precosteo</a>
+                    </li>
+                    <li id="FormulasProducido">
+                        <a href="@Url.Action("Index", "Formula")">Formulas Producido</a>
+                    </li>
+                    <li id="FormulasNoProducido">
+                        <a href="@Url.Action("Index", "FormulaPNP")">Formulas No Producido</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    }
+    <ul class="navbar-nav sidenav-toggler">
+        <li class="nav-item">
+            <a class="nav-link text-center" id="sidenavToggler">
+                <i class="fa fa-fw fa-angle-left"></i>
+            </a>
+        </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-fw fa-bell" id="campana"></i>
+                <span class="d-lg-none">
+                    Alertas
+                    <span class="badge badge-pill badge-warning">6 New</span>
+                </span>
+                <span class="indicator d-none d-lg-block">
+                    <i class="fa fa-fw fa-circle" id="circulo"></i><span id="count"></span>
+                </span>
+            </a>
+            <div class="expander dropdown-menu" aria-labelledby="alertsDropdown" style="max-width:375px;">
+                <h6 class="dropdown-header">Nuevas Alertas:</h6>
+                <div class="dropdown-divider"></div>
+                <div id="Alertas" style="overflow:scroll; max-height:400px; min-height:100px; min-width:250px;">
+
+                </div>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item small" href="@Url.Action("Index", "Alertas")">Ver todas</a>
+                @*<a class="dropdown-item" href="#">
+                        <span class="text-success">
+                            <strong>
+                                <i class="fa fa-long-arrow-up fa-fw"></i>Titulo Mensaje
+                            </strong>
+                        </span>
+                        <span class="small float-right text-muted">11:21 AM</span>
+                        <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
+                    </a>
+                    <div class="dropdown-divider"></div>*@
+            </div>
+        </li>
+        <li>
+            <a class="nav-link mr-lg-2" href="../Documents/Manual/Manual_Hoja_Costo.pdf" target="_blank">
+                <i class="fa fa-fw fa-info-circle"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link">
+                <span style="color:#868e96;">Bienvenido sr(a): </span> <span id="nombre" style="font-weight:bold;"></span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                <i class="fa fa-fw fa-sign-out"></i>Salir
+            </a>
+        </li>
+    </ul>
+</div>

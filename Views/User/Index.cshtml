@@ -1,0 +1,203 @@
+﻿    @Model  List<Usuarios>
+    @{
+        ViewBag.Title = "Index";
+    }
+
+    @section Scripts {
+        <script>
+            //$('#cbEstado').on('change', function () {
+            //    if ($('#cbEstado').prop('checked')) {
+            //        actualizarEstado(true);
+            //    }
+            //    else {
+            //        actualizarEstado(false);
+            //    }
+            //});
+
+            function actualizarEstado(checkbox, codigo) {
+                var estado = checkbox.checked;
+                var params = { Codigo: codigo, boEstado: estado };
+
+                $.ajax({
+                    url: '@Url.Action("Editar", "User")',
+                    method: "post",
+                    data: params,
+                    success: function (result) {
+                        alertExito(result.mensaje);
+                    },
+                    error: function (request, status, error) {
+                        alertError(request.responseText);
+                    },
+                    async: true
+                });
+            }
+
+            function abrirModalMod(codigo) {
+                var params = { Codigo: codigo };
+                $.ajax({
+                    url: '@Url.Action("ConsultaModulos", "User")',
+                    method: "post",
+                    data: params,
+                    success: function (result) {
+                        $("#modulos").empty();
+                        $("#modulos").append("<input type='hidden' id='codUsu' value='" + codigo + "' />");
+                        for (var i = 0; i < result.lstModulos.length; i++) {
+                            if (result.lstModulos[i] != '') {
+                                var cbestado = '';
+                                if (result.lstModulos[i].MoEstadoB == true)
+                                    cbestado = 'checked';
+                                else
+                                    cbestado = '';
+                                crearMenuMod(result.lstModulos[i].MoNombreS, result.lstModulos[i].MoCodigoN, cbestado);
+                            }
+                        }
+                        abrirModal();
+                    },
+                    error: function (request, status, error) {
+                        //
+                    },
+                    async: true
+                });
+            }
+
+            function crearMenuMod(nombre, codigo, cbestado) {
+                campo = '<div class="col-md-3"><label>"' + nombre + '"</label>&nbsp;<input id="' + codigo + '" type="checkbox" ' + cbestado + ' /></div>';
+                $("#modulos").append(campo.replace(/"/g, ''));
+            }
+
+            function actualizarModulos() {
+                var modulos = '';
+                var codigo = '';
+                $("#modulos input").each(function () {
+                    if ($(this).attr('id') == "codUsu")
+                        codigo = $(this).attr('value');
+                    else {
+                        if ($(this).prop('checked')) {
+                            if (modulos != '')
+                                modulos = modulos + '|' + $(this).attr('id');
+                            else
+                                modulos = $(this).attr('id');
+                        }
+                    }
+                    //alert($(this).attr('id'));
+                });
+
+                var params = { UsCodigoN: codigo, MoCodigoN: modulos };
+                $.ajax({
+                    url: '@Url.Action("ActualizarModulos", "User")',
+                    method: "post",
+                    data: params,
+                    success: function (result) {
+                        alertExito(result.mensaje);
+                    },
+                    error: function (request, status, error) {
+                        alertError(error);
+                    },
+                    async: true
+                });
+            }
+
+            function abrirModal() {
+                $('#modalUsuario').modal('show');
+            }
+
+            function alertExito(mensaje) {
+                $(document).ready(function () {
+                    $.toast({
+                        heading: 'Exito',
+                        text: mensaje,
+                        showHideTransition: 'fade',
+                        icon: 'success'
+                    })
+                });
+            }
+
+            function alertError(mensaje) {
+                $(document).ready(function () {
+                    $.toast({
+                        heading: 'Error',
+                        text: mensaje,
+                        showHideTransition: 'fade',
+                        icon: 'error'
+                    })
+                });
+            }
+
+        </script>
+    }
+    <br />
+    <br />
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Usuarios</li>
+    </ol>
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fa fa-table"></i> Usuarios
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Codigo</th>
+                            <th>Nombre</th>
+                            <th>Correo</th>
+                            <th>Fec. Creacion</th>
+                            <th>Activo?</th>
+                            <th>Usuario</th>
+                            <th>Acc.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.UsCodigoN</td>
+                                <td>@item.UsNombreS</td>
+                                <td>@item.UsEmailS</td>
+                                <td>@item.UsFecCreD</td>
+                                <td><center><input data-group-cls="btn-group-sm" id="cbEstado" @(Convert.ToBoolean(@item.UsEstadoB) == true ? "checked='checked'" : string.Empty) data-off-label="No" data-on-label="Si" type="checkbox" hidden data-reverse onchange="actualizarEstado(this, @item.UsCodigoN);"></center></td>
+                                <td>@item.UsUsuarioS</td>
+                                <td><center><a href="" onclick="abrirModalMod(@item.UsCodigoN); return false;"><i class='fa fa-cog'></i></a></center></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        @*<div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>*@
+    </div>
+
+    <br />
+    <br />
+
+    <!--Modal-->
+    <div class="modal fade" id="modalUsuario" tabindex="-1" role="dialog" aria-labelledby="modalUsuario" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Actualizar usuario</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div style="display:inline">
+                        <div class="form-group">
+                            <div class="form-row" id="modulos">
+                            </div>
+                        </div>
+                    </div>
+                    <input type="submit" value="Guardar" onclick="actualizarModulos(1);" class="btn btn-primary btn-block" />
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    @*<input type="submit" value="Salir" class="btn btn-primary" />*@
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,29 @@
+﻿@model AppWebHojaCosto.Models.TBL_SIM_HOJA_COSTO_PNP
+
+<fieldset style="border-width:2px; border-style:groove; padding:10px;">
+    @using (Html.BeginForm("CerrarHojas", "HojaNoProducidoSimulada", FormMethod.Post, new { id = "FrmAcciones" }))
+    {
+        @Html.Hidden("Referencia", Model.SimPnpReferenciaS);
+        <legend style="padding: 2px; width:auto;">Acciones</legend>
+        <div class="row">
+            <div class="col-md-12">
+                <input type="submit" class="btn btn-sm btn-dark" value="Guardar Simulación" style="width:100%" />
+            </div>
+        </div>
+        <div class="row" style="padding-top:10px;">
+            <div class="col-md-12">
+                <input type="submit" id="Exportar" class="btn btn-sm btn-dark" formaction="Export" value="Exportar" style="width:100%" formnovalidate />
+            </div>
+        </div>
+        <div class="row" style="padding-top:10px;">
+            <div class="col-md-12">
+                <input type="submit" id="Imprimir" class="btn btn-sm btn-dark" formaction="GenerarPdf" value="Imprimir" style="width:100%" formnovalidate />
+            </div>
+        </div>
+        <div class="row" style="padding-top:10px;">
+            <div class="col-md-12">
+                <input type="submit" class="btn btn-sm btn-dark" value="Volver" onclick="return false;" style="width:100%" />
+            </div>
+        </div>
+    }
+</fieldset>

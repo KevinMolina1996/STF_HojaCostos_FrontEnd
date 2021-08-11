@@ -1,0 +1,39 @@
+﻿@{
+    /**/
+
+    /**/
+
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <title>Index</title>
+    <script>
+        if (history.forward(1)) {
+            location.replace(history.forward(1));
+        }
+    </script>
+    @Styles.Render("~/Content/css")
+</head>
+<body style="background-image:url('../../Images/constelacion.jpg'); background-position:center;">
+    <div class="center-div">
+
+        <center>
+            <h1>
+                <strong style="text-transform:uppercase;">Bienvenido al sistema de costeo <span style="text-decoration:underline; color:#f05f40;">CYGNUS</span></strong>
+            </h1>
+
+            <a href="@Url.Action("Index", "Home")" class="boton-inicio">Continuar &raquo;</a>
+            @*<a href="@Url.Action("Authorize", "OAuth")" class="boton-inicio">Continuar &raquo;</a>*@
+        </center>
+
+    </div>
+    @Scripts.Render("~/Scripts/jsLogin")
+</body>
+</html>

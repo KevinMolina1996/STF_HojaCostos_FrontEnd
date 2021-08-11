@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="bdHojaCostosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="TBL_HOJA_COSTO_PN">
+    <Key>
+      <PropertyRef Name="HcCodigoN" />
+    </Key>
+    <Property Name="HcCodigoN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HcReferenciaS" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="HcColeccionS" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="HcDisenadorS" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="HcLineaS" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="HcSubLineaS" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="HcEstadoS" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="HcPatronistaS" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="HcMarcaS" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="HcTotalTelasM" Type="money" />
+    <Property Name="HcTotalConTelasM" Type="money" />
+    <Property Name="HcTotalProcesosM" Type="money" />
+    <Property Name="HcTotalInsumoM" Type="money" />
+    <Property Name="HcTotalMarquillaM" Type="money" />
+    <Property Name="HcTotalCIFMODM" Type="money" />
+    <Property Name="HcTotalCosPrdM" Type="money" />
+    <Property Name="HcTotalGastosM" Type="money" />
+    <Property Name="HcTotalxCanalM" Type="money" />
+    <Property Name="HcImagenI" Type="image" Nullable="false" />
+    <Property Name="HcFecCreD" Type="date" Nullable="false" />
+    <Property Name="HcFecActD" Type="date" />
+    <Property Name="HcUsuActS" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="TBL_PARAM_PN">
+    <Key>
+      <PropertyRef Name="PpCodigoN" />
+    </Key>
+    <Property Name="PpCodigoN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PpColeccionS" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="PpMarcaS" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PpLineaS" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PpSubLineaS" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PpFactorS" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="PpMargenMinF" Type="float" />
+    <Property Name="PpMargenMaxF" Type="float" />
+    <Property Name="PpMayorUSDUtilF" Type="float" />
+    <Property Name="PpAlmacenLineaAdminF" Type="float" />
+    <Property Name="PpMayorUSDAdminF" Type="float" />
+    <Property Name="PpAlmacenLineaFinanF" Type="float" />
+    <Property Name="PpMayorUSDFinanF" Type="float" />
+    <Property Name="PpAlmacenLineaMercadeoF" Type="float" />
+    <Property Name="PpMayorUSDMercadeoF" Type="float" />
+    <Property Name="PpGastosAdminF" Type="float" />
+    <Property Name="PpGastosFinanF" Type="float" />
+    <Property Name="PpGastosMercadeoF" Type="float" />
+    <Property Name="PpAlmacenLineaVntsF" Type="float" />
+    <Property Name="PpMayorUSDVntsF" Type="float" />
+    <Property Name="PpTasaColeccionF" Type="float" />
+    <Property Name="PpTasaEspecialF" Type="float" />
+    <Property Name="PpTasaCambioEURxUSDF" Type="float" />
+    <Property Name="PpIvaF" Type="float" />
+    <Property Name="PpAdminxFinanF" Type="float" />
+    <Property Name="PpMercadeoF" Type="float" />
+    <Property Name="PpVntsxCanalLineaF" Type="float" />
+    <Property Name="PpAlmacenLineaCanalF" Type="float" />
+    <Property Name="PpMayorCanalF" Type="float" />
+    <Property Name="PpTopeCostoF" Type="float" />
+    <Property Name="PpFactorRentabilidadMaxF" Type="float" />
+    <Property Name="PpFactorRentabilidadMinF" Type="float" />
+    <Property Name="PpEnterPriceM" Type="money" />
+    <Property Name="PpMediumPriceM" Type="money" />
+    <Property Name="PpPremiumPriceM" Type="money" />
+    <Property Name="PpFecCreD" Type="date" Nullable="false" />
+    <Property Name="PpFecActD" Type="date" />
+    <Property Name="PpUsuActS" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'bdHojaCostos.dbo.tblAlertas' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="tblAlertas">
+    <Key>
+      <PropertyRef Name="AlCodigoN" />
+    </Key>
+    <Property Name="AlCodigoN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AlMensajeS" Type="varchar(max)" />
+    <Property Name="AlEstadoS" Type="varchar" MaxLength="1" />
+    <Property Name="AlFecCreD" Type="date" />
+    <Property Name="AlUsuarioS" Type="varchar" MaxLength="50" />
+    <Property Name="AlTituloS" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'bdHojaCostos.dbo.tblModulos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="tblModulos">
+    <Key>
+      <PropertyRef Name="MoCodigoN" />
+      <PropertyRef Name="MoNombreS" />
+      <PropertyRef Name="MoDescripS" />
+      <PropertyRef Name="MoFecCreD" />
+      <PropertyRef Name="MoEstadoB" />
+    </Key>
+    <Property Name="MoCodigoN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MoNombreS" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="MoDescripS" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MoFecCreD" Type="date" Nullable="false" />
+    <Property Name="MoEstadoB" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'bdHojaCostos.dbo.tblUsuarios' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="tblUsuarios">
+    <Key>
+      <PropertyRef Name="UsCodigoN" />
+      <PropertyRef Name="UsNombreS" />
+      <PropertyRef Name="UsEmailS" />
+      <PropertyRef Name="UsFecCreD" />
+      <PropertyRef Name="UsEstadoB" />
+      <PropertyRef Name="UsUsuarioS" />
+      <PropertyRef Name="UsClaveS" />
+    </Key>
+    <Property Name="UsCodigoN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UsNombreS" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="UsEmailS" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="UsFecCreD" Type="date" Nullable="false" />
+    <Property Name="UsEstadoB" Type="bit" Nullable="false" />
+    <Property Name="UsUsuarioS" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="UsClaveS" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="MoCodigoN" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <Function Name="spActualizarModulos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MoCodigoN" Type="int" Mode="In" />
+    <Parameter Name="MoNombreS" Type="varchar" Mode="In" />
+    <Parameter Name="MoDescripS" Type="varchar" Mode="In" />
+    <Parameter Name="MoEstadoB" Type="bit" Mode="In" />
+    <Parameter Name="Response" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="spConsultarModulos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Operacion" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spConsultarUsuarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Operacion" Type="int" Mode="In" />
+    <Parameter Name="UsUsuarioS" Type="varchar" Mode="In" />
+    <Parameter Name="UsClaveS" Type="varchar" Mode="In" />
+    <Parameter Name="UsCodigoN" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spEliminarModulos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MoCodigoN" Type="int" Mode="In" />
+    <Parameter Name="Response" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="spInsertarModulos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MoNombreS" Type="varchar" Mode="In" />
+    <Parameter Name="MoDescripS" Type="varchar" Mode="In" />
+    <Parameter Name="MoEstadoB" Type="bit" Mode="In" />
+    <Parameter Name="Response" Type="int" Mode="InOut" />
+  </Function>
+  <EntityContainer Name="bdHojaCostosModelStoreContainer">
+    <EntitySet Name="TBL_HOJA_COSTO_PN" EntityType="Self.TBL_HOJA_COSTO_PN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_PARAM_PN" EntityType="Self.TBL_PARAM_PN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblAlertas" EntityType="Self.tblAlertas" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tblAlertas].[AlCodigoN] AS [AlCodigoN], 
+    [tblAlertas].[AlMensajeS] AS [AlMensajeS], 
+    [tblAlertas].[AlEstadoS] AS [AlEstadoS], 
+    [tblAlertas].[AlFecCreD] AS [AlFecCreD], 
+    [tblAlertas].[AlUsuarioS] AS [AlUsuarioS], 
+    [tblAlertas].[AlTituloS] AS [AlTituloS]
+    FROM [dbo].[tblAlertas] AS [tblAlertas]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tblModulos" EntityType="Self.tblModulos" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tblModulos].[MoCodigoN] AS [MoCodigoN], 
+    [tblModulos].[MoNombreS] AS [MoNombreS], 
+    [tblModulos].[MoDescripS] AS [MoDescripS], 
+    [tblModulos].[MoFecCreD] AS [MoFecCreD], 
+    [tblModulos].[MoEstadoB] AS [MoEstadoB]
+    FROM [dbo].[tblModulos] AS [tblModulos]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tblUsuarios" EntityType="Self.tblUsuarios" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tblUsuarios].[UsCodigoN] AS [UsCodigoN], 
+    [tblUsuarios].[UsNombreS] AS [UsNombreS], 
+    [tblUsuarios].[UsEmailS] AS [UsEmailS], 
+    [tblUsuarios].[UsFecCreD] AS [UsFecCreD], 
+    [tblUsuarios].[UsEstadoB] AS [UsEstadoB], 
+    [tblUsuarios].[UsUsuarioS] AS [UsUsuarioS], 
+    [tblUsuarios].[UsClaveS] AS [UsClaveS], 
+    [tblUsuarios].[MoCodigoN] AS [MoCodigoN]
+    FROM [dbo].[tblUsuarios] AS [tblUsuarios]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

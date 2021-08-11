@@ -1,0 +1,28 @@
+﻿@model AppWebHojaCosto.Models.TBL_HOJA_COSTO_PNP
+
+<fieldset style="border-width:2px; border-style:groove; padding:10px;" disabled>
+    <legend style="padding: 2px; width:auto;">
+        <a href="@Url.Action("Index","HojaCostoPNP/Index")" id="close"><i class="fa fa-window-close"></i></a>
+    </legend>
+    <div class="row">
+        <div class="col-md-3" style="display:block; margin-bottom:auto; margin-top:auto; text-align:center;">
+            <h2 class="marca-media">@Html.DisplayFor(m => m.PnpMarcaS, new { @class = "control-label" })</h2>
+        </div>
+        <div class="col-md-6" style="text-align:center;">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>HOJA DE COSTOS</h4>
+                </div>
+                <div class="col-md-12">
+                    <h6>Producto No Producido</h6>
+                </div>
+                <div class="col-md-12">
+                    <h4>@Html.DisplayFor(m => m.PnpColeccionS, new { @class = "control-label" })</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3" style="display:block; margin-bottom:auto; margin-top:auto; text-align:center;">
+            <h6>@Html.DisplayFor(m => m.PnpFecCreD, new { @class = "control-label" })</h6>
+        </div>
+    </div>
+</fieldset>

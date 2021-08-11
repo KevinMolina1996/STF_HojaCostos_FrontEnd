@@ -1,0 +1,46 @@
+﻿@model AppWebHojaCosto.Models.HOJA_COSTO_SIMULADA
+
+<div>
+    <fieldset style="border-width:2px; border-style:groove; padding:10px;">
+        <legend style="padding: 2px; width:auto;">Piramide Precios</legend>
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcEnterPriceD, new { @class = "control-label" })
+            </div>
+            <div class="col-md-8">
+                <div class="input-group mb-1">
+                    @Html.TextBoxFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcEnterPriceD, new { @class = "form-control input-sm solonumeros" })
+                    <div class="input-group-append">
+                        <span class="input-group-text">COP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcMediumPriceD, new { @class = "control-label" })
+            </div>
+            <div class="col-md-8">
+                <div class="input-group mb-1">
+                    @Html.TextBoxFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcMediumPriceD, new { @class = "form-control input-sm solonumeros" })
+                    <div class="input-group-append">
+                        <span class="input-group-text">COP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcPremiumPriceD, new { @class = "control-label" })
+            </div>
+            <div class="col-md-8">
+                <div class="input-group mb-1">
+                    @Html.TextBoxFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcPremiumPriceD, new { @class = "form-control input-sm solonumeros" })
+                    <div class="input-group-append">
+                        <span class="input-group-text">COP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>

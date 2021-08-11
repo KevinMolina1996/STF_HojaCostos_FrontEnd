@@ -1,0 +1,169 @@
+﻿@model AppWebHojaCosto.Models.HOJA_COSTO_PN
+
+<fieldset style="border-width:2px; border-style:groove; padding:10px;">
+    <legend style="padding: 2px; width:auto;">Generación Impresion Masiva</legend>
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "FrmMasiva" }))
+    {
+        <div class="row">
+            <div class="col-md-2">
+                <label>Tipo <span class="text-danger">(*)</span></label>
+                @*@Html.DropDownListFor(m => m.TipoHojaCosto, Model.TipoHojas, new { @id = "Tipo", @class = "form-control", @onclick = "FiltroMarca();" })*@
+                @Html.DropDownListFor(model => model.TipoHojaCosto, new SelectList(
+                  new List<Object>{
+                       new { value = "" , text = "--Seleccione--"  },
+                       new { value = "CE" , text = "Hoja de Costo Estandar"  },
+                       new { value = "CS" , text = "Hoja de Costo Simulada" },
+                       new { value = "CP" , text = "Hoja de Costo PreCosteo" }
+                    },
+                  "value",
+                  "text",
+                   0), new { @id = "Tipo", @class = "form-control", @onclick = "FiltroMarca();", @required = "required" })
+            </div>
+            <div class="col-md-2">
+                @Html.LabelFor(m => m.TBL_HOJA_COSTO_PN.HcMarcaS, new { @class = "control-label" })<span class="text-danger">(*)</span>
+                @*@Html.DropDownListFor(m => m.TBL_HOJA_COSTO_PN.HcMarcaS, new SelectList(Model.Marcas, "Value", "Text"), new { @id = "Marca", @class = "form-control" })*@
+                <div class="input-group">
+                    @Html.TextBoxFor(m => m.TBL_HOJA_COSTO_PN.HcMarcaS, new { @id = "marca", @type = "search", @required = "required", @class = "form-control py-2 border-right-0 border" })
+                    @*<input class="form-control py-2 border-right-0 border" type="search" id="marca" name="TBL_HOJA_COSTO_PN.HcMarcaS" required />*@
+                    <span class="input-group-append">
+                        <button class="btn btn-outline-secondary border-left-0 border" type="button" id="ver-todo-marcas">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-2">
+                @Html.LabelFor(m => m.TBL_HOJA_COSTO_PN.HcColeccionS, new { @class = "control-label" })<span class="text-danger">(*)</span>
+                @*@Html.DropDownListFor(m => m.TBL_HOJA_COSTO_PN.HcColeccionS, new SelectList(Model.Colecciones, "Value", "Text"), new { @id = "Coleccion", @class = "form-control" })*@
+                <div class="input-group">
+                    @Html.TextBoxFor(m => m.TBL_HOJA_COSTO_PN.HcColeccionS, new { @id = "coleccion", @type = "search", @required = "required", @class = "form-control py-2 border-right-0 border" })
+                    @*<input class="form-control py-2 border-right-0 border" type="search" id="coleccion" name="TBL_HOJA_COSTO_PN.HcColeccionS" required />*@
+                    <span class="input-group-append">
+                        <button class="btn btn-outline-secondary border-left-0 border" type="button" id="ver-todo-coleccion">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-2">
+                @Html.LabelFor(m => m.TBL_HOJA_COSTO_PN.HcLineaS, new { @class = "control-label" })
+                @*@Html.DropDownListFor(m => m.TBL_HOJA_COSTO_PN.HcLineaS, new SelectList(Model.Lineas, "Value", "Text"), new { @id = "Linea", @class = "form-control" })*@
+                <div class="input-group">
+                    @Html.TextBoxFor(m => m.TBL_HOJA_COSTO_PN.HcLineaS, new { @id = "linea", @type = "search", @class = "form-control py-2 border-right-0 border" })
+                    @*<input class="form-control py-2 border-right-0 border" type="search" id="linea" name="TBL_HOJA_COSTO_PN.HcLineaS" />*@
+                    <span class="input-group-append">
+                        <button class="btn btn-outline-secondary border-left-0 border" type="button" id="ver-todo-linea">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-2">
+                @Html.LabelFor(m => m.TBL_HOJA_COSTO_PN.HcEstadoS, new { @class = "control-label" })
+                @*@Html.DropDownListFor(m => m.TBL_HOJA_COSTO_PN.HcEstadoAproS, new SelectList(Model.EstadosCierre, "Value", "Text"), new { @id = "EstadoCierre", @class = "form-control" })*@
+                <div class="input-group">
+                    @Html.TextBoxFor(m => m.TBL_HOJA_COSTO_PN.HcEstadoAproS, new { @id = "estado", @type = "search", @class = "form-control py-2 border-right-0 border" })
+                    @*<input class="form-control py-2 border-right-0 border" type="search" id="estado" name="TBL_HOJA_COSTO_PN.HcEstadoAproS" />*@
+                    <span class="input-group-append">
+                        <button class="btn btn-outline-secondary border-left-0 border" type="button" id="ver-todo-estado">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div style="height:33px; width:10px;"></div>
+                <button type="button" id="btnLimpiar" class="btn btn-sm btn-dark" onclick="return false;"><span class="fa fa-undo"></span> Limpiar</button>
+                <!--Se debe adicionar un estado cuando la hoja de costo es cerrada y firmada por el presidente-->
+                @*@Html.LabelFor(m => m.TBL_HOJA_COSTO_PN.HcEstadoS, new { @class = "control-label" })
+                    @Html.DropDownListFor(m => m.TBL_HOJA_COSTO_PN.HcEstadoAproS, new SelectList(Model.EstadosCierre, "Value", "Text"), new { @id = "EstadoCierre", @class = "form-control" })
+                        @Html.DropDownListFor(m => m.TBL_HOJA_COSTO_PN.HcEstadoS, new SelectList(Model.Estados, "Value", "Text"), new { @id = "Estado", @class = "form-control" })*@
+            </div>
+        </div>
+        <div class="row" style="text-align:center; padding-top:20px;">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-sm btn-dark" formaction="/HojaCostoPN/ConsultaMasiva"><span class="fa fa-search"></span> Consultar</button>
+            </div>
+        </div>
+        <div class="row" style="padding-top:20px;">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="table" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                @*<th style="text-align:center;padding-left: 30px;">
+                                        <input type="checkbox" id="checkAll">
+                                    </th>*@
+                                <th>Referencia</th>
+                                <th>Descripción</th>
+                                <th>Estado</th>
+                                <th>Accion</th>
+                                <th>Marca</th>
+                                <th>Linea</th>
+                                <th>Usuario Costos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.LST_TBL_HOJA_COSTO_PN != null)
+                            {
+                                foreach (var item in Model.LST_TBL_HOJA_COSTO_PN)
+                                {
+                                    <tr>
+                                        @*<td>@Html.CheckBox("Seleccion", new { @class = "form-control", @onchange = "SeleccionRef(this, '" + item.HcReferenciaS + "')" })</td>*@
+                                        <td>@item.HcReferenciaS</td>
+                                        <td>@item.HcDescripcionS</td>
+                                        <td>@item.HcEstadoAproS</td>
+                                        <td>@Html.ActionLink("Visualizar", "ConsultarxRef", new { Tipo = "CE", Referencia = item.HcReferenciaS })</td>
+                                        <td>@item.HcMarcaS</td>
+                                        <td>@item.HcLineaS</td>
+                                        <td>@item.HcUsuCostoS</td>
+                                    </tr>
+                                }
+                            }
+                            @if (Model.LST_TBL_SIM_HOJA_COSTO_PN != null)
+                            {
+                                foreach (var item in Model.LST_TBL_SIM_HOJA_COSTO_PN)
+                                {
+                                    <tr>
+                                        @*<td>@Html.CheckBox("Seleccion", new { @class = "form-control", @onchange = "SeleccionRef(this, '" + item.SimHcReferenciaS + "')" })</td>*@
+                                        <td>@item.SimHcReferenciaS</td>
+                                        <td>@item.SimHcDescripcionS</td>
+                                        <td>@item.SimHcEstadoAproS</td>
+                                        <td>@Html.ActionLink("Visualizar", "ConsultarxRef", new { Tipo = "CS", Referencia = item.SimHcReferenciaS })</td>
+                                        <td>@item.SimHcMarcaS</td>
+                                        <td>@item.SimHcLineaS</td>
+                                        <td>@item.SimHcUsuCostoS</td>
+                                    </tr>
+                                }
+                            }
+                            @if (Model.LST_TBL_PRE_HOJA_COSTO_PN != null)
+                            {
+                                foreach (var item in Model.LST_TBL_PRE_HOJA_COSTO_PN)
+                                {
+                                    <tr>
+                                        @*<td>@Html.CheckBox("Seleccion", new { @class = "form-control", @onchange = "SeleccionRef(this, '" + item.PreHcReferenciaS + "')" })</td>*@
+                                        <td>@item.PreHcReferenciaS</td>
+                                        <td>@item.PreHcDescripcionS</td>
+                                        <td>@item.PreHcEstadoAproS</td>
+                                        <td>@Html.ActionLink("Visualizar", "ConsultarxRef", new { Tipo = "CP", Referencia = item.PreHcReferenciaS })</td>
+                                        <td>@item.PreHcMarcaS</td>
+                                        <td>@item.PreHcLineaS</td>
+                                        <td>@item.PreHcUsuCostoS</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="text-align:center; padding-top:20px;">
+            <div class="col-md-12">
+                @Html.Hidden("Referencias", null, new { Id = "Referencias", Value = "" })
+                <button type="submit" id="Exportar" formaction="Export" class="btn btn-sm btn-dark" formnovalidate disabled><span class="fa fa-download"></span> Exportar</button>
+                <button type="submit" id="Imprimir" formaction="GenerarPdf" class="btn btn-sm btn-dark" formnovalidate disabled><span class="fa fa-print"></span> Imprimir</button>
+                <button type="submit" id="Cerrar" formaction="CerrarHojas" class="btn btn-sm btn-dark" formnovalidate disabled><span class="fa fa-check-circle"></span> Cerrar Hojas</button>
+            </div>
+        </div>
+    }
+</fieldset>

@@ -1,0 +1,17 @@
+﻿@model AppWebHojaCosto.Models.HOJA_COSTO_PRECOSTEO
+
+<div>
+    <fieldset style="border-width:2px; border-style:groove; padding:10px;">
+        <legend style="padding: 2px; width:auto;">Imagenes</legend>
+        <div class="row">
+            <div class="col-sm-6 img-centro">
+                @Html.HiddenFor(x => x.TBL_PRE_HOJA_COSTO_PN.PreHcImagenDS)
+                <img src="@Url.Content(Model.TBL_PRE_HOJA_COSTO_PN.PreHcImagenDS)" alt="Image" width="200" />
+            </div>
+            <div class="col-sm-6 img-centro">
+                @Html.HiddenFor(x => x.TBL_PRE_HOJA_COSTO_PN.PreHcImagenTS)
+                <img src="@Url.Content(Model.TBL_PRE_HOJA_COSTO_PN.PreHcImagenTS)" alt="Image" width="200" />
+            </div>
+        </div>
+    </fieldset>
+</div>

@@ -1,0 +1,17 @@
+﻿@model AppWebHojaCosto.Models.HOJA_COSTO_SIMULADA
+
+<div>
+    <fieldset style="border-width:2px; border-style:groove; padding:10px;">
+        <legend style="padding: 2px; width:auto;">Imagenes</legend>
+        <div class="row">
+            <div class="col-sm-6 img-centro">
+                @Html.HiddenFor( x => x.TBL_SIM_HOJA_COSTO_PN.SimHcImagenDS)
+                <img src="@Url.Content(Model.TBL_SIM_HOJA_COSTO_PN.SimHcImagenDS)" alt="Image" width="200" />
+            </div>
+            <div class="col-sm-6 img-centro">
+                @Html.HiddenFor(x => x.TBL_SIM_HOJA_COSTO_PN.SimHcImagenTS)
+                <img src="@Url.Content(Model.TBL_SIM_HOJA_COSTO_PN.SimHcImagenTS)" alt="Image" width="200" />
+            </div>
+        </div>
+    </fieldset>
+</div>

@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="bdHojaCostosModelStoreContainer" CdmEntityContainer="bdHojaCostosEntities">
+    <EntitySetMapping Name="tblAlertas">
+      <EntityTypeMapping TypeName="bdHojaCostosModel.tblAlertas">
+        <MappingFragment StoreEntitySet="tblAlertas">
+          <ScalarProperty Name="AlCodigoN" ColumnName="AlCodigoN" />
+          <ScalarProperty Name="AlMensajeS" ColumnName="AlMensajeS" />
+          <ScalarProperty Name="AlEstadoS" ColumnName="AlEstadoS" />
+          <ScalarProperty Name="AlFecCreD" ColumnName="AlFecCreD" />
+          <ScalarProperty Name="AlUsuarioS" ColumnName="AlUsuarioS" />
+          <ScalarProperty Name="AlTituloS" ColumnName="AlTituloS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblModulos">
+      <EntityTypeMapping TypeName="bdHojaCostosModel.tblModulos">
+        <MappingFragment StoreEntitySet="tblModulos">
+          <ScalarProperty Name="MoCodigoN" ColumnName="MoCodigoN" />
+          <ScalarProperty Name="MoNombreS" ColumnName="MoNombreS" />
+          <ScalarProperty Name="MoDescripS" ColumnName="MoDescripS" />
+          <ScalarProperty Name="MoFecCreD" ColumnName="MoFecCreD" />
+          <ScalarProperty Name="MoEstadoB" ColumnName="MoEstadoB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUsuarios">
+      <EntityTypeMapping TypeName="bdHojaCostosModel.tblUsuarios">
+        <MappingFragment StoreEntitySet="tblUsuarios">
+          <ScalarProperty Name="UsCodigoN" ColumnName="UsCodigoN" />
+          <ScalarProperty Name="UsNombreS" ColumnName="UsNombreS" />
+          <ScalarProperty Name="UsEmailS" ColumnName="UsEmailS" />
+          <ScalarProperty Name="UsFecCreD" ColumnName="UsFecCreD" />
+          <ScalarProperty Name="UsEstadoB" ColumnName="UsEstadoB" />
+          <ScalarProperty Name="UsUsuarioS" ColumnName="UsUsuarioS" />
+          <ScalarProperty Name="UsClaveS" ColumnName="UsClaveS" />
+          <ScalarProperty Name="MoCodigoN" ColumnName="MoCodigoN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="spActualizarModulos" FunctionName="bdHojaCostosModel.Store.spActualizarModulos" />
+    <FunctionImportMapping FunctionImportName="spConsultarModulos" FunctionName="bdHojaCostosModel.Store.spConsultarModulos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="bdHojaCostosModel.spConsultarModulos_Result">
+          <ScalarProperty Name="MoCodigoN" ColumnName="MoCodigoN" />
+          <ScalarProperty Name="MoNombreS" ColumnName="MoNombreS" />
+          <ScalarProperty Name="MoDescripS" ColumnName="MoDescripS" />
+          <ScalarProperty Name="MoFecCreD" ColumnName="MoFecCreD" />
+          <ScalarProperty Name="MoEstadoB" ColumnName="MoEstadoB" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spConsultarUsuarios" FunctionName="bdHojaCostosModel.Store.spConsultarUsuarios">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="bdHojaCostosModel.spConsultarUsuarios_Result">
+          <ScalarProperty Name="UsCodigoN" ColumnName="UsCodigoN" />
+          <ScalarProperty Name="UsNombreS" ColumnName="UsNombreS" />
+          <ScalarProperty Name="UsEmailS" ColumnName="UsEmailS" />
+          <ScalarProperty Name="UsFecCreD" ColumnName="UsFecCreD" />
+          <ScalarProperty Name="UsEstadoB" ColumnName="UsEstadoB" />
+          <ScalarProperty Name="UsUsuarioS" ColumnName="UsUsuarioS" />
+          <ScalarProperty Name="UsClaveS" ColumnName="UsClaveS" />
+          <ScalarProperty Name="MoCodigoN" ColumnName="MoCodigoN" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spEliminarModulos" FunctionName="bdHojaCostosModel.Store.spEliminarModulos" />
+    <FunctionImportMapping FunctionImportName="spInsertarModulos" FunctionName="bdHojaCostosModel.Store.spInsertarModulos" />
+    <EntitySetMapping Name="TBL_HOJA_COSTO_PN">
+      <EntityTypeMapping TypeName="bdHojaCostosModel.TBL_HOJA_COSTO_PN">
+        <MappingFragment StoreEntitySet="TBL_HOJA_COSTO_PN">
+          <ScalarProperty Name="HcUsuActS" ColumnName="HcUsuActS" />
+          <ScalarProperty Name="HcFecActD" ColumnName="HcFecActD" />
+          <ScalarProperty Name="HcFecCreD" ColumnName="HcFecCreD" />
+          <ScalarProperty Name="HcImagenI" ColumnName="HcImagenI" />
+          <ScalarProperty Name="HcTotalxCanalM" ColumnName="HcTotalxCanalM" />
+          <ScalarProperty Name="HcTotalGastosM" ColumnName="HcTotalGastosM" />
+          <ScalarProperty Name="HcTotalCosPrdM" ColumnName="HcTotalCosPrdM" />
+          <ScalarProperty Name="HcTotalCIFMODM" ColumnName="HcTotalCIFMODM" />
+          <ScalarProperty Name="HcTotalMarquillaM" ColumnName="HcTotalMarquillaM" />
+          <ScalarProperty Name="HcTotalInsumoM" ColumnName="HcTotalInsumoM" />
+          <ScalarProperty Name="HcTotalProcesosM" ColumnName="HcTotalProcesosM" />
+          <ScalarProperty Name="HcTotalConTelasM" ColumnName="HcTotalConTelasM" />
+          <ScalarProperty Name="HcTotalTelasM" ColumnName="HcTotalTelasM" />
+          <ScalarProperty Name="HcMarcaS" ColumnName="HcMarcaS" />
+          <ScalarProperty Name="HcPatronistaS" ColumnName="HcPatronistaS" />
+          <ScalarProperty Name="HcEstadoS" ColumnName="HcEstadoS" />
+          <ScalarProperty Name="HcSubLineaS" ColumnName="HcSubLineaS" />
+          <ScalarProperty Name="HcLineaS" ColumnName="HcLineaS" />
+          <ScalarProperty Name="HcDisenadorS" ColumnName="HcDisenadorS" />
+          <ScalarProperty Name="HcColeccionS" ColumnName="HcColeccionS" />
+          <ScalarProperty Name="HcReferenciaS" ColumnName="HcReferenciaS" />
+          <ScalarProperty Name="HcCodigoN" ColumnName="HcCodigoN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_PARAM_PN">
+      <EntityTypeMapping TypeName="bdHojaCostosModel.TBL_PARAM_PN">
+        <MappingFragment StoreEntitySet="TBL_PARAM_PN">
+          <ScalarProperty Name="PpUsuActS" ColumnName="PpUsuActS" />
+          <ScalarProperty Name="PpFecActD" ColumnName="PpFecActD" />
+          <ScalarProperty Name="PpFecCreD" ColumnName="PpFecCreD" />
+          <ScalarProperty Name="PpPremiumPriceM" ColumnName="PpPremiumPriceM" />
+          <ScalarProperty Name="PpMediumPriceM" ColumnName="PpMediumPriceM" />
+          <ScalarProperty Name="PpEnterPriceM" ColumnName="PpEnterPriceM" />
+          <ScalarProperty Name="PpFactorRentabilidadMinF" ColumnName="PpFactorRentabilidadMinF" />
+          <ScalarProperty Name="PpFactorRentabilidadMaxF" ColumnName="PpFactorRentabilidadMaxF" />
+          <ScalarProperty Name="PpTopeCostoF" ColumnName="PpTopeCostoF" />
+          <ScalarProperty Name="PpMayorCanalF" ColumnName="PpMayorCanalF" />
+          <ScalarProperty Name="PpAlmacenLineaCanalF" ColumnName="PpAlmacenLineaCanalF" />
+          <ScalarProperty Name="PpVntsxCanalLineaF" ColumnName="PpVntsxCanalLineaF" />
+          <ScalarProperty Name="PpMercadeoF" ColumnName="PpMercadeoF" />
+          <ScalarProperty Name="PpAdminxFinanF" ColumnName="PpAdminxFinanF" />
+          <ScalarProperty Name="PpIvaF" ColumnName="PpIvaF" />
+          <ScalarProperty Name="PpTasaCambioEURxUSDF" ColumnName="PpTasaCambioEURxUSDF" />
+          <ScalarProperty Name="PpTasaEspecialF" ColumnName="PpTasaEspecialF" />
+          <ScalarProperty Name="PpTasaColeccionF" ColumnName="PpTasaColeccionF" />
+          <ScalarProperty Name="PpMayorUSDVntsF" ColumnName="PpMayorUSDVntsF" />
+          <ScalarProperty Name="PpAlmacenLineaVntsF" ColumnName="PpAlmacenLineaVntsF" />
+          <ScalarProperty Name="PpGastosMercadeoF" ColumnName="PpGastosMercadeoF" />
+          <ScalarProperty Name="PpGastosFinanF" ColumnName="PpGastosFinanF" />
+          <ScalarProperty Name="PpGastosAdminF" ColumnName="PpGastosAdminF" />
+          <ScalarProperty Name="PpMayorUSDMercadeoF" ColumnName="PpMayorUSDMercadeoF" />
+          <ScalarProperty Name="PpAlmacenLineaMercadeoF" ColumnName="PpAlmacenLineaMercadeoF" />
+          <ScalarProperty Name="PpMayorUSDFinanF" ColumnName="PpMayorUSDFinanF" />
+          <ScalarProperty Name="PpAlmacenLineaFinanF" ColumnName="PpAlmacenLineaFinanF" />
+          <ScalarProperty Name="PpMayorUSDAdminF" ColumnName="PpMayorUSDAdminF" />
+          <ScalarProperty Name="PpAlmacenLineaAdminF" ColumnName="PpAlmacenLineaAdminF" />
+          <ScalarProperty Name="PpMayorUSDUtilF" ColumnName="PpMayorUSDUtilF" />
+          <ScalarProperty Name="PpMargenMaxF" ColumnName="PpMargenMaxF" />
+          <ScalarProperty Name="PpMargenMinF" ColumnName="PpMargenMinF" />
+          <ScalarProperty Name="PpFactorS" ColumnName="PpFactorS" />
+          <ScalarProperty Name="PpSubLineaS" ColumnName="PpSubLineaS" />
+          <ScalarProperty Name="PpLineaS" ColumnName="PpLineaS" />
+          <ScalarProperty Name="PpMarcaS" ColumnName="PpMarcaS" />
+          <ScalarProperty Name="PpColeccionS" ColumnName="PpColeccionS" />
+          <ScalarProperty Name="PpCodigoN" ColumnName="PpCodigoN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

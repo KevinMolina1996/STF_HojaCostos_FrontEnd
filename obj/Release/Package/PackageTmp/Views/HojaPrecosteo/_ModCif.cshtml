@@ -1,0 +1,44 @@
+﻿@model AppWebHojaCosto.Models.HOJA_COSTO_PRECOSTEO
+
+<div>
+    <fieldset style="border-width:2px; border-style:groove; padding:10px;">
+        <legend style="padding: 2px; width:auto;">Mod y CIF</legend>
+        <div class="row">
+            <div class="col-md-8">
+                @Html.HiddenFor(x => x.TBL_PRE_MOD_CIF.PreMcCodigoN)
+                @Html.LabelFor(model => model.TBL_PRE_MOD_CIF.PreMcCostoManoObraD, new { @class = "control-label" })
+            </div>
+            <div class="col-md-4">
+                <div class="input-group mb-1">
+                    @Html.TextBoxFor(model => model.TBL_PRE_MOD_CIF.PreMcCostoManoObraD, new { name = "PreMcCostoManoObraD", id = "PreMcCostoManoObraD", @class = "form-control input-sm solonumeros" })
+                    <div class="input-group-append">
+                        <span class="input-group-text">COP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                @Html.LabelFor(model => model.TBL_PRE_MOD_CIF.PreMcCostoIndirectosD, new { @class = "control-label" })
+            </div>
+            <div class="col-md-4">
+                <div class="input-group mb-1">
+                    @Html.TextBoxFor(model => model.TBL_PRE_MOD_CIF.PreMcCostoIndirectosD, new { name = "PreMcCostoIndirectosD", id = "PreMcCostoIndirectosD", @class = "form-control input-sm solonumeros" })
+                    <div class="input-group-append">
+                        <span class="input-group-text">COP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>
+<div class="inferior_modulos">
+    <div class="row">
+        <div class="col-md-8">
+            @Html.LabelFor(model => model.TBL_PRE_HOJA_COSTO_PN.PreHcTotalCIFMODD, new { @class = "control-label" })
+        </div>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.TBL_PRE_HOJA_COSTO_PN.PreHcTotalCIFMODD, new { name = "PreHcTotalCIFMODD", id = "PreHcTotalCIFMODD", @class = "form-control input-sm input_totales", @readonly = "readonly" })
+        </div>
+    </div>
+</div>

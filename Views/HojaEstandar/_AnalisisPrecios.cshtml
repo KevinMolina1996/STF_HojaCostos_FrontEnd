@@ -1,0 +1,149 @@
+﻿@model AppWebHojaCosto.Models.HOJA_COSTO_ESTANDAR
+<div>
+    <fieldset style="border-width:2px; border-style:groove; padding:10px;" disabled>
+        <legend style="padding: 2px; width:auto;">Analisis de Precios por Destino de Distribucion</legend>
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <span style="font-weight:bold; font-size:18px;">Estimado</span>
+            </div>
+            <div class="col-md-4">
+                <span style="font-weight:bold; font-size:18px;">Real</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-4">
+                        @Html.LabelFor(m => m.TBL_ANALISIS_PREC.FirstOrDefault().ApPrecMaxIvaEstD, new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group mb-1">
+                            @Html.TextBoxFor(m => m.TBL_ANALISIS_PREC.FirstOrDefault().ApPrecMaxIvaEstD, new { @class = "form-control input-sm formato_cero costo" })
+                            <div class="input-group-append">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group mb-1">
+                            @Html.TextBoxFor(m => m.TBL_ANALISIS_PREC.FirstOrDefault().ApPrecMaxIvaRealD, new { @class = "form-control input-sm" })
+                            <div class="input-group-append">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        @Html.LabelFor(m => m.TBL_ANALISIS_PREC.FirstOrDefault().ApMargenMaxBrutoEstF, new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group mb-1">
+                            @Html.TextBoxFor(m => m.TBL_ANALISIS_PREC.FirstOrDefault().ApMargenMaxBrutoEstF, new { @class = "form-control input-sm" })
+                            <div class="input-group-append">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group mb-1">
+                            @Html.TextBoxFor(m => m.TBL_ANALISIS_PREC.FirstOrDefault().ApMargenMaxBrutoRealF, new { @class = "form-control input-sm" })
+                            <div class="input-group-append">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        @Html.LabelFor(m => m.TBL_ANALISIS_PREC.FirstOrDefault().ApMargenMaxOpeEstF, new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group mb-1">
+                            @Html.TextBoxFor(m => m.TBL_ANALISIS_PREC.FirstOrDefault().ApMargenMaxOpeEstF, new { @class = "form-control input-sm" })
+                            <div class="input-group-append">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group mb-1">
+                            @Html.TextBoxFor(m => m.TBL_ANALISIS_PREC.FirstOrDefault().ApMargenMaxOpeRealF, new { @class = "form-control input-sm" })
+                            <div class="input-group-append">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-4">
+                        @Html.LabelFor(m => m.TBL_ANALISIS_PREC.FirstOrDefault().ApPrecMinIvaEstD, new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group mb-1">
+                            @Html.TextBoxFor(m => m.TBL_ANALISIS_PREC.FirstOrDefault().ApPrecMinIvaEstD, new { @class = "form-control input-sm formato_cero costo" })
+                            <div class="input-group-append">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group mb-1">
+                            @Html.TextBoxFor(m => m.TBL_ANALISIS_PREC.FirstOrDefault().ApPrecMinIvaRealD, new { @class = "form-control input-sm" })
+                            <div class="input-group-append">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        @Html.LabelFor(m => m.TBL_ANALISIS_PREC.FirstOrDefault().ApMargenMinBrutoEstF, new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group mb-1">
+                            @Html.TextBoxFor(m => m.TBL_ANALISIS_PREC.FirstOrDefault().ApMargenMinBrutoEstF, new { @class = "form-control input-sm" })
+                            <div class="input-group-append">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group mb-1">
+                            @Html.TextBoxFor(m => m.TBL_ANALISIS_PREC.FirstOrDefault().ApMargenMinBrutoRealF, new { @class = "form-control input-sm" })
+                            <div class="input-group-append">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        @Html.LabelFor(m => m.TBL_ANALISIS_PREC.FirstOrDefault().ApMargenMinOpeEstF, new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group mb-1">
+                            @Html.TextBoxFor(m => m.TBL_ANALISIS_PREC.FirstOrDefault().ApMargenMinOpeEstF, new { @class = "form-control input-sm" })
+                            <div class="input-group-append">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group mb-1">
+                            @Html.TextBoxFor(m => m.TBL_ANALISIS_PREC.FirstOrDefault().ApMargenMinOpeRealF, new { @class = "form-control input-sm" })
+                            <div class="input-group-append">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>

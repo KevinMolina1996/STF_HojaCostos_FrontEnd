@@ -1,0 +1,469 @@
+﻿@model AppWebHojaCosto.Models.TBL_HOJA_COSTO_PNP
+
+<fieldset style="border-width:2px; border-style:groove; padding:10px;">
+    <legend style="padding: 2px; width:auto;">Rubro</legend>
+    <div class="row">
+        <div class="col-md-3">
+            @Html.LabelFor(m => m.PnpCostoCompraPesosM, new { @class = "control-label" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpCostoCompraPesosM, new { @class = "form-control input-sm solonumeros formato_cero derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">COP</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpCostoCompraPesosM, null, new { @class = "campos_requeridos" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpCostoCompraUsdF, new { @class = "form-control input-sm trm solonumeros formato derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">USD</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpCostoCompraUsdF, null, new { @class = "campos_requeridos" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpCostoCompraPorcF, new { @class = "form-control input-sm derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">%</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpCostoCompraPorcF, null, new { @class = "campos_requeridos" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            @Html.LabelFor(m => m.PnpPinSeguridadPesosM, new { @class = "control-label" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpPinSeguridadPesosM, new { @class = "form-control input-sm solonumeros formato_cero derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">COP</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpCostoCompraPesosM, null, new { @class = "campos_requeridos" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpPinSeguridadUsdF, new { @class = "form-control input-sm trm solonumeros formato derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">USD</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpPinSeguridadUsdF, null, new { @class = "campos_requeridos" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpPinSeguridadPorcF, new { @class = "form-control input-sm derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">%</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpPinSeguridadPorcF, null, new { @class = "campos_requeridos" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            @Html.LabelFor(m => m.PnpGastosOrigenPesosM, new { @class = "control-label" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpGastosOrigenPesosM, new { @class = "form-control input-sm solonumeros formato_cero derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">COP</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpGastosOrigenPesosM, null, new { @class = "campos_requeridos" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpGastosOrigenUsdF, new { @class = "form-control input-sm trm solonumeros formato derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">USD</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpGastosOrigenUsdF, null, new { @class = "campos_requeridos" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpGastosOrigenPorcF, new { @class = "form-control input-sm derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">%</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpGastosOrigenPorcF, null, new { @class = "campos_requeridos" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            @Html.LabelFor(m => m.PnpGastosFletePesosM, new { @class = "control-label" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpGastosFletePesosM, new { @class = "form-control input-sm solonumeros formato_cero derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">COP</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpGastosFletePesosM, null, new { @class = "campos_requeridos" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpGastosFleteUsdF, new { @class = "form-control input-sm trm solonumeros formato derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">USD</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpGastosFleteUsdF, null, new { @class = "campos_requeridos" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpGastosFletePorcF, new { @class = "form-control input-sm derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">%</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpGastosFletePorcF, null, new { @class = "campos_requeridos" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            @Html.LabelFor(m => m.PnpGastosArancelPesosM, new { @class = "control-label" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpGastosArancelPesosM, new { @class = "form-control input-sm solonumeros formato_cero derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">COP</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpGastosArancelPesosM, null, new { @class = "campos_requeridos" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpGastosArancelUsdF, new { @class = "form-control input-sm trm solonumeros formato derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">USD</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpGastosArancelUsdF, null, new { @class = "campos_requeridos" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpGastosArancelPorcF, new { @class = "form-control input-sm derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">%</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpGastosArancelPorcF, null, new { @class = "campos_requeridos" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            @Html.LabelFor(m => m.PnpGastosSeguroPesosM, new { @class = "control-label" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpGastosSeguroPesosM, new { @class = "form-control input-sm solonumeros formato_cero derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">COP</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpGastosSeguroPesosM, null, new { @class = "campos_requeridos" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpGastosSeguroUsdF, new { @class = "form-control input-sm trm solonumeros formato derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">USD</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpGastosSeguroUsdF, null, new { @class = "campos_requeridos" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpGastosSeguroPorcF, new { @class = "form-control input-sm derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">%</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpGastosSeguroPorcF, null, new { @class = "campos_requeridos" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            @Html.LabelFor(m => m.PnpGastosDestinoPesosM, new { @class = "control-label" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpGastosDestinoPesosM, new { @class = "form-control input-sm solonumeros formato_cero derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">COP</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpGastosDestinoPesosM, null, new { @class = "campos_requeridos" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpGastosDestinoUsdF, new { @class = "form-control input-sm trm solonumeros formato derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">USD</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpGastosDestinoUsdF, null, new { @class = "campos_requeridos" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpGastosDestinoPorcF, new { @class = "form-control input-sm derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">%</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpGastosDestinoPorcF, null, new { @class = "campos_requeridos" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            @Html.LabelFor(m => m.PnpGastosOtrosPesosM, new { @class = "control-label" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpGastosOtrosPesosM, new { @class = "form-control input-sm solonumeros formato_cero derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">COP</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpGastosOtrosPesosM, null, new { @class = "campos_requeridos" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpGastosOtrosUsdF, new { @class = "form-control input-sm trm solonumeros formato derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">USD</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpGastosOtrosUsdF, null, new { @class = "campos_requeridos" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpGastosOtrosPorcF, new { @class = "form-control input-sm derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">%</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpGastosOtrosPorcF, null, new { @class = "campos_requeridos" })
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-3">
+            @Html.LabelFor(m => m.PnpTotalCostoBodegaF, new { @class = "control-label" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpTotalCostoBodegaM, new { @class = "form-control input-sm solonumeros formato_cero derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">COP</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpTotalCostoBodegaM, null, new { @class = "campos_requeridos" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpTotalCostoBodegaF, new { @class = "form-control input-sm total_gastos_est total_gastos_real solonumeros formato derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">USD</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpTotalCostoBodegaF, null, new { @class = "campos_requeridos" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            @Html.LabelFor(m => m.PnpAdecuacionPrdM, new { @class = "control-label" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpAdecuacionPrdM, new { @class = "form-control input-sm solonumeros formato_cero derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">COP</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpAdecuacionPrdM, null, new { @class = "campos_requeridos" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpAdecuacionPrdF, new { @class = "form-control input-sm total_gastos solonumeros formato derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">USD</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpAdecuacionPrdF, null, new { @class = "campos_requeridos" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            @Html.LabelFor(m => m.PnpSensorizacionM, new { @class = "control-label" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpSensorizacionM, new { @class = "form-control input-sm solonumeros formato_cero derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">COP</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpSensorizacionM, null, new { @class = "campos_requeridos" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpSensorizacionF, new { @class = "form-control input-sm total_gastos_est total_gastos_real solonumeros formato derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">USD</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpSensorizacionF, null, new { @class = "campos_requeridos" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            @Html.LabelFor(m => m.PnpArregloM, new { @class = "control-label" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpArregloM, new { @class = "form-control input-sm solonumeros formato_cero derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">COP</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpArregloM, null, new { @class = "campos_requeridos" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpArregloF, new { @class = "form-control input-sm total_gastos solonumeros formato derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">USD</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpArregloF, null, new { @class = "campos_requeridos" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            @Html.LabelFor(m => m.PnpReconstruccionM, new { @class = "control-label" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpReconstruccionM, new { @class = "form-control input-sm solonumeros formato_cero derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">COP</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpReconstruccionM, null, new { @class = "campos_requeridos" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpReconstruccionF, new { @class = "form-control input-sm total_gastos_est total_gastos_real solonumeros formato derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">USD</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpReconstruccionF, null, new { @class = "campos_requeridos" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            @Html.LabelFor(m => m.PnpGastosAdmonRealM, new { @class = "control-label" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpGastosAdmonRealM, new { @class = "form-control input-sm solonumeros formato_cero derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">COP</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpGastosAdmonRealM, null, new { @class = "campos_requeridos" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpGastosAdmonRealF, new { @class = "form-control input-sm total_gastos_real solonumeros formato derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">USD</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpGastosAdmonRealF, null, new { @class = "campos_requeridos" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            @Html.LabelFor(m => m.PnpGastosAdmonEstimadoM, new { @class = "control-label" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpGastosAdmonEstimadoM, new { @class = "form-control input-sm solonumeros formato_cero derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">COP</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpGastosAdmonEstimadoM, null, new { @class = "campos_requeridos" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpGastosAdmonEstimadoF, new { @class = "form-control input-sm total_gastos_est solonumeros formato derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">USD</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpGastosAdmonEstimadoF, null, new { @class = "campos_requeridos" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            @Html.LabelFor(m => m.PnpTotalCostosGastosRealM, new { @class = "control-label" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpTotalCostosGastosRealM, new { @class = "form-control input-sm solonumeros formato_cero derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">COP</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpTotalCostosGastosRealM, null, new { @class = "campos_requeridos" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpTotalCostosGastosRealF, new { @class = "form-control input-sm solonumeros formato derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">USD</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpTotalCostosGastosRealF, null, new { @class = "campos_requeridos" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            @Html.LabelFor(m => m.PnpTotalCostosGastosEstimadoM, new { @class = "control-label" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpTotalCostosGastosEstimadoM, new { @class = "form-control input-sm solonumeros formato_cero derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">COP</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpTotalCostosGastosEstimadoM, null, new { @class = "campos_requeridos" })
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpTotalCostosGastosEstimadoF, new { @class = "form-control input-sm solonumeros formato derecha", @readonly = "readonly" })
+                <div class="input-group-append">
+                    <span class="input-group-text">USD</span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.PnpTotalCostosGastosEstimadoF, null, new { @class = "campos_requeridos" })
+        </div>
+    </div>
+</fieldset>

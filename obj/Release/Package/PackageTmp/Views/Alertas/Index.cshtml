@@ -1,0 +1,375 @@
+﻿@model AppWebHojaCosto.Models.ALERTA
+
+@{
+    ViewBag.Title = "Alertas";
+}
+
+@section Scripts {
+    <style>
+        .custom-combobox {
+            width: 100%;
+            position: relative;
+            display: inline-block;
+        }
+
+        .custom-combobox-toggle {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            margin-right: -1px;
+            padding: 0;
+        }
+
+        .custom-combobox-input {
+            margin: 0;
+            padding: 5px 10px;
+        }
+    </style>
+    <script>
+        $('#btnLimpiar').click(function () {
+            document.location = '@Url.Action("Index","Alertas")';
+        });
+
+        function FiltroMarca() {
+            $.ajax({
+                url: '/Alertas/FiltroMarca',
+                type: "POST",
+                dataType: "JSON",
+                data: {},
+                success: function (marcas) {
+                    $("#Marca").html(""); // clear before appending new list
+                    $("#Marca").append($('<option></option>').val('').html(''));
+                    $.each(marcas, function (i, marcas) {
+                        $("#Marca").append($('<option></option>').val(marcas).html(marcas));
+                    });
+                }
+            });
+        }
+        function FiltroColeccion() {
+            var marca = $('#Marca').val();
+            $.ajax({
+                url: '/Alertas/FiltroColeccion',
+                type: "POST",
+                dataType: "JSON",
+                data: { Marca: marca },
+                success: function (coleccion) {
+                    $("#Coleccion").html(""); // clear before appending new list
+                    $("#Coleccion").append($('<option></option>').val('').html(''));
+                    $.each(coleccion, function (i, coleccion) {
+                        $("#Coleccion").append($('<option></option>').val(coleccion).html(coleccion));
+                    });
+                }
+            });
+        }
+        function FiltroLinea() {
+            var marca = $('#Marca').val();
+            var col = $('#Coleccion').val();
+            $.ajax({
+                url: '/Alertas/FiltroLinea',
+                type: "POST",
+                dataType: "JSON",
+                data: { Marca: marca, Coleccion: col },
+                success: function (linea) {
+                    $("#Linea").html(""); // clear before appending new list
+                    $("#Linea").append($('<option></option>').val('').html(''));
+                    $.each(linea, function (i, linea) {
+                        $("#Linea").append($('<option></option>').val(linea).html(linea));
+                    });
+                }
+            });
+        }
+
+        function FiltroReferencia() {
+            var marca = $('#Marca').val();
+            var col = $('#Coleccion').val();
+            var linea = $('#Linea').val();
+            $.ajax({
+                url: '/Alertas/FiltroReferencia',
+                type: "POST",
+                dataType: "JSON",
+                data: { Marca: marca, Coleccion: col, Linea: linea },
+                success: function (referencias) {
+                    $("#Referencia").html(""); // clear before appending new list
+                    $("#Referencia").append($('<option></option>').val('').html(''));
+                    $.each(referencias, function (i, referencias) {
+                        $("#Referencia").append($('<option></option>').val(referencias).html(referencias));
+                    });
+                }
+            });
+        }
+
+        $(function () {
+            FiltroMarca();
+            $.widget("custom.combobox", {
+                select: function (event, ui) { alert(ui.item.value); },
+                _create: function () {
+                    this.wrapper = $("<span>")
+                        .addClass("custom-combobox")
+                        .insertAfter(this.element);
+
+                    this.element.hide();
+                    this._createAutocomplete();
+                    this._createShowAllButton();
+                },
+
+                _createAutocomplete: function () {
+                    var selected = this.element.children(":selected"),
+                        value = selected.val() ? selected.text() : "";
+
+                    this.input = $("<input>")
+                        .appendTo(this.wrapper)
+                        .val(value)
+                        .attr("title", "")
+                        //.addClass("custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left")
+                        .addClass("form-control")
+                        .autocomplete({
+                            delay: 0,
+                            minLength: 0,
+                            source: $.proxy(this, "_source")
+                        })
+                        .tooltip({
+                            classes: {
+                                "ui-tooltip": "ui-state-highlight"
+                            }
+                        });
+
+                    this._on(this.input, {
+                        autocompleteselect: function (event, ui) {
+                            ui.item.option.selected = true;
+                            this._trigger("select", event, {
+                                item: ui.item.option
+                            });
+                        },
+
+                        autocompletechange: "_removeIfInvalid"
+                    });
+                },
+
+                _createShowAllButton: function () {
+                    var input = this.input,
+                        wasOpen = false;
+
+                    $("<a>")
+                        .attr("tabIndex", -1)
+                        .attr("title", "Show All Items")
+                        .tooltip()
+                        .appendTo(this.wrapper)
+                        .button({
+                            icons: {
+                                primary: "ui-icon-triangle-1-s"
+                            },
+                            text: false
+                        })
+                        .removeClass("ui-corner-all")
+                        .addClass("ui-button ui-widget ui-button-icon-only custom-combobox-toggle ui-corner-right ref")
+                        .on("mousedown", function () {
+                            wasOpen = input.autocomplete("widget").is(":visible");
+                        })
+                        .on("click", function () {
+                            input.trigger("focus");
+
+                            // Close if already visible
+                            if (wasOpen) {
+                                return;
+                            }
+
+                            // Pass empty string as value to search for, displaying all results
+                            input.autocomplete("search", "");
+                        });
+
+                    $(".ref").append("<span class='ui-button-icon ui-icon ui-icon-triangle-1-s'></span>");
+
+                },
+
+                _source: function (request, response) {
+                    var matcher = new RegExp($.ui.autocomplete.escapeRegex(request.term), "i");
+                    response(this.element.children("option").map(function () {
+                        var text = $(this).text();
+                        if (this.value && (!request.term || matcher.test(text)))
+                            return {
+                                label: text,
+                                value: text,
+                                option: this
+                            };
+                    }));
+                },
+
+                _removeIfInvalid: function (event, ui) {
+
+                    // Selected an item, nothing to do
+                    if (ui.item) {
+                        return;
+                    }
+
+                    // Search for a match (case-insensitive)
+                    var value = this.input.val(),
+                        valueLowerCase = value.toLowerCase(),
+                        valid = false;
+                    this.element.children("option").each(function () {
+                        if ($(this).text().toLowerCase() === valueLowerCase) {
+                            this.selected = valid = true;
+                            return false;
+                        }
+                    });
+
+                    // Found a match, nothing to do
+                    if (valid) {
+                        return;
+                    }
+
+                    // Remove invalid value
+                    this.input
+                        .val("")
+                        .attr("title", value + " didn't match any item")
+                        .tooltip("open");
+                    this.element.val("");
+                    this._delay(function () {
+                        this.input.tooltip("close").attr("title", "");
+                    }, 2500);
+                    this.input.autocomplete("instance").term = "";
+                },
+
+                _destroy: function () {
+                    this.wrapper.remove();
+                    this.element.show();
+                }
+            });
+
+            $("#Marca").combobox({ select: function (event, ui) { FiltroColeccion();/*alert(ui.item.value);*/ } });
+            $("#Coleccion").combobox({ select: function (event, ui) { FiltroLinea();/*alert(ui.item.value);*/ } });
+            $("#Linea").combobox({ select: function (event, ui) { FiltroReferencia(); /*alert(ui.item.value);*/ } });
+            $("#Referencia").combobox();
+
+            $("#FechaInicio").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'yy-mm-dd'
+            });
+            $("#FechaFin").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'yy-mm-dd'
+            });
+        });
+    </script>
+}
+
+@if (ViewBag.alerta != null)
+{
+    <script type="text/javascript">
+            window.onload = function () {
+                alerta("Alerta!", '@ViewBag.alerta');
+        };
+    </script>
+}
+@if (ViewBag.error != null)
+{
+    <script type="text/javascript">
+            window.onload = function () {
+                alerta("Error!", '@ViewBag.error');
+        };
+    </script>
+}
+@if (ViewBag.exito != null)
+{
+    <script type="text/javascript">
+            window.onload = function () {
+                alerta("Exito!", '@ViewBag.exito');
+        };
+    </script>
+}
+
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="#">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active">Alertas</li>
+</ol>
+<div>
+    @using (Html.BeginForm("ConsultarAlertas", "Alertas", FormMethod.Post))
+    {
+        <div class="row">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.FechaInicio, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.FechaInicio, new { @class = "form-control input-sm", @id = "FechaInicio", @autocomplete = "off", @required = "required" })
+            </div>
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.FechaFin, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.FechaFin, new { @class = "form-control input-sm", @id = "FechaFin", @autocomplete = "off", @required = "required" })
+            </div>
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.Marca, new { @class = "control-label" })
+                @Html.DropDownListFor(m => m.Marca, new SelectList(Model.Marcas, "Value", "Text"), new { @id = "Marca", @class = "form-control" })
+            </div>
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.Coleccion, new { @class = "control-label" })
+                @Html.DropDownListFor(m => m.Coleccion, new SelectList(Model.Colecciones, "Value", "Text"), new { @id = "Coleccion", @class = "form-control" })
+            </div>
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.Linea, new { @class = "control-label" })
+                @Html.DropDownListFor(m => m.Linea, new SelectList(Model.Lineas, "Value", "Text"), new { @id = "Linea", @class = "form-control" })
+            </div>
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.Referencia, new { @class = "control-label" })
+                @Html.DropDownListFor(m => m.Referencia, new SelectList(Model.Referencias, "Value", "Text"), new { @id = "Referencia", @class = "form-control" })
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12" style="text-align:center;">
+                <input type="submit" class="btn btn-sm btn-dark" value="Consultar" />
+                <input type="submit" class="btn btn-sm btn-dark" id="btnLimpiar" onclick="return false;" value="Limpiar" />
+            </div>
+        </div>
+    }
+</div>
+<br />
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fa fa-table"></i> Alertas
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Referencia</th>
+                        <th>Descripción</th>
+                        <th>Estado</th>
+                        <th>Área</th>
+                        <th>Fecha</th>
+                        <th>Cambio Realizado</th>
+                        <th>Antes</th>
+                        <th>Actual</th>
+                        <th>Variación</th>
+                        <th>Usuario</th>
+                        <th>Marca</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.TBL_ALERTA != null)
+                    {
+                        foreach (var item in Model.TBL_ALERTA)
+                        {
+                            <tr>
+                                <td>@item.AlReferenciaS</td>
+                                <td>@item.AlDescripcionS</td>
+                                <td>@item.AlEstadoS</td>
+                                <td>@item.AlAreaS</td>
+                                <td>@item.AlFechaD</td>
+                                <td>@item.AlCambioS</td>
+                                <td>@item.AlValorAnteriorM</td>
+                                <td>@item.AlValorActualM</td>
+                                <td>@item.AlVariacionM</td>
+                                <td>@item.AlUsuarioS</td>
+                                <td>@item.AlMarcaS</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

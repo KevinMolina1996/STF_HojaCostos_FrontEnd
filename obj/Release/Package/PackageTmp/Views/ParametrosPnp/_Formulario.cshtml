@@ -1,0 +1,266 @@
+﻿@model AppWebHojaCosto.Models.PARAMETROS_PNP
+
+@using (Ajax.BeginForm("Actualizar", "ParametrosPnp", new AjaxOptions
+{
+    HttpMethod = "POST",
+    OnSuccess = "successsAjax"
+}))
+{
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model._TBL_PARAM_PNP.PnCodigoN)
+    @Html.HiddenFor(model => model._TBL_PARAM_PNP.PnFactorS)
+    @Html.HiddenFor(model => model._TBL_PARAM_PNP.PnColeccionS)
+    @Html.HiddenFor(model => model._TBL_PARAM_PNP.PnMarcaS)
+    @Html.HiddenFor(model => model._TBL_PARAM_PNP.PnLineaS)
+    @Html.HiddenFor(model => model._TBL_PARAM_PNP.PnSubLineaS)
+    @Html.HiddenFor(model => model._TBL_PARAM_PNP.PnFecCreD)
+<div class="container-fluid" id="Contenedor">
+    <div class="row">
+        <div class="col-md-12">
+            <fieldset style="border-width:2px; border-style:groove; padding:10px;">
+                <legend style="padding: 2px; width:auto;">Identificación</legend>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>ID Colección</label>
+                        @Html.TextBoxFor(model => model._TBL_PARAM_PNP.ID_Coleccion, new { @class = "form-control input-sm", @required = "required" })
+                        @Html.ValidationMessageFor(model => model._TBL_PARAM_PNP.ID_Coleccion, null, new { @class = "campos_requeridos" })
+                    </div>
+                    <div class="col-md-4">
+                        <label>ID Línea</label>
+                        @Html.TextBoxFor(model => model._TBL_PARAM_PNP.ID_Linea, new { @class = "form-control input-sm", @required = "required" })
+                        @Html.ValidationMessageFor(model => model._TBL_PARAM_PNP.ID_Linea, null, new { @class = "campos_requeridos" })
+                    </div>
+                    <div class="col-md-4">
+                        <label>ID Sublinea</label>
+                        @Html.TextBoxFor(model => model._TBL_PARAM_PNP.ID_Sublinea, new { @class = "form-control input-sm", @required = "required" })
+                        @Html.ValidationMessageFor(model => model._TBL_PARAM_PNP.ID_Sublinea, null, new { @class = "campos_requeridos" })
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <fieldset style="border-width:2px; border-style:groove; padding:10px;">
+                <legend style="padding: 2px; width:auto;">Gastos Importación</legend>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model._TBL_PARAM_PNP.PnPinSeguridadF, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model._TBL_PARAM_PNP.PnPinSeguridadF, new { @class = "form-control input-sm" })
+                        @Html.ValidationMessageFor(model => model._TBL_PARAM_PNP.PnPinSeguridadF, null, new { @class = "campos_requeridos" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model._TBL_PARAM_PNP.PnGastosOrigenF, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model._TBL_PARAM_PNP.PnGastosOrigenF, new { @class = "form-control input-sm" })
+                        @Html.ValidationMessageFor(model => model._TBL_PARAM_PNP.PnGastosOrigenF, null, new { @class = "campos_requeridos" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model._TBL_PARAM_PNP.PnGastosFleteF, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model._TBL_PARAM_PNP.PnGastosFleteF, new { @class = "form-control input-sm" })
+                        @Html.ValidationMessageFor(model => model._TBL_PARAM_PNP.PnGastosFleteF, null, new { @class = "campos_requeridos" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model._TBL_PARAM_PNP.PnGastosFleteAereoF, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model._TBL_PARAM_PNP.PnGastosFleteAereoF, new { @class = "form-control input-sm" })
+                        @Html.ValidationMessageFor(model => model._TBL_PARAM_PNP.PnGastosFleteAereoF, null, new { @class = "campos_requeridos" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model._TBL_PARAM_PNP.PnArancelF, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model._TBL_PARAM_PNP.PnArancelF, new { @class = "form-control input-sm" })
+                        @Html.ValidationMessageFor(model => model._TBL_PARAM_PNP.PnArancelF, null, new { @class = "campos_requeridos" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model._TBL_PARAM_PNP.PnGastosDestF, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model._TBL_PARAM_PNP.PnGastosDestF, new { @class = "form-control input-sm" })
+                        @Html.ValidationMessageFor(model => model._TBL_PARAM_PNP.PnGastosDestF, null, new { @class = "campos_requeridos" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model._TBL_PARAM_PNP.PnOtrosGastosF, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model._TBL_PARAM_PNP.PnOtrosGastosF, new { @class = "form-control input-sm" })
+                        @Html.ValidationMessageFor(model => model._TBL_PARAM_PNP.PnOtrosGastosF, null, new { @class = "campos_requeridos" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model._TBL_PARAM_PNP.PnSeguroIntF, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model._TBL_PARAM_PNP.PnSeguroIntF, new { @class = "form-control input-sm" })
+                        @Html.ValidationMessageFor(model => model._TBL_PARAM_PNP.PnSeguroIntF, null, new { @class = "campos_requeridos" })
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div class="col-md-6">
+            <fieldset style="border-width:2px; border-style:groove; padding:10px;">
+                <legend style="padding: 2px; width:auto;">Adecuación del producto</legend>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model._TBL_PARAM_PNP.PnAdcPrdM, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model._TBL_PARAM_PNP.PnAdcPrdM, new { @class = "form-control input-sm" })
+                        @Html.ValidationMessageFor(model => model._TBL_PARAM_PNP.PnAdcPrdM, null, new { @class = "campos_requeridos" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model._TBL_PARAM_PNP.PnSensorizacionM, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model._TBL_PARAM_PNP.PnSensorizacionM, new { @class = "form-control input-sm" })
+                        @Html.ValidationMessageFor(model => model._TBL_PARAM_PNP.PnSensorizacionM, null, new { @class = "campos_requeridos" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model._TBL_PARAM_PNP.PnArregloPrdM, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model._TBL_PARAM_PNP.PnArregloPrdM, new { @class = "form-control input-sm" })
+                        @Html.ValidationMessageFor(model => model._TBL_PARAM_PNP.PnArregloPrdM, null, new { @class = "campos_requeridos" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model._TBL_PARAM_PNP.PnReconstruccionM, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model._TBL_PARAM_PNP.PnReconstruccionM, new { @class = "form-control input-sm" })
+                        @Html.ValidationMessageFor(model => model._TBL_PARAM_PNP.PnReconstruccionM, null, new { @class = "campos_requeridos" })
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <fieldset style="border-width:2px; border-style:groove; padding:10px;">
+                <legend style="padding: 2px; width:auto;">Piramide Precios</legend>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model._TBL_PARAM_PNP.PnEnterpriceM, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model._TBL_PARAM_PNP.PnEnterpriceM, new { @class = "form-control input-sm" })
+                        @Html.ValidationMessageFor(model => model._TBL_PARAM_PNP.PnEnterpriceM, null, new { @class = "campos_requeridos" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model._TBL_PARAM_PNP.PnMediumPriceM, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model._TBL_PARAM_PNP.PnMediumPriceM, new { @class = "form-control input-sm" })
+                        @Html.ValidationMessageFor(model => model._TBL_PARAM_PNP.PnMediumPriceM, null, new { @class = "campos_requeridos" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model._TBL_PARAM_PNP.PnPremiumPriceM, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model._TBL_PARAM_PNP.PnPremiumPriceM, new { @class = "form-control input-sm" })
+                        @Html.ValidationMessageFor(model => model._TBL_PARAM_PNP.PnPremiumPriceM, null, new { @class = "campos_requeridos" })
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div class="col-md-6">
+            <fieldset style="border-width:2px; border-style:groove; padding:10px;">
+                <legend style="padding: 2px; width:auto;">Margen por utilidad</legend>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model._TBL_PARAM_PNP.PnFactorMinF, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model._TBL_PARAM_PNP.PnFactorMinF, new { @class = "form-control input-sm" })
+                        @Html.ValidationMessageFor(model => model._TBL_PARAM_PNP.PnFactorMinF, null, new { @class = "campos_requeridos" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model._TBL_PARAM_PNP.PnFactorMaxF, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model._TBL_PARAM_PNP.PnFactorMaxF, new { @class = "form-control input-sm" })
+                        @Html.ValidationMessageFor(model => model._TBL_PARAM_PNP.PnFactorMaxF, null, new { @class = "campos_requeridos" })
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <fieldset style="border-width:2px; border-style:groove; padding:10px;">
+                <legend style="padding: 2px; width:auto;">Generales</legend>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model._TBL_PARAM_PNP.PnIvaF, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model._TBL_PARAM_PNP.PnIvaF, new { @class = "form-control input-sm" })
+                        @Html.ValidationMessageFor(model => model._TBL_PARAM_PNP.PnIvaF, null, new { @class = "campos_requeridos" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model._TBL_PARAM_PNP.PnTRMF, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model._TBL_PARAM_PNP.PnTRMF, new { @class = "form-control input-sm" })
+                        @Html.ValidationMessageFor(model => model._TBL_PARAM_PNP.PnTRMF, null, new { @class = "campos_requeridos" })
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div class="col-md-6">
+            <fieldset style="border-width:2px; border-style:groove; padding:10px;">
+                <legend style="padding: 2px; width:auto;">Gastos</legend>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model._TBL_PARAM_PNP.PnGastosEstimadoF, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model._TBL_PARAM_PNP.PnPorcGastosEstimadoF, new { @class = "form-control input-sm" })
+                        @Html.ValidationMessageFor(model => model._TBL_PARAM_PNP.PnPorcGastosEstimadoF, null, new { @class = "campos_requeridos" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model._TBL_PARAM_PNP.PnGastosRealesM, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model._TBL_PARAM_PNP.PnPorcGastosRealF, new { @class = "form-control input-sm" })
+                        @Html.ValidationMessageFor(model => model._TBL_PARAM_PNP.PnPorcGastosRealF, null, new { @class = "campos_requeridos" })
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <fieldset style="border-width:2px; border-style:groove; padding:10px;">
+                <legend style="padding: 2px; width:auto;">Otros</legend>
+                <div class="row">
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model._TBL_PARAM_PNP.PnDivisorCocienteF, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model._TBL_PARAM_PNP.PnDivisorCocienteF, new { @class = "form-control input-sm" })
+                        @Html.ValidationMessageFor(model => model._TBL_PARAM_PNP.PnDivisorCocienteF, null, new { @class = "campos_requeridos" })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model._TBL_PARAM_PNP.PnDivisorCocienteDosF, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model._TBL_PARAM_PNP.PnDivisorCocienteDosF, new { @class = "form-control input-sm" })
+                        @Html.ValidationMessageFor(model => model._TBL_PARAM_PNP.PnDivisorCocienteDosF, null, new { @class = "campos_requeridos" })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model._TBL_PARAM_PNP.PnTopeMinimoF, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model._TBL_PARAM_PNP.PnTopeMinimoF, new { @class = "form-control input-sm" })
+                        @Html.ValidationMessageFor(model => model._TBL_PARAM_PNP.PnTopeMinimoF, null, new { @class = "campos_requeridos" })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model._TBL_PARAM_PNP.PnTopeMaximoF, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model._TBL_PARAM_PNP.PnTopeMaximoF, new { @class = "form-control input-sm" })
+                        @Html.ValidationMessageFor(model => model._TBL_PARAM_PNP.PnTopeMaximoF, null, new { @class = "campos_requeridos" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model._TBL_PARAM_PNP.PnValorVerdaderoF, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model._TBL_PARAM_PNP.PnValorVerdaderoF, new { @class = "form-control input-sm" })
+                        @Html.ValidationMessageFor(model => model._TBL_PARAM_PNP.PnValorVerdaderoF, null, new { @class = "campos_requeridos" })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model._TBL_PARAM_PNP.PnValorFalsoF, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model._TBL_PARAM_PNP.PnValorFalsoF, new { @class = "form-control input-sm" })
+                        @Html.ValidationMessageFor(model => model._TBL_PARAM_PNP.PnValorFalsoF, null, new { @class = "campos_requeridos" })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model._TBL_PARAM_PNP.PnRedondeoF, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model._TBL_PARAM_PNP.PnRedondeoF, new { @class = "form-control input-sm" })
+                        @Html.ValidationMessageFor(model => model._TBL_PARAM_PNP.PnRedondeoF, null, new { @class = "campos_requeridos" })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model._TBL_PARAM_PNP.PnDivisorResiduoF, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model._TBL_PARAM_PNP.PnDivisorResiduoF, new { @class = "form-control input-sm" })
+                        @Html.ValidationMessageFor(model => model._TBL_PARAM_PNP.PnDivisorResiduoF, null, new { @class = "campos_requeridos" })
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+    <br />
+    <div class="row" style="text-align:center;">
+        <div class="col-md-12">
+            <button type="submit" id="btnCargar" data-target="#modalCargar" data-toggle="modal" onclick="return false;" class="btn btn-sm btn-dark"><span class="fa fa-upload"></span> Cargar</button>
+            <button type="submit" id="btnActualizar" class="btn btn-sm btn-dark"><span class="fa fa-save"></span> Actualizar</button>
+            <button type="submit" id="btnCrear" class="btn btn-sm btn-dark" onclick="Crear(); return false;"><span class="fa fa-plus-circle"></span> Crear</button>
+        </div>
+    </div>
+</div>
+}

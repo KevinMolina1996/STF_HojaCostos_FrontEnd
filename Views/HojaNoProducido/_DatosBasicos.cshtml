@@ -1,0 +1,37 @@
+﻿@model AppWebHojaCosto.Models.TBL_HOJA_COSTO_PNP
+
+<fieldset style="border-width:2px; border-style:groove; padding:10px;">
+    <legend style="padding: 2px; width:auto;">Datos Basicos</legend>
+    <div class="row">
+        <div class="col-md-6">
+            @Html.LabelFor(m => m.PnpReferenciaS, new { @class = "control-label" })
+        </div>
+        <div class="col-md-6 mb-1">
+            @Html.TextBoxFor(m => m.PnpReferenciaS, new { @class = "form-control input-sm referencia", @readonly = "readonly" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            @Html.LabelFor(m => m.PnpCostoCompraUSDD, new { @class = "control-label" })
+        </div>
+        <div class="col-md-6 mb-1">
+            @Html.TextBoxFor(m => m.PnpCostoCompraUSDD, new { @class = "form-control input-sm formato costo", @readonly = "readonly" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            @Html.LabelFor(m => m.PnpTrmM, new { @class = "control-label" })
+        </div>
+        <div class="col-md-6 mb-1">
+            @Html.TextBoxFor(m => m.PnpTrmM, new { @class = "form-control input-sm", @readonly = "readonly" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            @Html.LabelFor(m => m.PnpCntPedN, new { @class = "control-label" })
+        </div>
+        <div class="col-md-6 mb-1">
+            @Html.TextBoxFor(m => m.PnpCntPedN, new { @class = "form-control input-sm", @readonly = "readonly" })
+        </div>
+    </div>
+</fieldset>

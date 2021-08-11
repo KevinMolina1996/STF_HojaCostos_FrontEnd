@@ -1,0 +1,70 @@
+﻿@model AppWebHojaCosto.Models.HOJA_COSTO_ESTANDAR
+<div>
+    <fieldset style="border-width:2px; border-style:groove; padding:10px;" disabled>
+        <legend style="padding: 2px; width:auto;">CONSUMO TELAS</legend>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-sm table-bordered" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>@Html.LabelFor(model => model.TBL_CONSUMO_TELAS.FirstOrDefault().CtNombreS, new { @class = "control-label" })</th>
+                                <th>@Html.LabelFor(model => model.TBL_CONSUMO_TELAS.FirstOrDefault().CtColorS, new { @class = "control-label" })</th>
+                                <th>@Html.LabelFor(model => model.TBL_CONSUMO_TELAS.FirstOrDefault().CtCtsxMtD, new { @class = "control-label" })</th>
+                                <th>@Html.LabelFor(model => model.TBL_CONSUMO_TELAS.FirstOrDefault().CtConF, new { @class = "control-label" })</th>
+                                <th>@Html.LabelFor(model => model.TBL_CONSUMO_TELAS.FirstOrDefault().CtTotalD, new { @class = "control-label" })</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.TBL_CONSUMO_TELAS != null)
+                            {
+                                foreach (var item in Model.TBL_CONSUMO_TELAS)
+                                {
+                                    <tr>
+                                        <td>@Html.TextBoxFor(model => item.CtNombreS, new { @class = "form-control input-sm" })</td>
+                                        <td>@Html.TextBoxFor(model => item.CtColorS, new { @class = "form-control input-sm" })</td>
+                                        <td>@Html.TextBoxFor(model => item.CtCtsxMtD, new { @class = "form-control input-sm formato" })</td>
+                                        <td>@Html.TextBoxFor(model => item.CtConF, new { @class = "form-control input-sm" })</td>
+                                        <td>@Html.TextBoxFor(model => item.CtTotalD, new { @class = "form-control input-sm formato" })</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th colspan="3" style="text-align:right; border:none !important; padding-top:10px;">
+                                    @Html.LabelFor(model => model.TBL_HOJA_COSTO_PN.FirstOrDefault().HcTotalTelasD, new { @class = "control-label" })
+                                </th>
+                                <th style="border:none !important;">
+                                    @Html.TextBoxFor(model => model.TBL_HOJA_COSTO_PN.FirstOrDefault().HcTotalConTelasD, new { @class = "form-control input-sm input-vacio" })
+                                </th>
+                                <th style="border:none !important;">
+                                    @Html.TextBoxFor(model => model.TBL_HOJA_COSTO_PN.FirstOrDefault().HcTotalTelasD, new { @class = "form-control input-sm formato input-vacio" })
+                                </th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>
+@*<div class="inferior_modulos">
+        <div class="row">
+            <div class="col-md-8">
+                @Html.LabelFor(model => model.TBL_HOJA_COSTO_PN.FirstOrDefault().HcTotalTelasD, new { @class = "control-label" })
+            </div>
+            <div class="col-md-2">
+                @if (Model.TBL_CONSUMO_TELAS != null)
+                {
+                    @Html.DisplayFor(model => model.TBL_HOJA_COSTO_PN.FirstOrDefault().HcTotalConTelasD, new { @class = "form-control input-sm" })
+                }
+            </div>
+            <div class="col-md-2">
+                @if (Model.TBL_CONSUMO_TELAS != null)
+                {
+                    @Html.DisplayFor(model => model.TBL_HOJA_COSTO_PN.FirstOrDefault().HcTotalTelasD, new { @class = "form-control input-sm formato" })
+                }
+            </div>
+        </div>
+    </div>*@

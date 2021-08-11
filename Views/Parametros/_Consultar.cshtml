@@ -1,0 +1,77 @@
+﻿@model AppWebHojaCosto.Models.PARAMETROS_PN
+
+@using (Html.BeginForm("Consultar", "Parametros", FormMethod.Post, new { id = "FrmConsulta" }))
+{
+    @Html.ValidationSummary(true)
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model._TBL_PARAM_PN.PpFactorS, new { @class = "control-label" })
+                @Html.DropDownListFor(model => model.Factor, new SelectList(
+                  new List<Object>{
+                       new { value = "" , text = "Seleccione"  },
+                       //new { value = "FR" , text = "Factor Real"  },
+                       new { value = "FE" , text = "Factor Estimado" }
+                    },
+                  "value",
+                  "text",
+                   0), new { @id = "Tipo", @class = "form-control", @onclick = "FiltroMarca();" })
+            </div>
+            <div class="col-md-2">
+                @Html.LabelFor(m => m._TBL_PARAM_PN.PpMarcaS, new { @class = "control-label" })
+                @*@Html.DropDownListFor(m => m._TBL_PARAM_PN.PpMarcaS, new SelectList(Model.Marcas, "Value", "Text"), new { @id = "Marca", @class = "form-control", @required = "required" })*@
+                
+                <div class="input-group">
+                    <input class="form-control py-2 border-right-0 border" type="search" id="marca" name="marca" required />
+                    <span class="input-group-append">
+                        <button class="btn btn-outline-secondary border-left-0 border" type="button" id="ver-todo-marcas">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-2">
+                @Html.LabelFor(m => m._TBL_PARAM_PN.PpColeccionS, new { @class = "control-label" })
+                @*@Html.DropDownListFor(m => m._TBL_PARAM_PN.PpColeccionS, new SelectList(Model.Colecciones, "Value", "Text"), new { @id = "Coleccion", @class = "form-control", @required = "required" })*@
+                <div class="input-group">
+                    <input class="form-control py-2 border-right-0 border" type="search" id="coleccion" name="coleccion" required />
+                    <span class="input-group-append">
+                        <button class="btn btn-outline-secondary border-left-0 border" type="button" id="ver-todo-coleccion">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-2">
+                @Html.LabelFor(m => m._TBL_PARAM_PN.PpLineaS, new { @class = "control-label" })
+                @*@Html.DropDownListFor(m => m._TBL_PARAM_PN.PpLineaS, new SelectList(Model.Lineas, "Value", "Text"), new { @id = "Linea", @class = "form-control", @required = "required" })*@
+                <div class="input-group">
+                    <input class="form-control py-2 border-right-0 border" type="search" id="linea" name="linea" required />
+                    <span class="input-group-append">
+                        <button class="btn btn-outline-secondary border-left-0 border" type="button" id="ver-todo-linea">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-2">
+                @Html.LabelFor(m => m._TBL_PARAM_PN.PpSubLineaS, new { @class = "control-label" })
+                @*@Html.DropDownListFor(m => m._TBL_PARAM_PN.PpSubLineaS, new SelectList(Model.Sublineas, "Value", "Text"), new { @id = "Sublinea", @class = "form-control", @required = "required" })*@
+                <div class="input-group">
+                    <input class="form-control py-2 border-right-0 border" type="search" id="sublinea" name="sublinea" required />
+                    <span class="input-group-append">
+                        <button class="btn btn-outline-secondary border-left-0 border" type="button" id="ver-todo-sublinea">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div style="height:33px; width:10px;"></div>
+                <button type="submit" id="btnConsultar" class="btn btn-sm btn-dark"><span class="fa fa-search"></span> Consultar</button>
+                <button type="submit" id="btnNuevo" class="btn btn-sm btn-dark"><span class="fa fa-plus-circle"></span> Nuevo</button>
+                <button type="button" id="btnLimpiar" class="btn btn-sm btn-dark" onclick="return false;"><span class="fa fa-undo"></span> Limpiar</button>
+            </div>
+        </div>
+    </div>
+}

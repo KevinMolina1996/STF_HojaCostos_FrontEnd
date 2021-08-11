@@ -1,0 +1,57 @@
+﻿@model AppWebHojaCosto.Models.HOJA_COSTO_SIMULADA
+
+<div>
+    <div>
+        <fieldset style="border-width:2px; border-style:groove; padding:10px;">
+            <legend style="padding: 2px; width:auto;">
+                <a href="@Url.Action("Index","HojaCostoPN/Index")" id="close"><i class="fa fa-window-close"></i></a>
+            </legend>
+            <div class="row">
+                <div class="col-md-2" style="text-align:center;">
+                    @Html.HiddenFor(x => x.TBL_SIM_HOJA_COSTO_PN.SimHcMarcaS)
+                    @Html.HiddenFor(x => x.TBL_SIM_HOJA_COSTO_PN.SimHcCodigoN)
+                    <h2>@Html.DisplayFor(m => m.TBL_SIM_HOJA_COSTO_PN.SimHcMarcaS, new { @class = "control-label" })</h2>
+                </div>
+                <div class="col-md-8" style="text-align:center; margin-top:auto; margin-bottom:auto; display:block;">
+                    <h3>HOJA DE COSTOS SIMULADA</h3>
+                </div>
+                <div class="col-md-2" style="margin-top:auto; margin-bottom:auto; display:block; text-align:center;">
+                    @Html.HiddenFor(x => x.TBL_SIM_HOJA_COSTO_PN.SimHcFecCreD)
+                    <h6>@Html.DisplayFor(m => m.TBL_SIM_HOJA_COSTO_PN.SimHcFecCreD, new { @class = "control-label" })</h6>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    @Html.LabelFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcReferenciaS, new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcReferenciaS, new { @class = "form-control input-sm", @readonly = "readonly" })
+                </div>
+                <div class="col-md-4">
+                    @Html.LabelFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcColeccionS, new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcColeccionS, new { @class = "form-control input-sm", @readonly = "readonly" })
+                </div>
+                <div class="col-md-4">
+                    @Html.LabelFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcDisenadorS, new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcDisenadorS, new { @class = "form-control input-sm", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcLineaS, new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcLineaS, new { @class = "form-control input-sm", @readonly = "readonly" })
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcSubLineaS, new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcSubLineaS, new { @class = "form-control input-sm", @readonly = "readonly" })
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcEstadoAproS, new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcEstadoAproS, new { @class = "form-control input-sm", @readonly = "readonly" })
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcPatronistaS, new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcPatronistaS, new { @class = "form-control input-sm", @readonly = "readonly" })
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>

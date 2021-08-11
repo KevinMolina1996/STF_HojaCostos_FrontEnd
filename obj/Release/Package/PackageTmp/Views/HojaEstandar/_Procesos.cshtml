@@ -1,0 +1,55 @@
+﻿@model AppWebHojaCosto.Models.HOJA_COSTO_ESTANDAR
+<div>
+    <fieldset style="border-width:2px; border-style:groove; padding:10px;" disabled>
+        <legend style="padding: 2px; width:auto;">PROCESOS</legend>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-sm table-bordered" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>@Html.LabelFor(model => model.TBL_PROCESO.FirstOrDefault().PrDetalleS, new { @class = "control-label" })</th>
+                                <th>@Html.LabelFor(model => model.TBL_PROCESO.FirstOrDefault().PrCostoM, new { @class = "control-label" })</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.TBL_PROCESO != null)
+                            {
+                                foreach (var item in Model.TBL_PROCESO)
+                                {
+                                    <tr>
+                                        <td>@Html.TextBoxFor(model => item.PrDetalleS, new { @class = "form-control input-sm" })</td>
+                                        <td>@Html.TextBoxFor(model => item.PrCostoM, new { @class = "form-control input-sm formato" })</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th colspan="1" style="text-align:right; border:none !important; padding-top:10px;">
+                                    @Html.LabelFor(model => model.TBL_HOJA_COSTO_PN.FirstOrDefault().HcTotalProcesosD, new { @class = "control-label" })
+                                </th>
+                                <th style="border:none !important;">
+                                    @Html.TextBoxFor(model => model.TBL_HOJA_COSTO_PN.FirstOrDefault().HcTotalProcesosD, new { @class = "form-control input-sm formato input-vacio" })
+                                </th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>
+@*<div class="inferior_modulos">
+    <div class="row">
+        <div class="col-md-6">
+            @Html.LabelFor(model => model.TBL_HOJA_COSTO_PN.FirstOrDefault().HcTotalProcesosD, new { @class = "control-label" })
+        </div>
+        <div class="col-md-6">
+            @if (Model != null)
+            {
+                @Html.DisplayFor(model => model.TBL_HOJA_COSTO_PN.FirstOrDefault().HcTotalProcesosD, new { @class = "form-control input-sm formato" })
+            }
+        </div>
+    </div>
+</div>*@

@@ -1,0 +1,51 @@
+﻿@model AppWebHojaCosto.Models.HOJA_COSTO_PRECOSTEO
+
+<div>
+    <fieldset style="border-width:2px; border-style:groove; padding:10px;">
+        <legend style="padding: 2px; width:auto;">INSUMOS Y ACCESORIOS</legend>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <div style="text-align:right; text-decoration:underline;"><a href="#" id="addInsumos">+ Adicionar</a></div>
+                    <table id="tablaInsumos" class="table table-sm table-bordered" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>@Html.LabelFor(model => model.TBL_PRE_INS_ACC.FirstOrDefault().PreIaNombreS, new { @class = "control-label" })</th>
+                                <th>@Html.LabelFor(model => model.TBL_PRE_INS_ACC.FirstOrDefault().PreIaColorS, new { @class = "control-label" })</th>
+                                <th>@Html.LabelFor(model => model.TBL_PRE_INS_ACC.FirstOrDefault().PreIaCtsxMtD, new { @class = "control-label" })</th>
+                                <th>@Html.LabelFor(model => model.TBL_PRE_INS_ACC.FirstOrDefault().PreIaConF, new { @class = "control-label" })</th>
+                                <th>@Html.LabelFor(model => model.TBL_PRE_INS_ACC.FirstOrDefault().PreIaTotalD, new { @class = "control-label" })</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.TBL_PRE_INS_ACC != null && Model.TBL_PRE_INS_ACC.Count > 0)
+                            {
+                                int j = 0;
+                                foreach (var i in Model.TBL_PRE_INS_ACC)
+                                {
+                                    <tr style="border:1px solid black">
+                                        @Html.HiddenFor(a => a.TBL_PRE_INS_ACC[j].PreIaCodigoN, new { @class = "PreIaCodigoN" })
+                                        @Html.HiddenFor(a => a.TBL_PRE_INS_ACC[j].PreHcCodigoN)
+                                        @Html.HiddenFor(a => a.TBL_PRE_INS_ACC[j].Borrado, new { @class = "Borrado" })
+                                        <td>@Html.TextBoxFor(a => a.TBL_PRE_INS_ACC[j].PreIaNombreS, new { @class = "form-control input-sm" })</td>
+                                        <td>@Html.TextBoxFor(a => a.TBL_PRE_INS_ACC[j].PreIaColorS, new { @class = "form-control input-sm" })</td>
+                                        <td>@Html.TextBoxFor(a => a.TBL_PRE_INS_ACC[j].PreIaCtsxMtD, new { @class = "form-control input-sm PreIaCtsxMtD solonumeros", data_nombre = "PreIaCtsxMtD" })</td>
+                                        <td>@Html.TextBoxFor(a => a.TBL_PRE_INS_ACC[j].PreIaConF, new { @class = "form-control input-sm PreIaConF solonumeros", data_nombre = "PreIaConF" })</td>
+                                        <td>@Html.TextBoxFor(a => a.TBL_PRE_INS_ACC[j].PreIaTotalD, new { @class = "form-control input-sm", @readonly = "readonly", data_nombre = "PreIaTotalD" })</td>
+                                        <td>
+                                            @if (j > 0)
+                                            {
+                                                <a href="#" class="remove">Eliminar</a>
+                                            }
+                                        </td>
+                                    </tr>
+                                    j++;
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>

@@ -1,0 +1,44 @@
+﻿@model AppWebHojaCosto.Models.HOJA_COSTO_SIMULADA
+
+<div>
+    <fieldset style="border-width:2px; border-style:groove; padding:10px;">
+        <legend style="padding: 2px; width:auto;">Resumen General Costo Produccion</legend>
+        <div class="row">
+            <div class="col-md-8">
+                @Html.HiddenFor(x => x.TBL_SIM_RES_GEN_COS_PRD.SimRpCodigoN)
+                @Html.LabelFor(model => model.TBL_SIM_RES_GEN_COS_PRD.SimRpCostoMaterialesD, new { @class = "control-label" })
+            </div>
+            <div class="col-md-4">
+                <div class="input-group mb-1">
+                    @Html.TextBoxFor(model => model.TBL_SIM_RES_GEN_COS_PRD.SimRpCostoMaterialesD, new { name = "SimRpCostoMaterialesD", id = "SimRpCostoMaterialesD", @class = "form-control input-sm solonumeros" })
+                    <div class="input-group-append">
+                        <span class="input-group-text">COP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                @Html.LabelFor(model => model.TBL_SIM_RES_GEN_COS_PRD.SimRpCostoConversionD, new { @class = "control-label" })
+            </div>
+            <div class="col-md-4">
+                <div class="input-group mb-1">
+                    @Html.TextBoxFor(model => model.TBL_SIM_RES_GEN_COS_PRD.SimRpCostoConversionD, new { name = "SimRpCostoConversionD", id = "SimRpCostoConversionD", @class = "form-control input-sm solonumeros" })
+                    <div class="input-group-append">
+                        <span class="input-group-text">COP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>
+<div class="inferior_modulos">
+    <div class="row">
+        <div class="col-md-8">
+            @Html.LabelFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcTotalCosPrdD, new { @class = "control-label" })
+        </div>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcTotalCosPrdD, new { name = "SimHcTotalCosPrdD", id = "SimHcTotalCosPrdD", @class = "form-control input-sm input_totales", @readonly = "readonly" })
+        </div>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+﻿@model AppWebHojaCosto.Models.DASHBOARDLVL2
+
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fa fa-table"></i> Precosteo
+    </div>
+    <div class="card-body" style="text-align:center;">
+        <div class="table-responsive">
+            <table class="table table-sm table-bordered" id="tablaPrecosteo" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th rowspan="2">REFERENCIA</th>
+                        <th rowspan="2">DESCRIPCIÓN</th>
+                        <th rowspan="2">LÍNEA</th>
+                        <th colspan="2">TELAS</th>
+                        <th colspan="2">INSUMOS</th>
+                        <th colspan="2">MARQUILLAS</th>
+                        <th rowspan="2">DESPIECE</th>
+                        <th rowspan="2">MOD</th>
+                        <th rowspan="2">CIF</th>
+                        <th rowspan="2">MAQUILA</th>
+                        <th colspan="2">MARQUILLAS</th>
+                        @*<th rowspan="2">ACCIONES</th>*@
+                        <th rowspan="2">ESTADO CIERRE</th>
+                        <th rowspan="2">ESTADO COSTEO</th>
+                    </tr>
+                    <tr>
+                        <th>CONSUMO</th>
+                        <th>COSTO</th>
+                        <th>CONSUMO</th>
+                        <th>COSTO</th>
+                        <th>CONSUMO</th>
+                        <th>COSTO</th>
+                        <th>DESCRIPCIÓN</th>
+                        <th>ESTADO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model._DASH_PRECOSTEO != null)
+                    {
+                        foreach (var item in Model._DASH_PRECOSTEO)
+                        {
+                            <tr>
+                                <td>@item.Referencia</td>
+                                <td>@item.Descripcion</td>
+                                <td>@item.Linea</td>
+                                <td>@item.TelasConsumo</td>
+                                <td>@item.TelasCosto</td>
+                                <td>@item.InsumosConsumo</td>
+                                <td>@item.InsumosCosto</td>
+                                <td>@item.MarquillasConsumo</td>
+                                <td>@item.MarquillasCosto</td>
+                                <td>@item.Despiece</td>
+                                <td>@item.Mod</td>
+                                <td>@item.Cif</td>
+                                <td>@item.Maquila</td>
+                                <td>@item.ProcesosDescripcion</td>
+                                <td>@item.ProcesosEstado</td>
+                                @*<td>@Html.ActionLink("Visualizar", "ConsultarxRef", new { Referencia = item.Referencia })</td>*@
+                                <td>@item.EstadoCierre</td>
+                                <td>@item.EstadoDatos</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+            @*<div style="text-align:center; color:#ffffff;">
+                <a class="btn btn-sm btn-dark" id="exportPrecosteo">
+                    <span class="fa fa-download"></span> Descargar
+                </a>
+            </div>*@
+        </div>
+    </div>
+</div>

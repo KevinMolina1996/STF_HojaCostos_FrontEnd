@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="bdHojaCostosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tblAlertas">
+    <Key>
+      <PropertyRef Name="AlCodigoN" />
+    </Key>
+    <Property Name="AlCodigoN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AlMensajeS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="AlEstadoS" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="AlFecCreD" Type="DateTime" Precision="0" />
+    <Property Name="AlUsuarioS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AlTituloS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblModulos">
+    <Key>
+      <PropertyRef Name="MoCodigoN" />
+      <PropertyRef Name="MoNombreS" />
+      <PropertyRef Name="MoDescripS" />
+      <PropertyRef Name="MoFecCreD" />
+      <PropertyRef Name="MoEstadoB" />
+    </Key>
+    <Property Name="MoCodigoN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MoNombreS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MoDescripS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MoFecCreD" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="MoEstadoB" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblUsuarios">
+    <Key>
+      <PropertyRef Name="UsCodigoN" />
+      <PropertyRef Name="UsNombreS" />
+      <PropertyRef Name="UsEmailS" />
+      <PropertyRef Name="UsFecCreD" />
+      <PropertyRef Name="UsEstadoB" />
+      <PropertyRef Name="UsUsuarioS" />
+      <PropertyRef Name="UsClaveS" />
+    </Key>
+    <Property Name="UsCodigoN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UsNombreS" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UsEmailS" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UsFecCreD" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="UsEstadoB" Type="Boolean" Nullable="false" />
+    <Property Name="UsUsuarioS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UsClaveS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MoCodigoN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="bdHojaCostosEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblAlertas" EntityType="Self.tblAlertas" />
+    <EntitySet Name="tblModulos" EntityType="Self.tblModulos" />
+    <EntitySet Name="tblUsuarios" EntityType="Self.tblUsuarios" />
+    <FunctionImport Name="spActualizarModulos">
+      <Parameter Name="MoCodigoN" Mode="In" Type="Int32" />
+      <Parameter Name="MoNombreS" Mode="In" Type="String" />
+      <Parameter Name="MoDescripS" Mode="In" Type="String" />
+      <Parameter Name="MoEstadoB" Mode="In" Type="Boolean" />
+      <Parameter Name="Response" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spConsultarModulos" ReturnType="Collection(bdHojaCostosModel.spConsultarModulos_Result)">
+      <Parameter Name="Operacion" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spConsultarUsuarios" ReturnType="Collection(bdHojaCostosModel.spConsultarUsuarios_Result)">
+      <Parameter Name="Operacion" Mode="In" Type="Int32" />
+      <Parameter Name="UsUsuarioS" Mode="In" Type="String" />
+      <Parameter Name="UsClaveS" Mode="In" Type="String" />
+      <Parameter Name="UsCodigoN" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spEliminarModulos">
+      <Parameter Name="MoCodigoN" Mode="In" Type="Int32" />
+      <Parameter Name="Response" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spInsertarModulos">
+      <Parameter Name="MoNombreS" Mode="In" Type="String" />
+      <Parameter Name="MoDescripS" Mode="In" Type="String" />
+      <Parameter Name="MoEstadoB" Mode="In" Type="Boolean" />
+      <Parameter Name="Response" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="TBL_HOJA_COSTO_PN" EntityType="bdHojaCostosModel.TBL_HOJA_COSTO_PN" />
+    <EntitySet Name="TBL_PARAM_PN" EntityType="bdHojaCostosModel.TBL_PARAM_PN" />
+  </EntityContainer>
+  <ComplexType Name="spConsultarModulos_Result">
+    <Property Type="Int32" Name="MoCodigoN" Nullable="false" />
+    <Property Type="String" Name="MoNombreS" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="MoDescripS" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="MoFecCreD" Nullable="false" />
+    <Property Type="Boolean" Name="MoEstadoB" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spConsultarUsuarios_Result">
+    <Property Type="Int32" Name="UsCodigoN" Nullable="false" />
+    <Property Type="String" Name="UsNombreS" Nullable="false" MaxLength="60" />
+    <Property Type="String" Name="UsEmailS" Nullable="false" MaxLength="30" />
+    <Property Type="DateTime" Name="UsFecCreD" Nullable="false" />
+    <Property Type="Boolean" Name="UsEstadoB" Nullable="false" />
+    <Property Type="String" Name="UsUsuarioS" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="UsClaveS" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="MoCodigoN" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <EntityType Name="TBL_HOJA_COSTO_PN">
+    <Key>
+      <PropertyRef Name="HcCodigoN" />
+    </Key>
+    <Property Name="HcCodigoN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HcReferenciaS" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="HcColeccionS" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HcDisenadorS" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HcLineaS" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HcSubLineaS" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HcEstadoS" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="HcPatronistaS" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HcMarcaS" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="HcTotalTelasM" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="HcTotalConTelasM" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="HcTotalProcesosM" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="HcTotalInsumoM" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="HcTotalMarquillaM" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="HcTotalCIFMODM" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="HcTotalCosPrdM" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="HcTotalGastosM" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="HcTotalxCanalM" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="HcImagenI" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="HcFecCreD" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="HcFecActD" Type="DateTime" Precision="0" />
+    <Property Name="HcUsuActS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TBL_PARAM_PN">
+    <Key>
+      <PropertyRef Name="PpCodigoN" />
+    </Key>
+    <Property Name="PpCodigoN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PpColeccionS" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="PpMarcaS" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PpLineaS" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PpSubLineaS" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PpFactorS" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="PpMargenMinF" Type="Double" />
+    <Property Name="PpMargenMaxF" Type="Double" />
+    <Property Name="PpMayorUSDUtilF" Type="Double" />
+    <Property Name="PpAlmacenLineaAdminF" Type="Double" />
+    <Property Name="PpMayorUSDAdminF" Type="Double" />
+    <Property Name="PpAlmacenLineaFinanF" Type="Double" />
+    <Property Name="PpMayorUSDFinanF" Type="Double" />
+    <Property Name="PpAlmacenLineaMercadeoF" Type="Double" />
+    <Property Name="PpMayorUSDMercadeoF" Type="Double" />
+    <Property Name="PpGastosAdminF" Type="Double" />
+    <Property Name="PpGastosFinanF" Type="Double" />
+    <Property Name="PpGastosMercadeoF" Type="Double" />
+    <Property Name="PpAlmacenLineaVntsF" Type="Double" />
+    <Property Name="PpMayorUSDVntsF" Type="Double" />
+    <Property Name="PpTasaColeccionF" Type="Double" />
+    <Property Name="PpTasaEspecialF" Type="Double" />
+    <Property Name="PpTasaCambioEURxUSDF" Type="Double" />
+    <Property Name="PpIvaF" Type="Double" />
+    <Property Name="PpAdminxFinanF" Type="Double" />
+    <Property Name="PpMercadeoF" Type="Double" />
+    <Property Name="PpVntsxCanalLineaF" Type="Double" />
+    <Property Name="PpAlmacenLineaCanalF" Type="Double" />
+    <Property Name="PpMayorCanalF" Type="Double" />
+    <Property Name="PpTopeCostoF" Type="Double" />
+    <Property Name="PpFactorRentabilidadMaxF" Type="Double" />
+    <Property Name="PpFactorRentabilidadMinF" Type="Double" />
+    <Property Name="PpEnterPriceM" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="PpMediumPriceM" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="PpPremiumPriceM" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="PpFecCreD" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="PpFecActD" Type="DateTime" Precision="0" />
+    <Property Name="PpUsuActS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

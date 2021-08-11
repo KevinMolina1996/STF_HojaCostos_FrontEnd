@@ -1,0 +1,125 @@
+﻿
+@{
+    ViewBag.Title = "Cargues Masivos";
+}
+
+@section Scripts {
+
+    <script>
+        $('#Limpiar').click(function () {
+            document.location = '@Url.Action("Index","Cargues")';
+        });
+
+        $('#Cargar').click(function (e) {
+            e.preventDefault();
+
+            $.confirm({
+                title: 'Confirmar!',
+                content: '¿Desea continuar con el proceso?',
+                buttons: {
+                    CONTINUAR: function () {
+                        $("#FrmCargue").submit();
+                    },
+                    CANCELAR: function () {
+
+                    }
+                }
+            });
+        });
+    </script>
+
+    @if (ViewBag.alerta != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alerta("Alerta!", '@ViewBag.alerta');
+        };
+        </script>
+    }
+    @if (ViewBag.error != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alerta("Error!", '@ViewBag.error');
+        };
+        </script>
+    }
+    @if (ViewBag.exito != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alerta("Exito!", '@ViewBag.exito');
+        };
+        </script>
+    }
+}
+
+<div class="container-fluid">
+    <fieldset style="border-width:2px; border-style:groove; padding:10px;">
+        <legend style="padding: 2px; width:auto;">Cargue Hoja de Costos</legend>
+        @using (Html.BeginForm("CargueRubros", "Cargues", FormMethod.Post, new { id = "FrmCargue", enctype = "multipart/form-data" }))
+        {
+            <div class="row">
+                <div class="col-md-3">
+                    <select class="form-control input-sm" name="TipoHoja">
+                        @*<option value="Estandar">Estándar</option>*@
+                        <option value="Precosteo">Precosteo</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select class="form-control input-sm" name="TipoCargue">
+                        <option value="CargueTelas">Cargue Telas</option>
+                        <option value="CargueProcesos">Cargue Procesos</option>
+                        <option value="CargueInsumos">Cargue Insumos</option>
+                        <option value="CargueMarquillas">Cargue Marquillas</option>
+                        <option value="MOD">MOD y CIF</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="input-group input-file" name="Fichier1">
+                            <span class="input-group-btn">
+                                <button class="btn btn-dark btn-choose" type="button">Seleccione</button>
+                            </span>
+                            <input type="text" class="form-control" placeholder='Choose a file...' />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12" style="text-align:center;">
+                    <button type="submit" id="Cargar" onclick="return false;" class="btn btn-sm btn-dark"><span class="fa fa-search"></span> Cargar</button>
+                    <button type="submit" id="Limpiar" onclick="return false;" class="btn btn-sm btn-dark"><span class="fa fa-undo"></span> Limpiar</button>
+                </div>
+            </div>
+        }
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Referencia</th>
+                                <th>Descripción</th>
+                                <th>Linea Error</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (ViewBag.Errores != null)
+                            {
+                                foreach (var item in ViewBag.Errores)
+                                {
+                                    <tr>
+                                        <td>@item.Referencia</td>
+                                        <td>@item.Detalle</td>
+                                        <td>@item.LineaError</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>

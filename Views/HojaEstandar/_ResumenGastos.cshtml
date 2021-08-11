@@ -1,0 +1,132 @@
+﻿@model AppWebHojaCosto.Models.HOJA_COSTO_ESTANDAR
+<div>
+    <fieldset style="border-width:2px; border-style:groove; padding:10px;" disabled>
+        <legend style="padding: 2px; width:auto;">Resumen Gasto y Costo por Destino de Distribuccion</legend>
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <span style="font-weight:bold; font-size:18px;">Estimado</span>
+            </div>
+            <div class="col-md-4">
+                <span style="font-weight:bold; font-size:18px;">Real</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.TBL_RES_GAS_COS_DIS.FirstOrDefault().RdAdminEstD, new { @class = "control-label" })
+            </div>
+            <div class="col-md-4">
+                <div class="input-group mb-1">
+                    @Html.TextBoxFor(model => model.TBL_RES_GAS_COS_DIS.FirstOrDefault().RdAdminEstD, new { @class = "form-control input-sm formato derecha" })
+                    <div class="input-group-append">
+                        <span class="input-group-text">COP</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="input-group mb-1">
+                    @Html.TextBoxFor(model => model.TBL_RES_GAS_COS_DIS.FirstOrDefault().RdAdminRealD, new { @class = "form-control input-sm formato derecha" })
+                    <div class="input-group-append">
+                        <span class="input-group-text">COP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.TBL_RES_GAS_COS_DIS.FirstOrDefault().RdFinanEstD, new { @class = "control-label" })
+            </div>
+            <div class="col-md-4">
+                <div class="input-group mb-1">
+                    @Html.TextBoxFor(model => model.TBL_RES_GAS_COS_DIS.FirstOrDefault().RdFinanEstD, new { @class = "form-control input-sm formato derecha" })
+                    <div class="input-group-append">
+                        <span class="input-group-text">COP</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="input-group mb-1">
+                    @Html.TextBoxFor(model => model.TBL_RES_GAS_COS_DIS.FirstOrDefault().RdFinanRealD, new { @class = "form-control input-sm formato derecha" })
+                    <div class="input-group-append">
+                        <span class="input-group-text">COP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.TBL_RES_GAS_COS_DIS.FirstOrDefault().RdMercadeoEstD, new { @class = "control-label" })
+            </div>
+            <div class="col-md-4">
+                <div class="input-group mb-1">
+                    @Html.TextBoxFor(model => model.TBL_RES_GAS_COS_DIS.FirstOrDefault().RdMercadeoEstD, new { @class = "form-control input-sm formato derecha" })
+                    <div class="input-group-append">
+                        <span class="input-group-text">COP</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="input-group mb-1">
+                    @Html.TextBoxFor(model => model.TBL_RES_GAS_COS_DIS.FirstOrDefault().RdMercadeoRealD, new { @class = "form-control input-sm formato derecha" })
+                    <div class="input-group-append">
+                        <span class="input-group-text">COP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.TBL_RES_GAS_COS_DIS.FirstOrDefault().RdVentasxCanalEstD, new { @class = "control-label" })
+            </div>
+            <div class="col-md-4">
+                <div class="input-group mb-1">
+                    @Html.TextBoxFor(model => model.TBL_RES_GAS_COS_DIS.FirstOrDefault().RdVentasxCanalEstD, new { @class = "form-control input-sm formato derecha" })
+                    <div class="input-group-append">
+                        <span class="input-group-text">COP</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="input-group mb-1">
+                    @Html.TextBoxFor(model => model.TBL_RES_GAS_COS_DIS.FirstOrDefault().RdVentasxCanalRealD, new { @class = "form-control input-sm formato derecha" })
+                    <div class="input-group-append">
+                        <span class="input-group-text">COP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.TBL_HOJA_COSTO_PN.FirstOrDefault().HcTotalGastosEstD, new { @class = "control-label" })
+            </div>
+            <div class="col-md-4">
+                <div class="input-group mb-1">
+                    @Html.TextBoxFor(model => model.TBL_HOJA_COSTO_PN.FirstOrDefault().HcTotalGastosEstD, new { @class = "form-control input-sm formato derecha" })
+                    <div class="input-group-append">
+                        <span class="input-group-text">COP</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="input-group mb-1">
+                    @Html.TextBoxFor(model => model.TBL_HOJA_COSTO_PN.FirstOrDefault().HcTotalGastosRealD, new { @class = "form-control input-sm formato derecha" })
+                    <div class="input-group-append">
+                        <span class="input-group-text">COP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>
+<div class="inferior_modulos">
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(model => model.TBL_HOJA_COSTO_PN.FirstOrDefault().HcTotalxCanalEstD, new { @class = "control-label formato" })
+        </div>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.TBL_HOJA_COSTO_PN.FirstOrDefault().HcTotalxCanalEstD, new { @class = "form-control input-sm formato input-vacio-gris derecha" })
+        </div>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.TBL_HOJA_COSTO_PN.FirstOrDefault().HcTotalxCanalRealD, new { @class = "form-control input-sm formato input-vacio-gris derecha" })
+        </div>
+    </div>
+</div>

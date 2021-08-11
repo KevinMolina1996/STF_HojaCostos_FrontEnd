@@ -1,0 +1,141 @@
+﻿@model AppWebHojaCosto.Models.HOJA_COSTO_PNP
+
+<fieldset style="border-width:2px; border-style:groove; padding:10px;">
+    <legend style="padding: 2px; width:auto;">Generación Impresion Masiva</legend>
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "FrmMasiva" }))
+    {
+        <div class="row">
+            <div class="col-md-2">
+                <label>Tipo <span class="text-danger">(*)</span></label>
+                @*@Html.DropDownListFor(m => m.TipoHojaCosto, Model.TipoHojas, new { @id = "Tipo", @class = "form-control", @onclick = "FiltroMarca();" })*@
+                @Html.DropDownListFor(model => model.TipoHojaCosto, new SelectList(
+                  new List<Object>{
+                       new { value = "" , text = "--Seleccione--"  },
+                       new { value = "CE" , text = "Hoja de Costo Estandar"  },
+                       new { value = "CS" , text = "Hoja de Costo Simulada" }
+                    },
+                  "value",
+                  "text",
+                   0), new { @id = "Tipo", @class = "form-control", @onclick = "FiltroMarca();" })
+            </div>
+            <div class="col-md-2">
+                @Html.LabelFor(m => m.LST_TBL_HOJA_COSTO_PNP.FirstOrDefault().PnpMarcaS, new { @class = "control-label" })<span class="text-danger">(*)</span>
+                @*@Html.DropDownListFor(m => m.TBL_HOJA_COSTO_PNP.PnpMarcaS, new SelectList(Model.Marcas, "Value", "Text"), new { @id = "Marca", @class = "form-control" })*@
+                <div class="input-group">
+                    @Html.TextBoxFor(m => m.TBL_HOJA_COSTO_PNP.PnpMarcaS, new { @id = "Marca", @type = "search", @required = "required", @class = "form-control py-2 border-right-0 border" })
+                    <span class="input-group-append">
+                        <button class="btn btn-outline-secondary border-left-0 border" type="button" id="ver-todo-marcas">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-2">
+                @Html.LabelFor(m => m.LST_TBL_HOJA_COSTO_PNP.FirstOrDefault().PnpColeccionS, new { @class = "control-label" })<span class="text-danger">(*)</span>
+                @*@Html.DropDownListFor(m => m.TBL_HOJA_COSTO_PNP.PnpColeccionS, new SelectList(Model.Colecciones, "Value", "Text"), new { @id = "Coleccion", @class = "form-control" })*@
+                <div class="input-group">
+                    @Html.TextBoxFor(m => m.TBL_HOJA_COSTO_PNP.PnpColeccionS, new { @id = "Coleccion", @type = "search", @required = "required", @class = "form-control py-2 border-right-0 border" })
+                    <span class="input-group-append">
+                        <button class="btn btn-outline-secondary border-left-0 border" type="button" id="ver-todo-coleccion">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-2">
+                @Html.LabelFor(m => m.LST_TBL_HOJA_COSTO_PNP.FirstOrDefault().PnpLineaS, new { @class = "control-label" })
+                @*@Html.DropDownListFor(m => m.TBL_HOJA_COSTO_PNP.PnpLineaS, new SelectList(Model.Lineas, "Value", "Text"), new { @id = "Linea", @class = "form-control" })*@
+                <div class="input-group">
+                    @Html.TextBoxFor(m => m.TBL_HOJA_COSTO_PNP.PnpLineaS, new { @id = "Linea", @type = "search", @class = "form-control py-2 border-right-0 border" })
+                    <span class="input-group-append">
+                        <button class="btn btn-outline-secondary border-left-0 border" type="button" id="ver-todo-linea">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-2">
+                @Html.LabelFor(m => m.LST_TBL_HOJA_COSTO_PNP.FirstOrDefault().PnpEstadoS, new { @class = "control-label" })
+                @*@Html.DropDownListFor(m => m.TBL_HOJA_COSTO_PNP.PnpEstadoS, new SelectList(Model.Estados, "Value", "Text"), new { @id = "Estado", @class = "form-control" })*@
+                <div class="input-group">
+                    @Html.TextBoxFor(m => m.TBL_HOJA_COSTO_PNP.PnpEstadoS, new { @id = "Estado", @type = "search", @class = "form-control py-2 border-right-0 border" })
+                    <span class="input-group-append">
+                        <button class="btn btn-outline-secondary border-left-0 border" type="button" id="ver-todo-estado">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div style="height:33px; width:10px;"></div>
+                <button type="submit" class="btn btn-sm btn-dark" formaction="ConsultaMasiva"><span class="fa fa-search"></span> Consultar</button>
+                <button type="button" id="btnLimpiar" class="btn btn-sm btn-dark" onclick="return false;"><span class="fa fa-undo"></span> Limpiar</button>
+            </div>
+        </div>
+        <div class="row" style="padding-top:20px;">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="table" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Referencia</th>
+                                <th>Descripción</th>
+                                <th>Estado</th>
+                                <th>Acción</th>
+                                <th>Marca</th>
+                                <th>Linea</th>
+                                <th>Usuario Costos</th>
+                                <th>Orden Compra</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                if (Model.LST_TBL_HOJA_COSTO_PNP != null)
+                                {
+                                    foreach (var item in Model.LST_TBL_HOJA_COSTO_PNP)
+                                    {
+                                        <tr>
+                                            <td>@item.PnpReferenciaS</td>
+                                            <td>@item.PnpDescripS</td>
+                                            <td>@item.PnpEstadoS</td>
+                                            <td>@Html.ActionLink("Visualizar", "ConsultarxRef", new { Tipo = Model.TipoHojaCosto, Referencia = item.PnpReferenciaS })</td>
+                                            <td>@item.PnpMarcaS</td>
+                                            <td>@item.PnpLineaS</td>
+                                            <td>@item.PnpUsuCostoS</td>
+                                            <td>@item.PnpOrdenCompraS</td>
+                                        </tr>
+                                    }
+                                }
+                                if (Model.LST_TBL_SIM_HOJA_COSTO_PNP != null)
+                                {
+                                    foreach (var item in Model.LST_TBL_SIM_HOJA_COSTO_PNP)
+                                    {
+                                        <tr>
+                                            <td>@item.SimPnpReferenciaS</td>
+                                            <td>@item.SimPnpDescripS</td>
+                                            <td>@item.SimPnpEstadoS</td>
+                                            <td>@Html.ActionLink("Visualizar", "ConsultarxRef", new { Tipo = Model.TipoHojaCosto, Referencia = item.SimPnpReferenciaS })</td>
+                                            <td>@item.SimPnpMarcaS</td>
+                                            <td>@item.SimPnpLineaS</td>
+                                            <td>@item.SimPnpUsuCostoS</td>
+                                            <td>@item.SimPnpOrdenCompraS</td>
+                                        </tr>
+                                    }
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="text-align:center; padding-top:20px;">
+            <div class="col-md-12">
+                @Html.Hidden("Referencias", null, new { Id = "Referencias", Value = "" })
+                <button type="submit" id="Exportar" formaction="Export" class="btn btn-sm btn-dark" formnovalidate disabled><span class="fa fa-download"></span> Exportar</button>
+                <button type="submit" id="Imprimir" formaction="GenerarPdf" class="btn btn-sm btn-dark" formnovalidate disabled><span class="fa fa-print"></span> Imprimir</button>
+                <button type="submit" id="Cerrar" formaction="CerrarHojas" class="btn btn-sm btn-dark" formnovalidate disabled><span class="fa fa-check-circle"></span> Cerrar Hojas</button>
+            </div>
+        </div>
+    }
+</fieldset>

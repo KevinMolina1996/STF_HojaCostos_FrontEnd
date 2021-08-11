@@ -1,0 +1,40 @@
+﻿@model AppWebHojaCosto.Models.HOJA_COSTO_PNP
+
+@using (Html.BeginForm("ConsultarxRef", "HojaCostoPNP", FormMethod.Post))
+{
+    <fieldset style="border-width:2px; border-style:groove; padding:10px;">
+        <legend style="padding: 2px; width:auto;">Consulta Hoja de Costo por Referencias</legend>
+        <div class="row" id="FrmRef">
+            <div class="col-md-5">
+                <label>Tipo de Hoja de Costo: <span class="text-danger">(*)</span></label>
+                @*@Html.DropDownListFor(m => m.TipoHojaCosto, new SelectList(Model.TipoHojas, "Value", "Text"), new { @id = "TipoCab", @class = "form-control", @onclick = "FiltroRef();" })*@
+                @Html.DropDownListFor(model => model.TipoHojaCosto, new SelectList(
+                  new List<Object>{
+                       new { value = "" , text = "--Seleccione--"  },
+                       new { value = "CE" , text = "Hoja de Costo Estandar"  },
+                       new { value = "CS" , text = "Hoja de Costo Simulada" }
+                    },
+                  "value",
+                  "text",
+                   0), new { @id = "TipoCab", @class = "form-control", @onclick = "FiltroRef();" })
+            </div>
+            <div class="col-md-5">
+                <label>Consulta hoja de costo x referencia: <span class="text-danger">(*)</span></label>
+                @*@Html.DropDownListFor(m => m.TBL_HOJA_COSTO_PNP.PnpReferenciaS, new SelectList(Model.Referencias, "Value", "Text"), new { @id = "Referencia", @class = "form-control" })*@
+                <div class="input-group">
+                    @Html.TextBoxFor(m => m.TBL_HOJA_COSTO_PNP.PnpReferenciaS, new { @id = "Referencia", @type = "search", @class = "form-control py-2 border-right-0 border" })
+                    <span class="input-group-append">
+                        <button class="btn btn-outline-secondary border-left-0 border" type="button" id="ver-todo-ref">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div style="height:33px; width:10px;">
+                </div>
+                <button type="submit" class="btn btn-sm btn-dark"><span class="fa fa-search"></span> Consultar</button>
+            </div>
+        </div>
+    </fieldset>
+}

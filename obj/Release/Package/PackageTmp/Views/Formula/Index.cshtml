@@ -1,0 +1,232 @@
+﻿@model IEnumerable<AppWebHojaCosto.Models.TBL_FORMULA>
+
+@section Scripts {
+    <script src="~/Scripts/JS/js-formula-producido.js"></script>
+}
+@*<div class="break-1"></div>*@
+<!-- Breadcrumbs creacion tbl formulas-->
+<div id="page_tbl_formulas">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="@Url.Action("Index","Home")">Inicio</a>
+        </li>
+    </ol>
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fa fa-table"></i> Formulas
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Codigo</th>
+                            <th>Nombre</th>
+                            <th>Fec. Creacion</th>
+                            <th>Fec. Actualizacion</th>
+                            <th>Acc.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.FoCodigoN</td>
+                                <td>@item.FoNombreS</td>
+                                <td>@item.FoFecCreD</td>
+                                <td>@item.FoFecActD</td>
+                                <td><center><a href="" onclick="abrirFormula('@item.FoOperacionS', '@item.FoCodigoN', '@item.FoNombreS', '@item.FoFecCreD'); return false;"><i class='fa fa-edit'></i></a></center></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="hidden_page" id="page_formulas_dinamicas">
+    <div class="card-header block-unable">
+        <div class="row justify-content-md-center">
+            <div class="col"><a href="" onclick="abrir_tabla_formulas"><i class="fa fa-times position_page" aria-hidden="true"></i></a></div>
+            <div class="col-md-auto"><label id="codigo_titulo" class="txt_formula_titulo"></label></div>
+            <div class="col"></div>
+
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-7">
+                <input id="codigo" type="text" style="display:none;" />
+                <input id="nombre" type="text" style="display:none;" />
+                <input id="fecha" type="text" style="display:none;" />
+                <div id="campos">
+                    <!--Campos de la formula, generados y agrupados-->
+                    <!--CONSUMO DE TELAS-->
+                    <div class="row">
+                        <div class="col">
+                            <span id="text_campo_telas">
+                                Consumo Telas
+                                <a href="" id="view_telas" onclick="ver_formulas(this.id); return false;">
+                                    <i class="fa fa-plus-square-o" aria-hidden="true" id="mas_seis"></i><i id="menos_seis" class="fa fa-minus-square-o hidden_page" aria-hidden="true"></i>
+                                </a>
+                            </span>
+                            <hr />
+                            <div id="seccion_telas" class="hidden_page"></div>
+                        </div>
+                    </div>
+                    <!-- FIN -->
+                    <!--PROCESOS-->
+                    <div class="row">
+                        <div class="col">
+                            <span id="text_campo_procesos">
+                                Procesos
+                                <a href="" id="view_procesos" onclick="ver_formulas(this.id); return false;">
+                                    <i class="fa fa-plus-square-o" aria-hidden="true" id="mas_siete"></i><i id="menos_siete" class="fa fa-minus-square-o hidden_page" aria-hidden="true"></i>
+                                </a>
+                            </span>
+                            <hr />
+                            <div id="seccion_procesos" class="hidden_page"></div>
+                        </div>
+                    </div>
+                    <!-- FIN -->
+                    <!--INSUMOS Y ACCESORIOS-->
+                    <div class="row">
+                        <div class="col">
+                            <span id="text_campo_insumos">
+                                Insumos y Accesorios
+                                <a href="" id="view_insumos" onclick="ver_formulas(this.id); return false;">
+                                    <i class="fa fa-plus-square-o" aria-hidden="true" id="mas_ocho"></i><i id="menos_ocho" class="fa fa-minus-square-o hidden_page" aria-hidden="true"></i>
+                                </a>
+                            </span>
+                            <hr />
+                            <div id="seccion_insumos" class="hidden_page"></div>
+                        </div>
+                    </div>
+                    <!-- FIN -->
+                    <!--MARQUILLAS, ETIQUETAS Y EMPAQUES-->
+                    <div class="row">
+                        <div class="col">
+                            <span id="text_campo_marquillas">
+                                Marquillas
+                                <a href="" id="view_marquillas" onclick="ver_formulas(this.id); return false;">
+                                    <i class="fa fa-plus-square-o" aria-hidden="true" id="mas_nueve"></i><i id="menos_nueve" class="fa fa-minus-square-o hidden_page" aria-hidden="true"></i>
+                                </a>
+                            </span>
+                            <hr />
+                            <div id="seccion_marquillas" class="hidden_page"></div>
+                        </div>
+                    </div>
+                    <!-- FIN -->
+                    <!--MOD y CIF-->
+                    <div class="row">
+                        <div class="col">
+                            <span id="text_campo_formula">
+                                MOD y CIF
+                                <a href="" id="view_mod_cif" onclick="ver_formulas(this.id); return false;">
+                                    <i class="fa fa-plus-square-o" aria-hidden="true" id="mas_cinco"></i><i id="menos_cinco" class="fa fa-minus-square-o hidden_page" aria-hidden="true"></i>
+                                </a>
+                            </span>
+                            <hr />
+                            <div id="seccion_mod_cif" class="hidden_page"></div>
+                        </div>
+                    </div>
+                    <!-- FIN -->
+                    <div class="row">
+                        <div class="col">
+                            <span id="text_campo_formula">
+                                Analisis Precio
+                                <a href="" id="view_analisis_precio" onclick="ver_formulas(this.id); return false;">
+                                    <i class="fa fa-plus-square-o" aria-hidden="true" id="mas_uno"></i><i id="menos_uno" class="fa fa-minus-square-o hidden_page" aria-hidden="true"></i>
+                                </a>
+                            </span>
+                            <hr />
+                            <div id="seccion_analisis_precio" class="hidden_page"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <span id="text_campo_formula">
+                                Resumen Distribución
+                                <a href="" id="view_resumen_distribucion" onclick="ver_formulas(this.id); return false;">
+                                    <i class="fa fa-plus-square-o" aria-hidden="true" id="mas_dos"></i><i id="menos_dos" class="fa fa-minus-square-o hidden_page" aria-hidden="true"></i>
+                                </a>
+                            </span>
+                            <hr />
+                            <div id="seccion_resumen_distribucion" class="hidden_page"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <span id="text_campo_formula">
+                                Costo Producción
+                                <a href="" id="view_costos_produccion" onclick="ver_formulas(this.id); return false;">
+                                    <i class="fa fa-plus-square-o" aria-hidden="true" id="mas_tres"></i><i id="menos_tres" class="fa fa-minus-square-o hidden_page" aria-hidden="true"></i>
+                                </a>
+                            </span>
+                            <hr />
+                            <div id="seccion_costos_produccion" class="hidden_page"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <span id="text_campo_formula">
+                                Otras Lineas
+                                <a href="" id="view_otros" onclick="ver_formulas(this.id); return false;">
+                                    <i class="fa fa-plus-square-o" aria-hidden="true" id="mas_cuatro"></i><i id="menos_cuatro" class="fa fa-minus-square-o hidden_page" aria-hidden="true"></i>
+                                </a>
+                            </span>
+                            <hr />
+                            <div id="seccion_otros" class="hidden_page"></div>
+                        </div>
+                    </div>
+
+                    @if (ViewBag.tbl_campos_formula != null)
+                    {
+                        foreach (var item in ViewBag.tbl_campos_formula)
+                        {
+                            <div id="draggable" class="@item.CfClaseS @item.CfGroupS"><span name="input" title="@item.CfNomBdS" class="opt">&nbsp;@item.CfNomViewS&nbsp;</span></div>
+                        }
+                    }
+
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div id="operaciones">
+                    @if (ViewBag.tbl_operaciones_formula != null)
+                    {
+                        foreach (var item in ViewBag.tbl_operaciones_formula)
+                        {
+                            <div id="draggable4" class="@item.OfClaseS"><span name="@item.OfNombreS" class="opt">&nbsp;@item.OfNombreS&nbsp;</span></div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="break"></div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="contenedor" style="border: 1px dashed #808080;">
+                    <div id="sortable" style="width:100%; height:100%;"></div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div id="formula_escrita" style="float:left;"></div>
+            </div>
+        </div>
+        <div class="break"></div>
+        <div class="row" style="text-align:center;">
+            <div class="col-md-4">
+                <button id="btnProbar" class="btn btn-sm btn-dark" style="text-align:center;" onclick="probarFormula(); return false;"><i class="fa fa-calculator"></i>&nbsp;Probar Formula</button>
+            </div>
+            <div class="col-md-4">
+                <button id="btnEjecutar" class="btn btn-sm btn-dark" style="text-align:center;" onclick="ejecutarFormula(); return false;"><i class="fa fa-play"></i>&nbsp;Ejecutar</button>
+            </div>
+            <div class="col-md-4">
+                <button id="btnGuardar" class="btn btn-sm btn-dark" style="text-align:center;" onclick="guardarFormula(); return false;"><i class="fa fa-save"></i>&nbsp;Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="break-1"></div>

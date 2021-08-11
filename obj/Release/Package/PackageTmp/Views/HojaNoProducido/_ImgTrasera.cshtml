@@ -1,0 +1,13 @@
+﻿@model AppWebHojaCosto.Models.TBL_HOJA_COSTO_PNP
+
+<fieldset style="border-width:2px; border-style:groove; padding:10px; height:100%;">
+    <legend style="padding: 2px; width:auto;">Imagen Trasera</legend>
+    <div class="row">
+        <div class="col-sm-12">
+            @if (Model.PnpImagenTrasS != null)
+            {
+                <img class="img-centro" src="@Url.Content(Model.PnpImagenTrasS)" alt="Image" height="200" width="200" />
+            }
+        </div>
+    </div>
+</fieldset>

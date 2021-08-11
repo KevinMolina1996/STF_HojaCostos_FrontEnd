@@ -1,0 +1,54 @@
+﻿@model AppWebHojaCosto.Models.HOJA_COSTO_ESTANDAR
+
+<div>
+    <div>
+        <fieldset style="border-width:2px; border-style:groove; padding:10px;" disabled>
+            <legend style="padding: 2px; width:auto;">
+                <a href="@Url.Action("Index","HojaCostoPN/Index")" id="close"><i class="fa fa-window-close"></i></a>
+            </legend>
+            <div class="row">
+                <div class="col-md-2" style="text-align:center;">
+                    <h2>@Html.DisplayFor(m => m.TBL_HOJA_COSTO_PN.FirstOrDefault().HcMarcaS, new { @class = "control-label" })</h2>
+                </div>
+                <div class="col-md-8" style="text-align:center; margin-top:auto; margin-bottom:auto; display:block;">
+                    <h3>HOJA DE COSTOS ESTANDAR</h3>
+                </div>
+                <div class="col-md-2" style="margin-top:auto; margin-bottom:auto; display:block; text-align:center;">
+                    <h6>@Html.DisplayFor(m => m.TBL_HOJA_COSTO_PN.FirstOrDefault().HcFecCreD, new { @class = "control-label" })</h6>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    @Html.LabelFor(model => model.TBL_HOJA_COSTO_PN.FirstOrDefault().HcReferenciaS, new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.TBL_HOJA_COSTO_PN.FirstOrDefault().HcReferenciaS, new { @class = "form-control input-sm" })
+                </div>
+                <div class="col-md-4">
+                    @Html.LabelFor(model => model.TBL_HOJA_COSTO_PN.FirstOrDefault().HcColeccionS, new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.TBL_HOJA_COSTO_PN.FirstOrDefault().HcColeccionS, new { @class = "form-control input-sm" })
+                </div>
+                <div class="col-md-4">
+                    @Html.LabelFor(model => model.TBL_HOJA_COSTO_PN.FirstOrDefault().HcDisenadorS, new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.TBL_HOJA_COSTO_PN.FirstOrDefault().HcDisenadorS, new { @class = "form-control input-sm" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.TBL_HOJA_COSTO_PN.FirstOrDefault().HcLineaS, new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.TBL_HOJA_COSTO_PN.FirstOrDefault().HcLineaS, new { @class = "form-control input-sm" })
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.TBL_HOJA_COSTO_PN.FirstOrDefault().HcSubLineaS, new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.TBL_HOJA_COSTO_PN.FirstOrDefault().HcSubLineaS, new { @class = "form-control input-sm" })
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.TBL_HOJA_COSTO_PN.FirstOrDefault().HcEstadoAproS, new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.TBL_HOJA_COSTO_PN.FirstOrDefault().HcEstadoAproS, new { @class = "form-control input-sm" })
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.TBL_HOJA_COSTO_PN.FirstOrDefault().HcPatronistaS, new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.TBL_HOJA_COSTO_PN.FirstOrDefault().HcPatronistaS, new { @class = "form-control input-sm" })
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>

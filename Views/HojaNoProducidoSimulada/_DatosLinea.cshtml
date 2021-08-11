@@ -1,0 +1,61 @@
+﻿@model AppWebHojaCosto.Models.TBL_SIM_HOJA_COSTO_PNP
+
+<fieldset style="border-width:2px; border-style:groove; padding:10px;">
+    <legend style="padding: 2px; width:auto;">Datos Linea</legend>
+    <div class="row">
+        <div class="col-md-6">
+            @Html.LabelFor(m => m.SimPnpProveedorS, new { @class = "control-label" })
+        </div>
+        <div class="col-md-6 mb-1">
+            @Html.TextBoxFor(m => m.SimPnpProveedorS, new { @class = "form-control input-sm", @readonly = "readonly" })
+            @Html.ValidationMessageFor(m => m.SimPnpProveedorS, null, new { @class = "campos_requeridos" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            @Html.LabelFor(m => m.SimPnpTermNegocS, new { @class = "control-label" })
+        </div>
+        <div class="col-md-6 mb-1">
+            @Html.TextBoxFor(m => m.SimPnpTermNegocS, new { @class = "form-control input-sm", @readonly = "readonly" })
+            @Html.ValidationMessageFor(m => m.SimPnpTermNegocS, null, new { @class = "campos_requeridos" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label class="control-label">Tipo Transporte</label>
+        </div>
+        <div class="col-md-6 mb-1">
+            <select class="form-control input-sm" id="tipoTransporte" onchange="cambioTipoTransporte();">
+                <option value="M">Marítimo</option>
+                <option value="A">Aéreo</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            @Html.LabelFor(m => m.SimPnpSubLineaS, new { @class = "control-label" })
+        </div>
+        <div class="col-md-6 mb-1">
+            @Html.TextBoxFor(m => m.SimPnpSubLineaS, new { @class = "form-control input-sm", @readonly = "readonly" })
+            @Html.ValidationMessageFor(m => m.SimPnpSubLineaS, null, new { @class = "campos_requeridos" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            @Html.LabelFor(m => m.SimPnpPaisOrigenS, new { @class = "control-label" })
+        </div>
+        <div class="col-md-6 mb-1">
+            @Html.TextBoxFor(m => m.SimPnpPaisOrigenS, new { @class = "form-control input-sm", @readonly = "readonly" })
+            @Html.ValidationMessageFor(m => m.SimPnpPaisOrigenS, null, new { @class = "campos_requeridos" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            @Html.LabelFor(m => m.SimPnpLineaS, new { @class = "control-label" })
+        </div>
+        <div class="col-md-6 mb-1">
+            @Html.TextBoxFor(m => m.SimPnpLineaS, new { @class = "form-control input-sm", @readonly = "readonly" })
+            @Html.ValidationMessageFor(m => m.SimPnpLineaS, null, new { @class = "campos_requeridos" })
+        </div>
+    </div>
+</fieldset>

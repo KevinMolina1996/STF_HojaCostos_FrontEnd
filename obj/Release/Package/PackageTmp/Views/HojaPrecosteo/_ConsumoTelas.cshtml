@@ -1,0 +1,49 @@
+﻿@model AppWebHojaCosto.Models.HOJA_COSTO_PRECOSTEO
+
+<fieldset style="border-width:2px; border-style:groove; padding:10px;" id="telas">
+    <legend style="padding: 2px; width:auto;">CONSUMO TELAS</legend>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <div style="text-align:right; text-decoration:underline;"><a href="javascript: void(0)" id="addTelas">+ Adicionar</a></div>
+                <table id="tablaTelas" class="table table-sm table-bordered" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>@Html.LabelFor(model => model.TBL_PRE_CONSUMO_TELAS.FirstOrDefault().PreCtNombreS, new { @class = "control-label" })</th>
+                            <th>@Html.LabelFor(model => model.TBL_PRE_CONSUMO_TELAS.FirstOrDefault().PreCtColorS, new { @class = "control-label" })</th>
+                            <th>@Html.LabelFor(model => model.TBL_PRE_CONSUMO_TELAS.FirstOrDefault().PreCtCtsxMtD, new { @class = "control-label" })</th>
+                            <th>@Html.LabelFor(model => model.TBL_PRE_CONSUMO_TELAS.FirstOrDefault().PreCtConF, new { @class = "control-label" })</th>
+                            <th>@Html.LabelFor(model => model.TBL_PRE_CONSUMO_TELAS.FirstOrDefault().PreCtTotalD, new { @class = "control-label" })</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.TBL_PRE_CONSUMO_TELAS != null && Model.TBL_PRE_CONSUMO_TELAS.Count > 0)
+                        {
+                            int j = 0;
+                            foreach (var i in Model.TBL_PRE_CONSUMO_TELAS)
+                            {
+                                <tr style="border:1px solid black">
+                                    @Html.HiddenFor(a => a.TBL_PRE_CONSUMO_TELAS[j].PreCtCodigoN, new { @class = "PreCtCodigoN" })
+                                    @Html.HiddenFor(a => a.TBL_PRE_CONSUMO_TELAS[j].PreHcCodigoN)
+                                    @Html.HiddenFor(a => a.TBL_PRE_CONSUMO_TELAS[j].Borrado, new { @class = "Borrado" })
+                                    <td>@Html.TextBoxFor(a => a.TBL_PRE_CONSUMO_TELAS[j].PreCtNombreS, new { @class = "form-control input-sm" })</td>
+                                    <td>@Html.TextBoxFor(a => a.TBL_PRE_CONSUMO_TELAS[j].PreCtColorS, new { @class = "form-control input-sm" })</td>
+                                    <td>@Html.TextBoxFor(a => a.TBL_PRE_CONSUMO_TELAS[j].PreCtCtsxMtD, new { @class = "form-control input-sm PreCtCtsxMtD solonumeros", data_nombre = "PreCtCtsxMtD" })</td>
+                                    <td>@Html.TextBoxFor(a => a.TBL_PRE_CONSUMO_TELAS[j].PreCtConF, new { @class = "form-control input-sm PreCtConF solonumeros", data_nombre = "PreCtConF" })</td>
+                                    <td>@Html.TextBoxFor(a => a.TBL_PRE_CONSUMO_TELAS[j].PreCtTotalD, new { @class = "form-control input-sm", @readonly = "readonly", data_nombre = "PreCtTotalD" })</td>
+                                    <td>
+                                        @if (j > 0)
+                                        {
+                                            <a href="javascript: void(0)" class="remove">Eliminar</a>
+                                        }
+                                    </td>
+                                </tr>
+                                j++;
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</fieldset>

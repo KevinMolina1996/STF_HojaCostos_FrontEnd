@@ -1,0 +1,13 @@
+﻿@using ReportViewerForMvc;
+
+@{
+    ViewBag.Title = "Reporte Estandar";
+}
+
+<div class="container-fluid">
+    <div class="row" id="divReport" style="margin:2px !important;">
+        @Html.ReportViewer(
+    ViewBag.ReportViewer as Microsoft.Reporting.WebForms.ReportViewer,
+    new { scrolling = "si" })
+    </div>
+</div>

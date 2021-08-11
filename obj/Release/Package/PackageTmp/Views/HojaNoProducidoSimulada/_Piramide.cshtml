@@ -1,0 +1,47 @@
+﻿@model AppWebHojaCosto.Models.TBL_SIM_HOJA_COSTO_PNP
+
+<fieldset style="border-width:2px; border-style:groove; padding:10px;">
+    <legend style="padding: 2px; width:auto;">Piramide Precios</legend>
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.SimPnpEnterPriceM, new { @class = "control-label" })
+        </div>
+        <div class="col-md-8">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.SimPnpEnterPriceM, new { @class = "form-control input-sm" })
+                @Html.ValidationMessageFor(m => m.SimPnpEnterPriceM, null, new { @class = "campos_requeridos" })
+                <div class="input-group-append">
+                    <span class="input-group-text">COP</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.SimPnpMediumPriceM, new { @class = "control-label" })
+        </div>
+        <div class="col-md-8">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.SimPnpMediumPriceM, new { @class = "form-control input-sm" })
+                @Html.ValidationMessageFor(m => m.SimPnpMediumPriceM, null, new { @class = "campos_requeridos" })
+                <div class="input-group-append">
+                    <span class="input-group-text">COP</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.SimPnpPremiumPriceM, new { @class = "control-label" })
+        </div>
+        <div class="col-md-8">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.SimPnpPremiumPriceM, new { @class = "form-control input-sm" })
+                @Html.ValidationMessageFor(m => m.SimPnpPremiumPriceM, null, new { @class = "campos_requeridos" })
+                <div class="input-group-append">
+                    <span class="input-group-text">COP</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>

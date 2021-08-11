@@ -1,0 +1,52 @@
+﻿@model AppWebHojaCosto.Models.TBL_SIM_HOJA_COSTO_PNP
+
+<fieldset style="border-width:2px; border-style:groove; padding:10px;">
+    <legend style="padding: 2px; width:auto;">Datos Basicos</legend>
+    <div class="row">
+        <div class="col-md-6">
+            @*@Html.HiddenFor(m => m.PnpCodigoN)*@
+            @Html.HiddenFor(m => m.SimPnpCodigoN)
+            @Html.LabelFor(m => m.SimPnpReferenciaS, new { @class = "control-label" })
+        </div>
+        <div class="col-md-6 mb-1">
+            @Html.TextBoxFor(m => m.SimPnpReferenciaS, new { @class = "form-control input-sm", @readonly = "readonly" })
+            @Html.ValidationMessageFor(m => m.SimPnpReferenciaS, null, new { @class = "campos_requeridos" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            @Html.LabelFor(m => m.SimPnpCostoCompraUSDD, new { @class = "control-label" })
+        </div>
+        <div class="col-md-6 mb-1">
+            @Html.TextBoxFor(m => m.SimPnpCostoCompraUSDD, new { @class = "form-control input-sm dos_decimales"@*, @readonly = "readonly"*@ })
+            @Html.ValidationMessageFor(m => m.SimPnpCostoCompraUSDD, null, new { @class = "campos_requeridos" })
+        </div>
+    </div>
+    @*<div class="row">
+        <div class="col-md-6">
+            @Html.LabelFor(m => m.SimPnpCostoCompraUSDD, new { @class = "control-label" })
+        </div>
+        <div class="col-md-6 mb-1">
+            @Html.TextBoxFor(m => m.SimPnpCostoCompraUSDD, new { @class = "form-control input-sm", @readonly = "readonly" })
+            @Html.ValidationMessageFor(m => m.SimPnpCostoCompraUSDD, null, new { @class = "campos_requeridos" })
+        </div>
+    </div>*@
+    <div class="row">
+        <div class="col-md-6">
+            @Html.LabelFor(m => m.SimPnpTrmM, new { @class = "control-label" })
+        </div>
+        <div class="col-md-6 mb-1">
+            @Html.TextBoxFor(m => m.SimPnpTrmM, new { @class = "form-control input-sm sin_decimales"@*, @readonly = "readonly"*@ })
+            @Html.ValidationMessageFor(m => m.SimPnpTrmM, null, new { @class = "campos_requeridos" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            @Html.LabelFor(m => m.SimPnpCntPedN, new { @class = "control-label" })
+        </div>
+        <div class="col-md-6 mb-1">
+            @Html.TextBoxFor(m => m.SimPnpCntPedN, new { @class = "form-control input-sm", @readonly = "readonly" })
+            @Html.ValidationMessageFor(m => m.SimPnpCntPedN, null, new { @class = "campos_requeridos" })
+        </div>
+    </div>
+</fieldset>

@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="bdHojaCostosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'bdHojaCostos.dbo.tblModulos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="tblModulos">
+    <Key>
+      <PropertyRef Name="MoCodigoN" />
+      <PropertyRef Name="MoNombreS" />
+      <PropertyRef Name="MoDescripS" />
+      <PropertyRef Name="MoFecCreD" />
+      <PropertyRef Name="MoEstadoB" />
+    </Key>
+    <Property Name="MoCodigoN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MoNombreS" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="MoDescripS" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MoFecCreD" Type="date" Nullable="false" />
+    <Property Name="MoEstadoB" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'bdHojaCostos.dbo.tblUsuarios' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="tblUsuarios">
+    <Key>
+      <PropertyRef Name="UsCodigoN" />
+      <PropertyRef Name="UsNombreS" />
+      <PropertyRef Name="UsEmailS" />
+      <PropertyRef Name="UsFecCreD" />
+      <PropertyRef Name="UsEstadoB" />
+      <PropertyRef Name="UsUsuarioS" />
+      <PropertyRef Name="UsClaveS" />
+    </Key>
+    <Property Name="UsCodigoN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UsNombreS" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="UsEmailS" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="UsFecCreD" Type="date" Nullable="false" />
+    <Property Name="UsEstadoB" Type="bit" Nullable="false" />
+    <Property Name="UsUsuarioS" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="UsClaveS" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="MoCodigoN" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <Function Name="spConsultarModulos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spConsultarUsuarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="bdHojaCostosModelStoreContainer">
+    <EntitySet Name="tblModulos" EntityType="Self.tblModulos" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tblModulos].[MoCodigoN] AS [MoCodigoN], 
+    [tblModulos].[MoNombreS] AS [MoNombreS], 
+    [tblModulos].[MoDescripS] AS [MoDescripS], 
+    [tblModulos].[MoFecCreD] AS [MoFecCreD], 
+    [tblModulos].[MoEstadoB] AS [MoEstadoB]
+    FROM [dbo].[tblModulos] AS [tblModulos]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tblUsuarios" EntityType="Self.tblUsuarios" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tblUsuarios].[UsCodigoN] AS [UsCodigoN], 
+    [tblUsuarios].[UsNombreS] AS [UsNombreS], 
+    [tblUsuarios].[UsEmailS] AS [UsEmailS], 
+    [tblUsuarios].[UsFecCreD] AS [UsFecCreD], 
+    [tblUsuarios].[UsEstadoB] AS [UsEstadoB], 
+    [tblUsuarios].[UsUsuarioS] AS [UsUsuarioS], 
+    [tblUsuarios].[UsClaveS] AS [UsClaveS], 
+    [tblUsuarios].[MoCodigoN] AS [MoCodigoN]
+    FROM [dbo].[tblUsuarios] AS [tblUsuarios]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

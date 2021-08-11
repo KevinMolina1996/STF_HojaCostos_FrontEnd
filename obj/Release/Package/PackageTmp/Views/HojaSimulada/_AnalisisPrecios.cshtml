@@ -1,0 +1,151 @@
+﻿@model AppWebHojaCosto.Models.HOJA_COSTO_SIMULADA
+
+<div>
+    <fieldset style="border-width:2px; border-style:groove; padding:10px;">
+        <legend style="padding: 2px; width:auto;">Analisis de Precios por Destino de Distribucion</legend>
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <span style="font-weight:bold; font-size:18px;">Estimado</span>
+            </div>
+            <div class="col-md-4">
+                <span style="font-weight:bold; font-size:18px;">Real</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-4">
+                        @Html.HiddenFor(x => x.TBL_SIM_ANALISIS_PREC.SimApCodigoN)
+                        @Html.LabelFor(m => m.TBL_SIM_ANALISIS_PREC.SimApPrecMaxIvaEstD, new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group mb-1">
+                            @Html.TextBoxFor(m => m.TBL_SIM_ANALISIS_PREC.SimApPrecMaxIvaEstD, new { name = "SimApPrecMaxIvaEstD", id = "SimApPrecMaxIvaEstD", @class = "form-control input-sm solonumeros" })
+                            <div class="input-group-append">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group mb-1">
+                            @Html.TextBoxFor(m => m.TBL_SIM_ANALISIS_PREC.SimApPrecMaxIvaRealD, new { name = "SimApPrecMaxIvaRealD", id = "SimApPrecMaxIvaRealD", @class = "form-control input-sm solonumeros" })
+                            <div class="input-group-append">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        @Html.LabelFor(m => m.TBL_SIM_ANALISIS_PREC.SimApMargenMaxBrutoEstF, new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group mb-1">
+                            @Html.TextBoxFor(m => m.TBL_SIM_ANALISIS_PREC.SimApMargenMaxBrutoEstF, new { name = "SimApMargenMaxBrutoEstF", id = "SimApMargenMaxBrutoEstF", @class = "form-control input-sm solonumeros" })
+                            <div class="input-group-append">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group mb-1">
+                            @Html.TextBoxFor(m => m.TBL_SIM_ANALISIS_PREC.SimApMargenMaxBrutoRealF, new { name = "SimApMargenMaxBrutoRealF", id = "SimApMargenMaxBrutoRealF", @class = "form-control input-sm solonumeros" })
+                            <div class="input-group-append">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        @Html.LabelFor(m => m.TBL_SIM_ANALISIS_PREC.SimApMargenMaxOpeEstF, new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group mb-1">
+                            @Html.TextBoxFor(m => m.TBL_SIM_ANALISIS_PREC.SimApMargenMaxOpeEstF, new { name = "SimApMargenMaxOpeEstF", id = "SimApMargenMaxOpeEstF", @class = "form-control input-sm solonumeros" })
+                            <div class="input-group-append">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group mb-1">
+                            @Html.TextBoxFor(m => m.TBL_SIM_ANALISIS_PREC.SimApMargenMaxOpeRealF, new { name = "SimApMargenMaxOpeRealF", id = "SimApMargenMaxOpeRealF", @class = "form-control input-sm solonumeros" })
+                            <div class="input-group-append">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-4">
+                        @Html.LabelFor(m => m.TBL_SIM_ANALISIS_PREC.SimApPrecMinIvaEstD, new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group mb-1">
+                            @Html.TextBoxFor(m => m.TBL_SIM_ANALISIS_PREC.SimApPrecMinIvaEstD, new { name = "SimApPrecMinIvaEstD", id = "SimApPrecMinIvaEstD", @class = "form-control input-sm solonumeros" })
+                            <div class="input-group-append">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group mb-1">
+                            @Html.TextBoxFor(m => m.TBL_SIM_ANALISIS_PREC.SimApPrecMinIvaRealD, new { name = "SimApPrecMinIvaRealD", id = "SimApPrecMinIvaRealD", @class = "form-control input-sm solonumeros" })
+                            <div class="input-group-append">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        @Html.LabelFor(m => m.TBL_SIM_ANALISIS_PREC.SimApMargenMinBrutoEstF, new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group mb-1">
+                            @Html.TextBoxFor(m => m.TBL_SIM_ANALISIS_PREC.SimApMargenMinBrutoEstF, new { name = "SimApMargenMinBrutoEstF", id = "SimApMargenMinBrutoEstF", @class = "form-control input-sm solonumeros" })
+                            <div class="input-group-append">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group mb-1">
+                            @Html.TextBoxFor(m => m.TBL_SIM_ANALISIS_PREC.SimApMargenMinBrutoRealF, new { name = "SimApMargenMinBrutoRealF", id = "SimApMargenMinBrutoRealF", @class = "form-control input-sm solonumeros" })
+                            <div class="input-group-append">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        @Html.LabelFor(m => m.TBL_SIM_ANALISIS_PREC.SimApMargenMinOpeEstF, new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group mb-1">
+                            @Html.TextBoxFor(m => m.TBL_SIM_ANALISIS_PREC.SimApMargenMinOpeEstF, new { name = "SimApMargenMinOpeEstF", id = "SimApMargenMinOpeEstF", @class = "form-control input-sm solonumeros" })
+                            <div class="input-group-append">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group mb-1">
+                            @Html.TextBoxFor(m => m.TBL_SIM_ANALISIS_PREC.SimApMargenMinOpeRealF, new { name = "SimApMargenMinOpeRealF", id = "SimApMargenMinOpeRealF", @class = "form-control input-sm solonumeros" })
+                            <div class="input-group-append">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>

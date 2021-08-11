@@ -1,0 +1,89 @@
+﻿@model AppWebHojaCosto.Models.HOJA_COSTO_PN
+
+@{
+    ViewBag.Title = "Hojas Producido";
+}
+
+@section Scripts {
+    <style>
+        .custom-combobox {
+            width: 100%;
+            position: relative;
+            display: inline-block;
+        }
+
+        .custom-combobox-toggle {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            margin-right: -1px;
+            padding: 0;
+        }
+
+        .custom-combobox-input {
+            margin: 0;
+            padding: 5px 10px;
+        }
+    </style>
+    <script src="~/Scripts/JS/js-hoja-costo-producido.js"></script>
+
+    @if (ViewBag.alerta != null)
+    {
+        <script type="text/javascript">
+            alerta("Alerta!", '@ViewBag.alerta');
+        </script>
+    }
+    @if (ViewBag.error != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alerta("Error!", '@ViewBag.error');
+        };
+        </script>
+    }
+    @if (ViewBag.exito != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alerta("Exito!", '@ViewBag.exito');
+        };
+        </script>
+    }
+    @if (ViewBag.pdf != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                //printJS('../../consolidado.pdf');
+                printJS('../../Documents/@ViewBag.pdf');
+            };
+        </script>
+    }
+    @if (ViewBag.cargar_listas != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                FiltroRef();
+                FiltroMarca2();
+                FiltroColeccion();
+                FiltroLinea("");
+                FiltroEstado("");
+            };
+        </script>
+    }
+}
+
+<h4 style="text-align:center;">PRODUCTO PRODUCIDO</h4>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            @{Html.RenderPartial("_InfoxReferencia", Model);}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            @{Html.RenderPartial("_InfoMasiva", Model);}
+        </div>
+    </div>
+</div>

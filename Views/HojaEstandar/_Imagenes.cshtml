@@ -1,0 +1,14 @@
+﻿@model AppWebHojaCosto.Models.HOJA_COSTO_ESTANDAR
+<div>
+    <fieldset style="border-width:2px; border-style:groove; padding:10px;">
+        <legend style="padding: 2px; width:auto;">Imagenes</legend>
+        <div class="row">
+            <div class="col-sm-6 img-centro">
+                <img src="@Url.Content(Model.TBL_HOJA_COSTO_PN.FirstOrDefault().HcImagenDS)" alt="Image" width="200" />
+            </div>
+            <div class="col-sm-6 img-centro">
+                <img src="@Url.Content(Model.TBL_HOJA_COSTO_PN.FirstOrDefault().HcImagenTS)" alt="Image" width="200" />
+            </div>
+        </div>
+    </fieldset>
+</div>

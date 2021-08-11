@@ -1,0 +1,33 @@
+﻿@model AppWebHojaCosto.Models.HOJA_COSTO_ESTANDAR
+<div>
+    <fieldset style="border-width:2px; border-style:groove; padding:10px;">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "FrmMasiva" }))
+        {
+            @Html.Hidden("Referencia", Model.TBL_HOJA_COSTO_PN.FirstOrDefault().HcReferenciaS);
+            <legend style="padding: 2px; width:auto;">Acciones</legend>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="submit" id="Simulada" class="btn btn-sm btn-dark" value="Simular Hoja de Costo" style="width:100%" onclick="return false;" formnovalidate />
+                    @*<a href="@Url.Action("Index", "HojaSimulada", new { Referencia = Model.TBL_HOJA_COSTO_PN.FirstOrDefault().HcReferenciaS })">
+                            <input type="submit" id="Simulada" class="btn btn-sm btn-dark" value="Simular Hoja de Costo" style="width:100%" onclick="return false;" />
+                        </a>*@
+                </div>
+            </div>
+            <div class="row" style="padding-top:10px;">
+                <div class="col-md-12">
+                    <input type="submit" id="Exportar" class="btn btn-sm btn-dark" formaction="Export" value="Exportar" style="width:100%" formnovalidate />
+                </div>
+            </div>
+            <div class="row" style="padding-top:10px;">
+                <div class="col-md-12">
+                    <input type="submit" id="Imprimir" class="btn btn-sm btn-dark" formaction="GenerarPdf" value="Imprimir" style="width:100%" formnovalidate />
+                </div>
+            </div>
+            <div class="row" style="padding-top:10px;">
+                <div class="col-md-12">
+                    <input type="submit" id="Cerrar" formaction="CerrarHojas" class="btn btn-sm btn-dark" value="Cerrar Hoja de Costo" style="width:100%" formnovalidate />
+                </div>
+            </div>
+        }
+    </fieldset>
+</div>

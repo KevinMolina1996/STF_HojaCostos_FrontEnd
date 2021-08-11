@@ -1,0 +1,1323 @@
+﻿<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B1D1B9B7-B41B-4F2F-8F27-80A3F292A7F2}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AppWebHojaCosto</RootNamespace>
+    <AssemblyName>AppWebHojaCosto</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+    <TargetFrameworkProfile />
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetZip, Version=1.11.0.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetZip.1.11.0\lib\net20\DotNetZip.dll</HintPath>
+    </Reference>
+    <Reference Include="EdgeJs, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Edge.js.8.2.1\lib\net40\EdgeJs.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.5.1.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.5.1\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="FastMember, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FastMember.1.3.0\lib\net45\FastMember.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.2\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.3\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.3\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.900.148\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.900.148\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.900.148\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.900.148\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebDesign, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.900.148\lib\net40\Microsoft.ReportViewer.WebDesign.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.900.148\lib\net40\Microsoft.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.900.148\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="ReportViewerForMvc, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ReportViewerForMvc14.140.1000.523\lib\net45\ReportViewerForMvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Select.HtmlToPdf, Version=18.2.0.0, Culture=neutral, PublicKeyToken=e0ae9f6e27a97018, processorArchitecture=MSIL">
+      <HintPath>..\packages\Select.HtmlToPdf.18.2.0\lib\net40\Select.HtmlToPdf.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.License, Version=1.3.6.40, Culture=neutral, PublicKeyToken=b1144360237c8b3f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.PDF.4.5.3\lib\net40\Spire.License.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.Pdf, Version=4.5.3.2040, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.PDF.4.5.3\lib\net40\Spire.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.SQLite, Version=1.0.108.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.108.0\lib\net45\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.108.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.108.0\lib\net45\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.108.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.108.0\lib\net45\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.4\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.4\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Owin, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.4\lib\net45\System.Web.Http.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\c3.min.css" />
+    <Content Include="Content\chartist.min.css" />
+    <Content Include="Content\dataTables.bootstrap4.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\images\E111235.jpg" />
+    <Content Include="Content\images\E111235_tras.jpg" />
+    <Content Include="Content\jquery-confirm.min.css" />
+    <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\jquery.dm-uploader.min.css" />
+    <Content Include="Content\jquery.toast.css" />
+    <Content Include="Content\print.min.css" />
+    <Content Include="Content\sb-admin.css" />
+    <Content Include="Content\StyleSheet.css" />
+    <Content Include="Content\images\ui-icons_777777_256x240.png" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="icono_STF.ico" />
+    <Content Include="Images\constelacion.jpg" />
+    <Content Include="Images\fondo.png" />
+    <Content Include="Images\loading.gif" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\studiof.png" />
+    <Content Include="ReportViewerWebForm.aspx" />
+    <Content Include="Scripts\bootstrap-checkbox.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\c3.js" />
+    <Content Include="Scripts\Chart.bundle.min.js" />
+    <Content Include="Scripts\Chart.min.js" />
+    <Content Include="Scripts\chartist.min.js" />
+    <Content Include="Scripts\d3.v3.min.js" />
+    <Content Include="Scripts\dataTables.bootstrap4.js" />
+    <Content Include="Scripts\JavaScript.js" />
+    <Content Include="Scripts\jquery-1.12.4.js" />
+    <Content Include="Scripts\interact.js" />
+    <Content Include="App_Data\bdHojaCostosDataSet.xsc">
+      <DependentUpon>bdHojaCostosDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="App_Data\bdHojaCostosDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>bdHojaCostosDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="App_Data\bdHojaCostosDataSet.xss">
+      <DependentUpon>bdHojaCostosDataSet.xsd</DependentUpon>
+    </Content>
+    <Content Include="HojaCostos.sqlite" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Scripts\jquery-1.8.0.intellisense.js" />
+    <Content Include="Scripts\jquery-1.8.0.js" />
+    <Content Include="Scripts\jquery-1.8.0.min.js" />
+    <Content Include="Scripts\jquery-confirm.min.js" />
+    <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery.dataTables.js" />
+    <Content Include="Scripts\jquery.dm-uploader.min.js" />
+    <Content Include="Scripts\jquery.easing.min.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.3.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.3.min.js" />
+    <Content Include="Scripts\jquery.toast.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\js-sinc-ref.js" />
+    <Content Include="Scripts\JS\js-dashboard-1.js" />
+    <Content Include="Scripts\JS\js-dashboard-2.js" />
+    <Content Include="Scripts\JS\js-desfile.js" />
+    <Content Include="Scripts\JS\js-formula-no-producido.js" />
+    <Content Include="Scripts\JS\js-formula-precosteo.js" />
+    <Content Include="Scripts\JS\js-formula-producido.js" />
+    <Content Include="Scripts\JS\js-hoja-costo-no-producido.js" />
+    <Content Include="Scripts\JS\js-hoja-costo-producido.js" />
+    <Content Include="Scripts\JS\js-hoja-estandar-no-producido.js" />
+    <Content Include="Scripts\JS\js-hoja-estandar-simulada.js" />
+    <Content Include="Scripts\JS\js-hoja-estandar.js" />
+    <Content Include="Scripts\JS\js-hoja-precosteo.js" />
+    <Content Include="Scripts\JS\js-hoja-simulada-no-producido.js" />
+    <Content Include="Scripts\JS\js-parametros-no-producido.js" />
+    <Content Include="Scripts\JS\js-parametros-precosteo.js" />
+    <Content Include="Scripts\JS\js-parametros-producido.js" />
+    <Content Include="Scripts\JS\js-sincronizacion.js" />
+    <Content Include="Scripts\justgage.js" />
+    <Content Include="Scripts\loader.js" />
+    <Content Include="Scripts\menu-admin.js" />
+    <Content Include="Scripts\notificacion-admin.js" />
+    <Content Include="Scripts\raphael-2.1.4.min.js" />
+    <Content Include="Scripts\sb-admin-charts.min.js" />
+    <Content Include="Scripts\sb-admin-datatables.min.js" />
+    <Content Include="Scripts\sb-admin.min.js" />
+    <Content Include="Global.asax" />
+    <Content Include="Views\Reportes\ReportControl.ascx" />
+    <Content Include="Views\Reportes\ReportProducido.ascx" />
+    <Content Include="Views\Reportes\ReportVariacion.ascx" />
+    <Content Include="Views\Reportes\Visualizador.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\LdapAuthentication.cs" />
+    <Compile Include="App_Start\NoDirectAccessAttribute.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Data\bdHojaCostosDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>bdHojaCostosDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Context\DataBaseContext.cs" />
+    <Compile Include="Controllers\AlertasController.cs" />
+    <Compile Include="Controllers\CarguesController.cs" />
+    <Compile Include="Controllers\DashBoardLvl1Controller.cs" />
+    <Compile Include="Controllers\DashBoardLvl2Controller.cs" />
+    <Compile Include="Controllers\DesfileController.cs" />
+    <Compile Include="Controllers\FormulaController.cs" />
+    <Compile Include="Controllers\FormulaPNPController.cs" />
+    <Compile Include="Controllers\FormulaPreController.cs" />
+    <Compile Include="Controllers\Helpers\CombinePDF.cs" />
+    <Compile Include="Controllers\Helpers\OwinAuthenticationService.cs" />
+    <Compile Include="Controllers\HojaCostoPNController.cs" />
+    <Compile Include="Controllers\HojaCostoPNPController.cs" />
+    <Compile Include="Controllers\HojaEstandarController.cs" />
+    <Compile Include="Controllers\HojaNoProducidoController.cs" />
+    <Compile Include="Controllers\HojaNoProducidoSimuladaController.cs" />
+    <Compile Include="Controllers\HojaPrecosteoController.cs" />
+    <Compile Include="Controllers\HojaSimuladaController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ModulesController.cs" />
+    <Compile Include="Controllers\OAuthController.cs" />
+    <Compile Include="Controllers\ParametrosController.cs" />
+    <Compile Include="Controllers\ParametrosPnpController.cs" />
+    <Compile Include="Controllers\ParametrosPreController.cs" />
+    <Compile Include="Controllers\ReporteComponentesController.cs" />
+    <Compile Include="Controllers\ReporteEstandarNoProducidoController.cs" />
+    <Compile Include="Controllers\ReporteEstandarProducidoController.cs" />
+    <Compile Include="Controllers\ReportesController.cs" />
+    <Compile Include="Controllers\ReporteVariacionesController.cs" />
+    <Compile Include="Controllers\SincronizacionController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="DecimalModelBinder.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805112027510_MigracionHojaCostoV1.cs" />
+    <Compile Include="Migrations\201805112027510_MigracionHojaCostoV1.Designer.cs">
+      <DependentUpon>201805112027510_MigracionHojaCostoV1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805112152530_MigracionHojaCostoV2.cs" />
+    <Compile Include="Migrations\201805112152530_MigracionHojaCostoV2.Designer.cs">
+      <DependentUpon>201805112152530_MigracionHojaCostoV2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805212127251_MigracionHojaCostoV3.cs" />
+    <Compile Include="Migrations\201805212127251_MigracionHojaCostoV3.Designer.cs">
+      <DependentUpon>201805212127251_MigracionHojaCostoV3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805221619190_MigracionHojaCostoV4.cs" />
+    <Compile Include="Migrations\201805221619190_MigracionHojaCostoV4.Designer.cs">
+      <DependentUpon>201805221619190_MigracionHojaCostoV4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805221646488_MigracionHojaCostoV5.cs" />
+    <Compile Include="Migrations\201805221646488_MigracionHojaCostoV5.Designer.cs">
+      <DependentUpon>201805221646488_MigracionHojaCostoV5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805222019288_MigracionHojaCostoV6.cs" />
+    <Compile Include="Migrations\201805222019288_MigracionHojaCostoV6.Designer.cs">
+      <DependentUpon>201805222019288_MigracionHojaCostoV6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805232029134_MigracionHojaCostoV7.cs" />
+    <Compile Include="Migrations\201805232029134_MigracionHojaCostoV7.Designer.cs">
+      <DependentUpon>201805232029134_MigracionHojaCostoV7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805251504387_MigracionHojaCostoV8.cs" />
+    <Compile Include="Migrations\201805251504387_MigracionHojaCostoV8.Designer.cs">
+      <DependentUpon>201805251504387_MigracionHojaCostoV8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805281440193_MigracionHojaCostoV9.cs" />
+    <Compile Include="Migrations\201805281440193_MigracionHojaCostoV9.Designer.cs">
+      <DependentUpon>201805281440193_MigracionHojaCostoV9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805312138040_MigracionHojaCostov10.cs" />
+    <Compile Include="Migrations\201805312138040_MigracionHojaCostov10.Designer.cs">
+      <DependentUpon>201805312138040_MigracionHojaCostov10.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805312206183_MigracionHojaCostov11.cs" />
+    <Compile Include="Migrations\201805312206183_MigracionHojaCostov11.Designer.cs">
+      <DependentUpon>201805312206183_MigracionHojaCostov11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805312239538_MigracionHojaCostov12.cs" />
+    <Compile Include="Migrations\201805312239538_MigracionHojaCostov12.Designer.cs">
+      <DependentUpon>201805312239538_MigracionHojaCostov12.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806011319218_MigracionHojaCostoV13.cs" />
+    <Compile Include="Migrations\201806011319218_MigracionHojaCostoV13.Designer.cs">
+      <DependentUpon>201806011319218_MigracionHojaCostoV13.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806011338598_MigracionHojaCostoV14.cs" />
+    <Compile Include="Migrations\201806011338598_MigracionHojaCostoV14.Designer.cs">
+      <DependentUpon>201806011338598_MigracionHojaCostoV14.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806011433074_MigracionHojaCostoV15.cs" />
+    <Compile Include="Migrations\201806011433074_MigracionHojaCostoV15.Designer.cs">
+      <DependentUpon>201806011433074_MigracionHojaCostoV15.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806052156229_MigracionHojaCostoV16.cs" />
+    <Compile Include="Migrations\201806052156229_MigracionHojaCostoV16.Designer.cs">
+      <DependentUpon>201806052156229_MigracionHojaCostoV16.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806061508215_MigracionHojaCostoV17.cs" />
+    <Compile Include="Migrations\201806061508215_MigracionHojaCostoV17.Designer.cs">
+      <DependentUpon>201806061508215_MigracionHojaCostoV17.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806121424507_MigracionHojaCostoV18.cs" />
+    <Compile Include="Migrations\201806121424507_MigracionHojaCostoV18.Designer.cs">
+      <DependentUpon>201806121424507_MigracionHojaCostoV18.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806122018241_MigracionHojaCostoV19.cs" />
+    <Compile Include="Migrations\201806122018241_MigracionHojaCostoV19.Designer.cs">
+      <DependentUpon>201806122018241_MigracionHojaCostoV19.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806131438516_MigracionHojaCostoV20.cs" />
+    <Compile Include="Migrations\201806131438516_MigracionHojaCostoV20.Designer.cs">
+      <DependentUpon>201806131438516_MigracionHojaCostoV20.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806132006533_MigracionHojaCostoV21.cs" />
+    <Compile Include="Migrations\201806132006533_MigracionHojaCostoV21.Designer.cs">
+      <DependentUpon>201806132006533_MigracionHojaCostoV21.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806192127020_MigracionHojaCostoV22.cs" />
+    <Compile Include="Migrations\201806192127020_MigracionHojaCostoV22.Designer.cs">
+      <DependentUpon>201806192127020_MigracionHojaCostoV22.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806201411550_MigracionHojaCostoV23.cs" />
+    <Compile Include="Migrations\201806201411550_MigracionHojaCostoV23.Designer.cs">
+      <DependentUpon>201806201411550_MigracionHojaCostoV23.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806212243089_MigracionHojaCostoV24.cs" />
+    <Compile Include="Migrations\201806212243089_MigracionHojaCostoV24.Designer.cs">
+      <DependentUpon>201806212243089_MigracionHojaCostoV24.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806291450513_MigracionHojaCostoV29.cs" />
+    <Compile Include="Migrations\201806291450513_MigracionHojaCostoV29.Designer.cs">
+      <DependentUpon>201806291450513_MigracionHojaCostoV29.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807052203099_MigracionHojaCostoV30.cs" />
+    <Compile Include="Migrations\201807052203099_MigracionHojaCostoV30.Designer.cs">
+      <DependentUpon>201807052203099_MigracionHojaCostoV30.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807091600374_MigracionHojaCostoV31.cs" />
+    <Compile Include="Migrations\201807091600374_MigracionHojaCostoV31.Designer.cs">
+      <DependentUpon>201807091600374_MigracionHojaCostoV31.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807171427110_MigracionHojaCostoV33.cs" />
+    <Compile Include="Migrations\201807171427110_MigracionHojaCostoV33.Designer.cs">
+      <DependentUpon>201807171427110_MigracionHojaCostoV33.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807171446371_MigracionHojaCostoV34.cs" />
+    <Compile Include="Migrations\201807171446371_MigracionHojaCostoV34.Designer.cs">
+      <DependentUpon>201807171446371_MigracionHojaCostoV34.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807171504473_MigracionHojaCostoV35.cs" />
+    <Compile Include="Migrations\201807171504473_MigracionHojaCostoV35.Designer.cs">
+      <DependentUpon>201807171504473_MigracionHojaCostoV35.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807171517095_MigracionHojaCostoV36.cs" />
+    <Compile Include="Migrations\201807171517095_MigracionHojaCostoV36.Designer.cs">
+      <DependentUpon>201807171517095_MigracionHojaCostoV36.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807171609222_MigracionHojaCostoV37.cs" />
+    <Compile Include="Migrations\201807171609222_MigracionHojaCostoV37.Designer.cs">
+      <DependentUpon>201807171609222_MigracionHojaCostoV37.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807171621171_MigracionHojaCostoV37.5.cs" />
+    <Compile Include="Migrations\201807171621171_MigracionHojaCostoV37.5.Designer.cs">
+      <DependentUpon>201807171621171_MigracionHojaCostoV37.5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807181946430_MigracionHojaCostoV38.cs" />
+    <Compile Include="Migrations\201807181946430_MigracionHojaCostoV38.Designer.cs">
+      <DependentUpon>201807181946430_MigracionHojaCostoV38.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807192225457_MigracionHojaCostoV39.cs" />
+    <Compile Include="Migrations\201807192225457_MigracionHojaCostoV39.Designer.cs">
+      <DependentUpon>201807192225457_MigracionHojaCostoV39.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807231951291_MigracionHojaCostov40.cs" />
+    <Compile Include="Migrations\201807231951291_MigracionHojaCostov40.Designer.cs">
+      <DependentUpon>201807231951291_MigracionHojaCostov40.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807241556079_MigracionHojaCostov41.cs" />
+    <Compile Include="Migrations\201807241556079_MigracionHojaCostov41.Designer.cs">
+      <DependentUpon>201807241556079_MigracionHojaCostov41.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807262052426_MigracionHojaCostov42.cs" />
+    <Compile Include="Migrations\201807262052426_MigracionHojaCostov42.Designer.cs">
+      <DependentUpon>201807262052426_MigracionHojaCostov42.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807262059477_MigracionHojaCostov42.2.cs" />
+    <Compile Include="Migrations\201807262059477_MigracionHojaCostov42.2.Designer.cs">
+      <DependentUpon>201807262059477_MigracionHojaCostov42.2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807302154268_MigracionHojaCostov42.3.cs" />
+    <Compile Include="Migrations\201807302154268_MigracionHojaCostov42.3.Designer.cs">
+      <DependentUpon>201807302154268_MigracionHojaCostov42.3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808131613218_MigracionHojaCostov43.cs" />
+    <Compile Include="Migrations\201808131613218_MigracionHojaCostov43.Designer.cs">
+      <DependentUpon>201808131613218_MigracionHojaCostov43.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808132128036_MigracionHojaCostov44.cs" />
+    <Compile Include="Migrations\201808132128036_MigracionHojaCostov44.Designer.cs">
+      <DependentUpon>201808132128036_MigracionHojaCostov44.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808132231489_MigracionHojaCostov44.2.cs" />
+    <Compile Include="Migrations\201808132231489_MigracionHojaCostov44.2.Designer.cs">
+      <DependentUpon>201808132231489_MigracionHojaCostov44.2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808242053000_MigracionHojaCostov45.cs" />
+    <Compile Include="Migrations\201808242053000_MigracionHojaCostov45.Designer.cs">
+      <DependentUpon>201808242053000_MigracionHojaCostov45.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808242208172_MigracionHojaCostov46.cs" />
+    <Compile Include="Migrations\201808242208172_MigracionHojaCostov46.Designer.cs">
+      <DependentUpon>201808242208172_MigracionHojaCostov46.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808242225516_MigracionHojaCostov47.cs" />
+    <Compile Include="Migrations\201808242225516_MigracionHojaCostov47.Designer.cs">
+      <DependentUpon>201808242225516_MigracionHojaCostov47.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808281342163_MigracioHojaCostov48.cs" />
+    <Compile Include="Migrations\201808281342163_MigracioHojaCostov48.Designer.cs">
+      <DependentUpon>201808281342163_MigracioHojaCostov48.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808281403499_MigracioHojaCostov49.cs" />
+    <Compile Include="Migrations\201808281403499_MigracioHojaCostov49.Designer.cs">
+      <DependentUpon>201808281403499_MigracioHojaCostov49.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808282024054_MigracioHojaCostov50.cs" />
+    <Compile Include="Migrations\201808282024054_MigracioHojaCostov50.Designer.cs">
+      <DependentUpon>201808282024054_MigracioHojaCostov50.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809032151132_MigracionHojaCostov51.cs" />
+    <Compile Include="Migrations\201809032151132_MigracionHojaCostov51.Designer.cs">
+      <DependentUpon>201809032151132_MigracionHojaCostov51.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809041430511_MigracionHojaCostov52.cs" />
+    <Compile Include="Migrations\201809041430511_MigracionHojaCostov52.Designer.cs">
+      <DependentUpon>201809041430511_MigracionHojaCostov52.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811062218304_MigracionHojaCostov53.cs" />
+    <Compile Include="Migrations\201811062218304_MigracionHojaCostov53.Designer.cs">
+      <DependentUpon>201811062218304_MigracionHojaCostov53.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811132231291_MigracionFinPnp.cs" />
+    <Compile Include="Migrations\201811132231291_MigracionFinPnp.Designer.cs">
+      <DependentUpon>201811132231291_MigracionFinPnp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811141457393_MigracionHojaCostov54.cs" />
+    <Compile Include="Migrations\201811141457393_MigracionHojaCostov54.Designer.cs">
+      <DependentUpon>201811141457393_MigracionHojaCostov54.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811261438157_MigracionHojaCostov55.cs" />
+    <Compile Include="Migrations\201811261438157_MigracionHojaCostov55.Designer.cs">
+      <DependentUpon>201811261438157_MigracionHojaCostov55.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811271716530_MigracionHojaCostov56.cs" />
+    <Compile Include="Migrations\201811271716530_MigracionHojaCostov56.Designer.cs">
+      <DependentUpon>201811271716530_MigracionHojaCostov56.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811272237348_MigracionHojaCostov57.cs" />
+    <Compile Include="Migrations\201811272237348_MigracionHojaCostov57.Designer.cs">
+      <DependentUpon>201811272237348_MigracionHojaCostov57.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811291419111_MigracionHojaCostov58.cs" />
+    <Compile Include="Migrations\201811291419111_MigracionHojaCostov58.Designer.cs">
+      <DependentUpon>201811291419111_MigracionHojaCostov58.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812041714233_MigracionHojaCostov59.cs" />
+    <Compile Include="Migrations\201812041714233_MigracionHojaCostov59.Designer.cs">
+      <DependentUpon>201812041714233_MigracionHojaCostov59.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812052045521_MigracionHojaCostov60.cs" />
+    <Compile Include="Migrations\201812052045521_MigracionHojaCostov60.Designer.cs">
+      <DependentUpon>201812052045521_MigracionHojaCostov60.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812112024325_MigracionHojaCostov61.cs" />
+    <Compile Include="Migrations\201812112024325_MigracionHojaCostov61.Designer.cs">
+      <DependentUpon>201812112024325_MigracionHojaCostov61.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812112037585_MigracionHojaCostov62.cs" />
+    <Compile Include="Migrations\201812112037585_MigracionHojaCostov62.Designer.cs">
+      <DependentUpon>201812112037585_MigracionHojaCostov62.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902071331115_MigracionHojaCostov63.cs" />
+    <Compile Include="Migrations\201902071331115_MigracionHojaCostov63.Designer.cs">
+      <DependentUpon>201902071331115_MigracionHojaCostov63.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904242118345_MigracionHojaCostov64.cs" />
+    <Compile Include="Migrations\201904242118345_MigracionHojaCostov64.Designer.cs">
+      <DependentUpon>201904242118345_MigracionHojaCostov64.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904242125567_MigracionHojaCostov65.cs" />
+    <Compile Include="Migrations\201904242125567_MigracionHojaCostov65.Designer.cs">
+      <DependentUpon>201904242125567_MigracionHojaCostov65.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905131934486_MigracionHojaCostov66.cs" />
+    <Compile Include="Migrations\201905131934486_MigracionHojaCostov66.Designer.cs">
+      <DependentUpon>201905131934486_MigracionHojaCostov66.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906121930001_MigracionHojaCostov67.cs" />
+    <Compile Include="Migrations\201906121930001_MigracionHojaCostov67.Designer.cs">
+      <DependentUpon>201906121930001_MigracionHojaCostov67.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906131442110_MigracionHojaCostov68.cs" />
+    <Compile Include="Migrations\201906131442110_MigracionHojaCostov68.Designer.cs">
+      <DependentUpon>201906131442110_MigracionHojaCostov68.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906181607022_MigracionHojaCostov69.cs" />
+    <Compile Include="Migrations\201906181607022_MigracionHojaCostov69.Designer.cs">
+      <DependentUpon>201906181607022_MigracionHojaCostov69.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906182004017_MigracionHojaCostov691.cs" />
+    <Compile Include="Migrations\201906182004017_MigracionHojaCostov691.Designer.cs">
+      <DependentUpon>201906182004017_MigracionHojaCostov691.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910291552183_Migracion_Finakl.cs" />
+    <Compile Include="Migrations\201910291552183_Migracion_Finakl.Designer.cs">
+      <DependentUpon>201910291552183_Migracion_Finakl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910311832323_MigracionFinal.cs" />
+    <Compile Include="Migrations\201910311832323_MigracionFinal.Designer.cs">
+      <DependentUpon>201910311832323_MigracionFinal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911011342069_MigracionFinal_2.cs" />
+    <Compile Include="Migrations\201911011342069_MigracionFinal_2.Designer.cs">
+      <DependentUpon>201911011342069_MigracionFinal_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911261430141_MigracionHojaCostosFinal_3.cs" />
+    <Compile Include="Migrations\201911261430141_MigracionHojaCostosFinal_3.Designer.cs">
+      <DependentUpon>201911261430141_MigracionHojaCostosFinal_3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002241932246_cambio_campo_int.cs" />
+    <Compile Include="Migrations\202002241932246_cambio_campo_int.Designer.cs">
+      <DependentUpon>202002241932246_cambio_campo_int.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002252036256_cambio_campo_int_noProducido.cs" />
+    <Compile Include="Migrations\202002252036256_cambio_campo_int_noProducido.Designer.cs">
+      <DependentUpon>202002252036256_cambio_campo_int_noProducido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003051840198_cambio_parametro_aereo.cs" />
+    <Compile Include="Migrations\202003051840198_cambio_parametro_aereo.Designer.cs">
+      <DependentUpon>202003051840198_cambio_parametro_aereo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003060343530_cambio_parametro_int_precosteo.cs" />
+    <Compile Include="Migrations\202003060343530_cambio_parametro_int_precosteo.Designer.cs">
+      <DependentUpon>202003060343530_cambio_parametro_int_precosteo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ALERTA.cs" />
+    <Compile Include="Models\DASHBOARDLVL2.cs" />
+    <Compile Include="Models\DataPoint.cs" />
+    <Compile Include="Models\ERRORES_CARGA.cs" />
+    <Compile Include="Models\HOJA_COSTO_ESTANDAR.cs" />
+    <Compile Include="Models\HOJA_COSTO_PN.cs" />
+    <Compile Include="Models\HOJA_COSTO_PNP.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\PARAMETROS_PN.cs" />
+    <Compile Include="Models\PARAMETROS_PNP.cs" />
+    <Compile Include="Models\PARAMETROS_PRE.cs" />
+    <Compile Include="Models\Response\Rol.cs" />
+    <Compile Include="Models\Response\Token.cs" />
+    <Compile Include="Models\Response\User.cs" />
+    <Compile Include="Models\TBL_ALERTA.cs" />
+    <Compile Include="Models\TBL_ANALISIS_PREC.cs" />
+    <Compile Include="Models\TBL_CAMPOS_FORMULAS.cs" />
+    <Compile Include="Models\TBL_CAMPOS_FORMULAS_PNP.cs" />
+    <Compile Include="Models\TBL_CAMPOS_FORMULAS_PRE.cs" />
+    <Compile Include="Models\TBL_CARGUE_COTIZACION_INSUMO.cs" />
+    <Compile Include="Models\TBL_CARGUE_COTIZACION_TELA.cs" />
+    <Compile Include="Models\TBL_CONSUMO_TELAS.cs" />
+    <Compile Include="Models\TBL_ETIQ_MAR_EMP.cs" />
+    <Compile Include="Models\TBL_FECHAS_DASHBOARD.cs" />
+    <Compile Include="Models\TBL_FORMULA.cs" />
+    <Compile Include="Models\Json\JSONOutput.cs" />
+    <Compile Include="Models\Modulos.cs" />
+    <Compile Include="Models\TBL_FORMULA_PNP.cs" />
+    <Compile Include="Models\TBL_FORMULA_PRE.cs" />
+    <Compile Include="Models\TBL_HOJA_COSTO_PN.cs" />
+    <Compile Include="Models\TBL_HOJA_COSTO_PNP.cs" />
+    <Compile Include="Models\TBL_INS_ACC.cs" />
+    <Compile Include="Models\TBL_MOD_CIF.cs" />
+    <Compile Include="Models\TBL_OPERACIONES_FORMULAS.cs" />
+    <Compile Include="Models\TBL_OPERACIONES_FORMULAS_PRE.cs" />
+    <Compile Include="Models\TBL_PARAM_PN.cs" />
+    <Compile Include="Models\Response\HelperResponse.cs" />
+    <Compile Include="Models\TBL_PARAM_PNP.cs" />
+    <Compile Include="Models\TBL_PARAM_PRE.cs" />
+    <Compile Include="Models\TBL_PRE_ANALISIS_PREC.cs" />
+    <Compile Include="Models\TBL_PRE_CONSUMO_TELAS.cs" />
+    <Compile Include="Models\TBL_PRE_ETIQ_MAR_EMP.cs" />
+    <Compile Include="Models\TBL_PRE_HOJA_COSTO_PN.cs" />
+    <Compile Include="Models\TBL_PRE_INS_ACC.cs" />
+    <Compile Include="Models\TBL_PRE_MOD_CIF.cs" />
+    <Compile Include="Models\TBL_PRE_PROCESO.cs" />
+    <Compile Include="Models\TBL_PRE_RES_GAS_COS_DIS.cs" />
+    <Compile Include="Models\TBL_PRE_RES_GEN_COS_PRD.cs" />
+    <Compile Include="Models\TBL_PROCESO.cs" />
+    <Compile Include="Models\TBL_REF_SINC.cs" />
+    <Compile Include="Models\TBL_RES_GAS_COS_DIS.cs" />
+    <Compile Include="Models\TBL_RES_GEN_COS_PRD.cs" />
+    <Compile Include="Models\TBL_SIM_ANALISIS_PREC.cs" />
+    <Compile Include="Models\TBL_SIM_CONSUMO_TELAS.cs" />
+    <Compile Include="Models\TBL_SIM_ETIQ_MAR_EMP.cs" />
+    <Compile Include="Models\TBL_SIM_HOJA_COSTO_PN.cs" />
+    <Compile Include="Models\TBL_SIM_HOJA_COSTO_PNP.cs" />
+    <Compile Include="Models\TBL_SIM_INS_ACC.cs" />
+    <Compile Include="Models\TBL_SIM_MOD_CIF.cs" />
+    <Compile Include="Models\TBL_SIM_PROCESO.cs" />
+    <Compile Include="Models\TBL_SIM_RES_GAS_COS_DIS.cs" />
+    <Compile Include="Models\TBL_SIM_RES_GEN_COS_PRD.cs" />
+    <Compile Include="Hub\MyHub.cs" />
+    <Compile Include="Hub\NotificationComponent.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Alertas\Index.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\HojaCostoPNP\Index.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\HojaEstandar\AnalisisPrecios.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AnalisisPrecios.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\HojaEstandar\ConsumoTelas.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConsumoTelas.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\HojaEstandar\GastosProduccion.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GastosProduccion.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\HojaEstandar\Index.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\HojaEstandar\Insumos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Insumos.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\HojaEstandar\Marquilla.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Marquilla.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\HojaEstandar\ModCif.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModCif.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\HojaEstandar\Proceso.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Proceso.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\HojaEstandar\ResumenGastos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResumenGastos.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ParametrosPnp\Index.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Parametros\Index.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Sincronizacion\Index.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\AlertaService.cs" />
+    <Compile Include="Services\CargueService.cs" />
+    <Compile Include="Services\DashBoardNivel1Service.cs" />
+    <Compile Include="Services\DashBoardNivel2Service.cs" />
+    <Compile Include="Services\DesfileService.cs" />
+    <Compile Include="Services\FormulaPrecosteoService.cs" />
+    <Compile Include="Services\FormulaService.cs" />
+    <Compile Include="Services\HojaCostoPNPService.cs" />
+    <Compile Include="Services\HojaCostoService.cs" />
+    <Compile Include="Services\HojaCostoSimPNPService.cs" />
+    <Compile Include="Services\ParametrosPnpServices.cs" />
+    <Compile Include="Services\ParametrosPrecosteoService.cs" />
+    <Compile Include="Services\ParametrosServices.cs" />
+    <Compile Include="Services\ReportesService.cs" />
+    <Compile Include="Services\SincService.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="Views\Reportes\ReportControl.ascx.cs">
+      <DependentUpon>ReportControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Reportes\ReportControl.ascx.designer.cs">
+      <DependentUpon>ReportControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Reportes\ReportProducido.ascx.cs">
+      <DependentUpon>ReportProducido.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Reportes\ReportProducido.ascx.designer.cs">
+      <DependentUpon>ReportProducido.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Reportes\ReportVariacion.ascx.cs">
+      <DependentUpon>ReportVariacion.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Reportes\ReportVariacion.ascx.designer.cs">
+      <DependentUpon>ReportVariacion.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Reportes\Visualizador.aspx.cs">
+      <DependentUpon>Visualizador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Reportes\Visualizador.aspx.designer.cs">
+      <DependentUpon>Visualizador.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="Views\Formula\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\_Menu.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Modules\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Parametros\Index.cshtml" />
+    <Content Include="Views\Parametros\_Formulario.cshtml" />
+    <Content Include="Views\Parametros\_Consultar.cshtml" />
+    <Content Include="Views\ParametrosPnp\Index.cshtml" />
+    <Content Include="Views\ParametrosPnp\_Consultar.cshtml" />
+    <Content Include="Views\ParametrosPnp\_Formulario.cshtml" />
+    <Content Include="Views\HojaEstandar\Index.cshtml" />
+    <Content Include="Views\HojaEstandar\_InfoBasica.cshtml" />
+    <Content Include="Views\HojaEstandar\_ConsumoTelas.cshtml" />
+    <Content Include="Views\HojaEstandar\_Procesos.cshtml" />
+    <Content Include="Views\HojaEstandar\_Insumos.cshtml" />
+    <Content Include="Views\HojaEstandar\_Marquillas.cshtml" />
+    <Content Include="Views\HojaEstandar\_ModCif.cshtml" />
+    <Content Include="Views\HojaEstandar\_CostoProduccion.cshtml" />
+    <Content Include="Views\HojaEstandar\_ResumenGastos.cshtml" />
+    <Content Include="Views\HojaEstandar\_AnalisisPrecios.cshtml" />
+    <Content Include="Views\HojaEstandar\_PiramidePrecios.cshtml" />
+    <Content Include="Views\HojaEstandar\_Imagenes.cshtml" />
+    <Content Include="Views\HojaCostoPN\Index.cshtml" />
+    <Content Include="Views\HojaCostoPN\_InfoxReferencia.cshtml" />
+    <Content Include="Views\HojaCostoPN\_InfoMasiva.cshtml" />
+    <Content Include="Views\HojaEstandar\_Acciones.cshtml" />
+    <Content Include="Views\HojaCostoPNP\Index.cshtml" />
+    <Content Include="Views\HojaNoProducido\_InfoBasica.cshtml" />
+    <Content Include="Views\HojaCostoPNP\_InfoxReferencia.cshtml" />
+    <Content Include="Views\HojaCostoPNP\_InfoMasiva.cshtml" />
+    <Content Include="Views\HojaNoProducido\Index.cshtml" />
+    <Content Include="Views\HojaNoProducido\_DatosBasicos.cshtml" />
+    <Content Include="Views\HojaNoProducido\_DatosLinea.cshtml" />
+    <Content Include="Views\HojaNoProducido\_Rubro.cshtml" />
+    <Content Include="Views\HojaNoProducido\_Precios.cshtml" />
+    <Content Include="Views\HojaNoProducido\_Piramide.cshtml" />
+    <Content Include="Views\HojaNoProducido\_Acciones.cshtml" />
+    <Content Include="Views\HojaNoProducido\_Participacion.cshtml" />
+    <Content Include="Views\HojaNoProducido\_ImgDelantera.cshtml" />
+    <Content Include="Views\HojaNoProducido\_ImgTrasera.cshtml" />
+    <Content Include="Views\HojaNoProducidoSimulada\Index.cshtml" />
+    <Content Include="Views\HojaNoProducidoSimulada\_InfoBasica.cshtml" />
+    <Content Include="Views\HojaNoProducidoSimulada\_DatosBasicos.cshtml" />
+    <Content Include="Views\HojaNoProducidoSimulada\_DatosLinea.cshtml" />
+    <Content Include="Views\HojaNoProducidoSimulada\_ImgDelantera.cshtml" />
+    <Content Include="Views\HojaNoProducidoSimulada\_Rubro.cshtml" />
+    <Content Include="Views\HojaNoProducidoSimulada\_ImgTrasera.cshtml" />
+    <Content Include="Views\HojaNoProducidoSimulada\_Participacion.cshtml" />
+    <Content Include="Views\HojaNoProducidoSimulada\_Precios.cshtml" />
+    <Content Include="Views\HojaNoProducidoSimulada\_Piramide.cshtml" />
+    <Content Include="Views\HojaNoProducidoSimulada\_Acciones.cshtml" />
+    <Content Include="Views\HojaSimulada\Index.cshtml" />
+    <Content Include="Views\HojaSimulada\_InfoBasica.cshtml" />
+    <Content Include="Views\HojaSimulada\_ConsumoTelas.cshtml" />
+    <Content Include="Views\HojaSimulada\_Procesos.cshtml" />
+    <Content Include="Views\HojaSimulada\_Insumos.cshtml" />
+    <Content Include="Views\HojaSimulada\_Marquillas.cshtml" />
+    <Content Include="Views\HojaSimulada\_ModCif.cshtml" />
+    <Content Include="Views\HojaSimulada\_CostoProduccion.cshtml" />
+    <Content Include="Views\HojaSimulada\_ResumenGastos.cshtml" />
+    <Content Include="Views\HojaSimulada\_Imagenes.cshtml" />
+    <Content Include="Views\HojaSimulada\_AnalisisPrecios.cshtml" />
+    <Content Include="Views\HojaSimulada\_PiramidePrecios.cshtml" />
+    <Content Include="Views\HojaSimulada\_Acciones.cshtml" />
+    <Content Include="Views\Alertas\Index.cshtml" />
+    <Content Include="Views\Reportes\Consulta.cshtml" />
+    <Content Include="Views\HojaPrecosteo\Index.cshtml" />
+    <Content Include="Views\HojaPrecosteo\_InfoBasica.cshtml" />
+    <Content Include="Views\HojaPrecosteo\_ConsumoTelas.cshtml" />
+    <Content Include="Views\HojaPrecosteo\_Procesos.cshtml" />
+    <Content Include="Views\HojaPrecosteo\_Insumos.cshtml" />
+    <Content Include="Views\HojaPrecosteo\_Marquillas.cshtml" />
+    <Content Include="Views\HojaPrecosteo\_ModCif.cshtml" />
+    <Content Include="Views\HojaPrecosteo\_CostoProduccion.cshtml" />
+    <Content Include="Views\HojaPrecosteo\_ResumenGastos.cshtml" />
+    <Content Include="Views\HojaPrecosteo\_Acciones.cshtml" />
+    <Content Include="Views\HojaPrecosteo\_PiramidePrecios.cshtml" />
+    <Content Include="Views\HojaPrecosteo\_AnalisisPrecios.cshtml" />
+    <Content Include="Views\HojaPrecosteo\_Imagenes.cshtml" />
+    <Content Include="Views\Cargues\Index.cshtml" />
+    <Content Include="Views\FormulaPNP\Index.cshtml" />
+    <Content Include="Views\DashBoardLvl1\Graficos.cshtml" />
+    <Content Include="Views\DashBoardLvl2\Consulta.cshtml" />
+    <Content Include="Views\DashBoardLvl2\_ListaProducido.cshtml" />
+    <Content Include="Views\DashBoardLvl2\_ListaPrecosteo.cshtml" />
+    <Content Include="Views\DashBoardLvl2\_ListaNoProducido.cshtml" />
+    <Content Include="Views\Desfile\Seguimiento.cshtml" />
+    <Content Include="Views\Reportes\VariacionCosto.cshtml" />
+    <Content Include="Views\Reportes\Producido.cshtml" />
+    <Content Include="Views\Sincronizacion\Parametrizar.cshtml" />
+    <Content Include="Views\ReporteVariaciones\Consulta.cshtml" />
+    <Content Include="Views\ReporteEstandarProducido\Consulta.cshtml" />
+    <Content Include="Views\ReporteComponentes\Consulta.cshtml" />
+    <Content Include="Views\ReporteEstandarNoProducido\Consulta.cshtml" />
+    <Content Include="Scripts\print.min.js" />
+    <Content Include="Views\FormulaPre\Consulta.cshtml" />
+    <Content Include="Views\ParametrosPre\Consulta.cshtml" />
+    <Content Include="Views\ParametrosPre\_Consultar.cshtml" />
+    <Content Include="Views\ParametrosPre\_Formulario.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Documents\" />
+    <Folder Include="Resources\Login\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201805112027510_MigracionHojaCostoV1.resx">
+      <DependentUpon>201805112027510_MigracionHojaCostoV1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805112152530_MigracionHojaCostoV2.resx">
+      <DependentUpon>201805112152530_MigracionHojaCostoV2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805212127251_MigracionHojaCostoV3.resx">
+      <DependentUpon>201805212127251_MigracionHojaCostoV3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805221619190_MigracionHojaCostoV4.resx">
+      <DependentUpon>201805221619190_MigracionHojaCostoV4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805221646488_MigracionHojaCostoV5.resx">
+      <DependentUpon>201805221646488_MigracionHojaCostoV5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805222019288_MigracionHojaCostoV6.resx">
+      <DependentUpon>201805222019288_MigracionHojaCostoV6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805232029134_MigracionHojaCostoV7.resx">
+      <DependentUpon>201805232029134_MigracionHojaCostoV7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805251504387_MigracionHojaCostoV8.resx">
+      <DependentUpon>201805251504387_MigracionHojaCostoV8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805281440193_MigracionHojaCostoV9.resx">
+      <DependentUpon>201805281440193_MigracionHojaCostoV9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805312138040_MigracionHojaCostov10.resx">
+      <DependentUpon>201805312138040_MigracionHojaCostov10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805312206183_MigracionHojaCostov11.resx">
+      <DependentUpon>201805312206183_MigracionHojaCostov11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805312239538_MigracionHojaCostov12.resx">
+      <DependentUpon>201805312239538_MigracionHojaCostov12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806011319218_MigracionHojaCostoV13.resx">
+      <DependentUpon>201806011319218_MigracionHojaCostoV13.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806011338598_MigracionHojaCostoV14.resx">
+      <DependentUpon>201806011338598_MigracionHojaCostoV14.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806011433074_MigracionHojaCostoV15.resx">
+      <DependentUpon>201806011433074_MigracionHojaCostoV15.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806052156229_MigracionHojaCostoV16.resx">
+      <DependentUpon>201806052156229_MigracionHojaCostoV16.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806061508215_MigracionHojaCostoV17.resx">
+      <DependentUpon>201806061508215_MigracionHojaCostoV17.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806121424507_MigracionHojaCostoV18.resx">
+      <DependentUpon>201806121424507_MigracionHojaCostoV18.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806122018241_MigracionHojaCostoV19.resx">
+      <DependentUpon>201806122018241_MigracionHojaCostoV19.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806131438516_MigracionHojaCostoV20.resx">
+      <DependentUpon>201806131438516_MigracionHojaCostoV20.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806132006533_MigracionHojaCostoV21.resx">
+      <DependentUpon>201806132006533_MigracionHojaCostoV21.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806192127020_MigracionHojaCostoV22.resx">
+      <DependentUpon>201806192127020_MigracionHojaCostoV22.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806201411550_MigracionHojaCostoV23.resx">
+      <DependentUpon>201806201411550_MigracionHojaCostoV23.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806212243089_MigracionHojaCostoV24.resx">
+      <DependentUpon>201806212243089_MigracionHojaCostoV24.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806291450513_MigracionHojaCostoV29.resx">
+      <DependentUpon>201806291450513_MigracionHojaCostoV29.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807052203099_MigracionHojaCostoV30.resx">
+      <DependentUpon>201807052203099_MigracionHojaCostoV30.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807091600374_MigracionHojaCostoV31.resx">
+      <DependentUpon>201807091600374_MigracionHojaCostoV31.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807171427110_MigracionHojaCostoV33.resx">
+      <DependentUpon>201807171427110_MigracionHojaCostoV33.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807171446371_MigracionHojaCostoV34.resx">
+      <DependentUpon>201807171446371_MigracionHojaCostoV34.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807171504473_MigracionHojaCostoV35.resx">
+      <DependentUpon>201807171504473_MigracionHojaCostoV35.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807171517095_MigracionHojaCostoV36.resx">
+      <DependentUpon>201807171517095_MigracionHojaCostoV36.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807171609222_MigracionHojaCostoV37.resx">
+      <DependentUpon>201807171609222_MigracionHojaCostoV37.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807171621171_MigracionHojaCostoV37.5.resx">
+      <DependentUpon>201807171621171_MigracionHojaCostoV37.5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807181946430_MigracionHojaCostoV38.resx">
+      <DependentUpon>201807181946430_MigracionHojaCostoV38.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807192225457_MigracionHojaCostoV39.resx">
+      <DependentUpon>201807192225457_MigracionHojaCostoV39.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807231951291_MigracionHojaCostov40.resx">
+      <DependentUpon>201807231951291_MigracionHojaCostov40.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807241556079_MigracionHojaCostov41.resx">
+      <DependentUpon>201807241556079_MigracionHojaCostov41.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807262052426_MigracionHojaCostov42.resx">
+      <DependentUpon>201807262052426_MigracionHojaCostov42.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807262059477_MigracionHojaCostov42.2.resx">
+      <DependentUpon>201807262059477_MigracionHojaCostov42.2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807302154268_MigracionHojaCostov42.3.resx">
+      <DependentUpon>201807302154268_MigracionHojaCostov42.3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808131613218_MigracionHojaCostov43.resx">
+      <DependentUpon>201808131613218_MigracionHojaCostov43.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808132128036_MigracionHojaCostov44.resx">
+      <DependentUpon>201808132128036_MigracionHojaCostov44.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808132231489_MigracionHojaCostov44.2.resx">
+      <DependentUpon>201808132231489_MigracionHojaCostov44.2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808242053000_MigracionHojaCostov45.resx">
+      <DependentUpon>201808242053000_MigracionHojaCostov45.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808242208172_MigracionHojaCostov46.resx">
+      <DependentUpon>201808242208172_MigracionHojaCostov46.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808242225516_MigracionHojaCostov47.resx">
+      <DependentUpon>201808242225516_MigracionHojaCostov47.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808281342163_MigracioHojaCostov48.resx">
+      <DependentUpon>201808281342163_MigracioHojaCostov48.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808281403499_MigracioHojaCostov49.resx">
+      <DependentUpon>201808281403499_MigracioHojaCostov49.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808282024054_MigracioHojaCostov50.resx">
+      <DependentUpon>201808282024054_MigracioHojaCostov50.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809032151132_MigracionHojaCostov51.resx">
+      <DependentUpon>201809032151132_MigracionHojaCostov51.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809041430511_MigracionHojaCostov52.resx">
+      <DependentUpon>201809041430511_MigracionHojaCostov52.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811062218304_MigracionHojaCostov53.resx">
+      <DependentUpon>201811062218304_MigracionHojaCostov53.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811132231291_MigracionFinPnp.resx">
+      <DependentUpon>201811132231291_MigracionFinPnp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811141457393_MigracionHojaCostov54.resx">
+      <DependentUpon>201811141457393_MigracionHojaCostov54.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811261438157_MigracionHojaCostov55.resx">
+      <DependentUpon>201811261438157_MigracionHojaCostov55.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811271716530_MigracionHojaCostov56.resx">
+      <DependentUpon>201811271716530_MigracionHojaCostov56.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811272237348_MigracionHojaCostov57.resx">
+      <DependentUpon>201811272237348_MigracionHojaCostov57.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811291419111_MigracionHojaCostov58.resx">
+      <DependentUpon>201811291419111_MigracionHojaCostov58.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812041714233_MigracionHojaCostov59.resx">
+      <DependentUpon>201812041714233_MigracionHojaCostov59.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812052045521_MigracionHojaCostov60.resx">
+      <DependentUpon>201812052045521_MigracionHojaCostov60.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812112024325_MigracionHojaCostov61.resx">
+      <DependentUpon>201812112024325_MigracionHojaCostov61.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812112037585_MigracionHojaCostov62.resx">
+      <DependentUpon>201812112037585_MigracionHojaCostov62.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902071331115_MigracionHojaCostov63.resx">
+      <DependentUpon>201902071331115_MigracionHojaCostov63.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904242118345_MigracionHojaCostov64.resx">
+      <DependentUpon>201904242118345_MigracionHojaCostov64.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904242125567_MigracionHojaCostov65.resx">
+      <DependentUpon>201904242125567_MigracionHojaCostov65.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905131934486_MigracionHojaCostov66.resx">
+      <DependentUpon>201905131934486_MigracionHojaCostov66.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906121930001_MigracionHojaCostov67.resx">
+      <DependentUpon>201906121930001_MigracionHojaCostov67.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906131442110_MigracionHojaCostov68.resx">
+      <DependentUpon>201906131442110_MigracionHojaCostov68.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906181607022_MigracionHojaCostov69.resx">
+      <DependentUpon>201906181607022_MigracionHojaCostov69.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906182004017_MigracionHojaCostov691.resx">
+      <DependentUpon>201906182004017_MigracionHojaCostov691.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910291552183_Migracion_Finakl.resx">
+      <DependentUpon>201910291552183_Migracion_Finakl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910311832323_MigracionFinal.resx">
+      <DependentUpon>201910311832323_MigracionFinal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911011342069_MigracionFinal_2.resx">
+      <DependentUpon>201911011342069_MigracionFinal_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911261430141_MigracionHojaCostosFinal_3.resx">
+      <DependentUpon>201911261430141_MigracionHojaCostosFinal_3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002241932246_cambio_campo_int.resx">
+      <DependentUpon>202002241932246_cambio_campo_int.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002252036256_cambio_campo_int_noProducido.resx">
+      <DependentUpon>202002252036256_cambio_campo_int_noProducido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003051840198_cambio_parametro_aereo.resx">
+      <DependentUpon>202003051840198_cambio_parametro_aereo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003060343530_cambio_parametro_int_precosteo.resx">
+      <DependentUpon>202003060343530_cambio_parametro_int_precosteo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ReportAlmacenamientoEstandar.rdlc" />
+    <EmbeddedResource Include="Reports\ReportAlmacenamientoNoProducido.rdlc" />
+    <EmbeddedResource Include="Reports\ReportComponentesGenericos.rdlc" />
+    <EmbeddedResource Include="Reports\ReportHojaCostoPrePN.rdlc" />
+    <EmbeddedResource Include="Reports\ReportHojaCostoSimPN.rdlc" />
+    <EmbeddedResource Include="Reports\ReportHojaCostoPN.rdlc" />
+    <EmbeddedResource Include="Reports\ReportHojaCostoSimPNP.rdlc" />
+    <EmbeddedResource Include="Reports\ReportHojaCostoPNP.rdlc" />
+    <EmbeddedResource Include="Resources\Alertas\Index.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\HojaCostoPNP\Index.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\HojaEstandar\AnalisisPrecios.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AnalisisPrecios.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\HojaEstandar\ConsumoTelas.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ConsumoTelas.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\HojaEstandar\GastosProduccion.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GastosProduccion.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\HojaEstandar\Index.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\HojaEstandar\Insumos.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Insumos.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\HojaEstandar\Marquilla.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Marquilla.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\HojaEstandar\ModCif.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ModCif.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\HojaEstandar\Proceso.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Proceso.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\HojaEstandar\ResumenGastos.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResumenGastos.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ParametrosPnp\Index.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Parametros\Index.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Sincronizacion\Index.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>22212</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:22212/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.108.0\build\net45\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.108.0\build\net45\System.Data.SQLite.Core.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

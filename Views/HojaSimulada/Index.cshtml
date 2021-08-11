@@ -1,0 +1,221 @@
+﻿@model AppWebHojaCosto.Models.HOJA_COSTO_SIMULADA
+
+@{
+    /**/
+
+    ViewBag.Title = "Hoja Costo Simulada";
+}
+
+@section Scripts {
+    <style>
+        .modal {
+            text-align: center;
+            padding: 0 !important;
+        }
+
+            .modal:before {
+                content: '';
+                display: inline-block;
+                height: 100%;
+                vertical-align: middle;
+                margin-right: -4px;
+            }
+
+        .modal-dialog {
+            display: inline-block;
+            text-align: left;
+            vertical-align: middle;
+        }
+    </style>
+    <script src="~/Scripts/JS/js-hoja-estandar-simulada.js"></script>
+    <script>
+    </script>
+
+    @if (ViewBag.alerta != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alerta("Alerta!", '@ViewBag.alerta');
+        };
+        </script>
+    }
+    @if (ViewBag.error != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alerta("Error!", '@ViewBag.error');
+        };
+        </script>
+    }
+    @if (ViewBag.exito != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alerta("Exito!", '@ViewBag.exito');
+        };
+        </script>
+    }
+    @if (ViewBag.mensaje != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alerta("Alerta!", '@ViewBag.mensaje');
+        };
+        </script>
+    }
+    @if (ViewBag.pdf != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                //printJS('../../consolidado.pdf');
+                printJS('../../Documents/@ViewBag.pdf');
+            };
+        </script>
+    }
+}
+
+<div class="container-fluid" id="contenedorSim">
+    @using (Html.BeginForm("Guardar", "HojaSimulada", FormMethod.Post, new { id = "FrmHojaSim" }))
+    {
+        @Html.Hidden("boModal");
+        @Html.ValidationSummary(true)
+        <div class="row">
+            <div class="col-md-12">
+                @{Html.RenderPartial("_InfoBasica", Model);}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-7">
+                @{Html.RenderPartial("_ConsumoTelas", Model);}
+                <div class="inferior_modulos">
+                    <div class="row">
+                        <div class="col-md-7">
+                            @Html.LabelFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcTotalTelasD, new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-2">
+                            @if (Model.TBL_SIM_CONSUMO_TELAS != null)
+                            {
+                                @Html.TextBoxFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcTotalConTelasD, new { name = "SimHcTotalConTelasD", id = "SimHcTotalConTelasD", @class = "form-control input-sm input_totales", @readonly = "readonly" })
+                            }
+                        </div>
+                        <div class="col-md-2">
+                            @if (Model.TBL_SIM_CONSUMO_TELAS != null)
+                            {
+                                @Html.TextBoxFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcTotalTelasD, new { name = "SimHcTotalTelasD", id = "SimHcTotalTelasD", @class = "form-control input-sm input_totales", @readonly = "readonly" })
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                @{Html.RenderPartial("_Procesos", Model);}
+                <div class="inferior_modulos">
+                    <div class="row">
+                        <div class="col-md-6">
+                            @Html.LabelFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcTotalProcesosD, new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-6">
+                            @if (Model != null)
+                            {
+                                @Html.TextBoxFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcTotalProcesosD, new { name = "SimHcTotalProcesosD", id = "SimHcTotalProcesosD", @class = "form-control input-sm input_totales", @readonly = "readonly" })
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-7">
+                @{Html.RenderPartial("_Insumos", Model);}
+                <div class="inferior_modulos">
+                    <div class="row">
+                        <div class="col-md-10">
+                            @Html.LabelFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcTotalInsumoD, new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-2">
+                            @if (Model != null)
+                            {
+                                @Html.TextBoxFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcTotalInsumoD, new { name = "SimHcTotalInsumoD", id = "SimHcTotalInsumoD", @class = "form-control input-sm input_totales", @readonly = "readonly" })
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                @{Html.RenderPartial("_Marquillas", Model);}
+                <div class="inferior_modulos">
+                    <div class="row">
+                        <div class="col-md-10">
+                            @Html.LabelFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcTotalMarquillaD, new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-2">
+                            @if (Model != null)
+                            {
+                                @Html.TextBoxFor(model => model.TBL_SIM_HOJA_COSTO_PN.SimHcTotalMarquillaD, new { name = "SimHcTotalMarquillaD", id = "SimHcTotalMarquillaD", @class = "form-control input-sm input_totales", @readonly = "readonly" })
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-7">
+                @{Html.RenderPartial("_ModCif", Model);}
+            </div>
+            <div class="col-md-5">
+                @{Html.RenderPartial("_CostoProduccion", Model);}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-7">
+                @{Html.RenderPartial("_ResumenGastos", Model);}
+            </div>
+            <div class="col-md-5">
+                @{Html.RenderPartial("_Imagenes", Model);}
+            </div>
+        </div>
+        <div class="row" style="margin-bottom:15px;">
+            <div class="col-md-7">
+                @{Html.RenderPartial("_AnalisisPrecios", Model);}
+            </div>
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-md-12">
+                        @{Html.RenderPartial("_PiramidePrecios", Model);}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        @{Html.RenderPartial("_Acciones", Model);}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="display:none;" id="conFormulas">
+            @if (ViewBag.formulas != null)
+            {
+                foreach (var item in ViewBag.formulas)
+                {
+                    <input type="hidden" data-name="@item.FoCampoReferenciaS" data-formula="@item.FoOperacionS" data-consulta="@item.FoConsultaSQLiteS" />
+                }
+            }
+            @if (ViewBag.parametros != null)
+            {
+                foreach (var item in ViewBag.parametros)
+                {
+                    <input type="hidden" id="@item.NombreCampo" value="@item.ValorCampo" />
+                }
+            }
+        </div>
+    }
+</div>
+
+<div class="modal fade" id="modalLoading" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static" data-keyboard="false" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img src="~/Images/loading.gif" />
+            </div>
+        </div>
+    </div>
+</div>

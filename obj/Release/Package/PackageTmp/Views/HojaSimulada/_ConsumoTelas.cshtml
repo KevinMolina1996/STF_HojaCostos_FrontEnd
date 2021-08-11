@@ -1,0 +1,50 @@
+﻿@model AppWebHojaCosto.Models.HOJA_COSTO_SIMULADA
+
+<fieldset style="border-width:2px; border-style:groove; padding:10px;" id="telas">
+    <legend style="padding: 2px; width:auto;">CONSUMO TELAS</legend>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <div style="text-align:right; text-decoration:underline;"><a href="javascript: void(0)" id="addTelas">+ Adicionar</a></div>
+                <table id="tablaTelas" class="table table-sm table-bordered" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>@Html.LabelFor(model => model.TBL_SIM_CONSUMO_TELAS.FirstOrDefault().SimCtNombreS, new { @class = "control-label" })</th>
+                            <th>@Html.LabelFor(model => model.TBL_SIM_CONSUMO_TELAS.FirstOrDefault().SimCtColorS, new { @class = "control-label" })</th>
+                            <th>@Html.LabelFor(model => model.TBL_SIM_CONSUMO_TELAS.FirstOrDefault().SimCtCtsxMtD, new { @class = "control-label" })</th>
+                            <th>@Html.LabelFor(model => model.TBL_SIM_CONSUMO_TELAS.FirstOrDefault().SimCtConF, new { @class = "control-label" })</th>
+                            <th>@Html.LabelFor(model => model.TBL_SIM_CONSUMO_TELAS.FirstOrDefault().SimCtTotalD, new { @class = "control-label" })</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.TBL_SIM_CONSUMO_TELAS != null && Model.TBL_SIM_CONSUMO_TELAS.Count > 0)
+                        {
+                            int j = 0;
+                            foreach (var i in Model.TBL_SIM_CONSUMO_TELAS)
+                            {
+                                <tr style="border:1px solid black">
+                                    @Html.HiddenFor(a => a.TBL_SIM_CONSUMO_TELAS[j].SimCtCodigoN, new { @class = "SimCtCodigoN" })
+                                    @Html.HiddenFor(a => a.TBL_SIM_CONSUMO_TELAS[j].SimHcCodigoN)
+                                    @Html.HiddenFor(a => a.TBL_SIM_CONSUMO_TELAS[j].Borrado, new { @class = "Borrado" })
+                                    <td>@Html.TextBoxFor(a => a.TBL_SIM_CONSUMO_TELAS[j].SimCtNombreS, new { @class = "form-control input-sm" })</td>
+                                    <td>@Html.TextBoxFor(a => a.TBL_SIM_CONSUMO_TELAS[j].SimCtColorS, new { @class = "form-control input-sm" })</td>
+                                    <td>@Html.TextBoxFor(a => a.TBL_SIM_CONSUMO_TELAS[j].SimCtCtsxMtD, new { @class = "form-control input-sm SimCtCtsxMtD solonumeros", data_nombre = "SimCtCtsxMtD" })</td>
+                                    <td>@Html.TextBoxFor(a => a.TBL_SIM_CONSUMO_TELAS[j].SimCtConF, new { @class = "form-control input-sm SimCtConF solonumeros", data_nombre = "SimCtConF" })</td>
+                                    <td>@Html.TextBoxFor(a => a.TBL_SIM_CONSUMO_TELAS[j].SimCtTotalD, new { @class = "form-control input-sm", @readonly = "readonly", data_nombre = "SimCtTotalD" })</td>
+                                    <td>
+                                        @if (j > 0)
+                                        {
+                                            <a href="javascript: void(0)" class="remove">Eliminar</a>
+                                        }
+                                    </td>
+                                </tr>
+                                j++;
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</fieldset>

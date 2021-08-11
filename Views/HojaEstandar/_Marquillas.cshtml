@@ -1,0 +1,59 @@
+﻿@model AppWebHojaCosto.Models.HOJA_COSTO_ESTANDAR
+<div>
+    <fieldset style="border-width:2px; border-style:groove; padding:10px;" disabled>
+        <legend style="padding: 2px; width:auto;">MARQUILLAS, ETIQUETAS, EMPAQUES</legend>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-sm table-bordered" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>@Html.LabelFor(model => model.TBL_ETIQ_MAR_EMP.FirstOrDefault().EmeNombreS, new { @class = "control-label" })</th>
+                                <th>@Html.LabelFor(model => model.TBL_ETIQ_MAR_EMP.FirstOrDefault().EmeCtsxMtD, new { @class = "control-label" })</th>
+                                <th>@Html.LabelFor(model => model.TBL_ETIQ_MAR_EMP.FirstOrDefault().EmeConF, new { @class = "control-label" })</th>
+                                <th>@Html.LabelFor(model => model.TBL_ETIQ_MAR_EMP.FirstOrDefault().EmeTotalD, new { @class = "control-label" })</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.TBL_ETIQ_MAR_EMP != null)
+                            {
+                                foreach (var item in Model.TBL_ETIQ_MAR_EMP)
+                                {
+                                    <tr>
+                                        <td>@Html.TextBoxFor(model => item.EmeNombreS, new { @class = "form-control input-sm" })</td>
+                                        <td>@Html.TextBoxFor(model => item.EmeCtsxMtD, new { @class = "form-control input-sm formato" })</td>
+                                        <td>@Html.TextBoxFor(model => item.EmeConF, new { @class = "form-control input-sm" })</td>
+                                        <td>@Html.TextBoxFor(model => item.EmeTotalD, new { @class = "form-control input-sm formato" })</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th colspan="3" style="text-align:right; border:none !important; padding-top:10px;">
+                                    @Html.LabelFor(model => model.TBL_HOJA_COSTO_PN.FirstOrDefault().HcTotalMarquillaD, new { @class = "control-label" })
+                                </th>
+                                <th style="border:none !important;">
+                                    @Html.TextBoxFor(model => model.TBL_HOJA_COSTO_PN.FirstOrDefault().HcTotalMarquillaD, new { @class = "form-control input-sm formato input-vacio" })
+                                </th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>
+@*<div class="inferior_modulos">
+    <div class="row">
+        <div class="col-md-10">
+            @Html.LabelFor(model => model.TBL_HOJA_COSTO_PN.FirstOrDefault().HcTotalMarquillaD, new { @class = "control-label" })
+        </div>
+        <div class="col-md-2">
+            @if (Model != null)
+            {
+                @Html.DisplayFor(model => model.TBL_HOJA_COSTO_PN.FirstOrDefault().HcTotalMarquillaD, new { @class = "form-control input-sm formato" })
+            }
+        </div>
+    </div>
+</div>*@

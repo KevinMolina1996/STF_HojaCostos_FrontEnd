@@ -1,0 +1,44 @@
+﻿@model AppWebHojaCosto.Models.TBL_HOJA_COSTO_PNP
+
+<fieldset style="border-width:2px; border-style:groove; padding:10px;" disabled>
+    <legend style="padding: 2px; width:auto;">Piramide Precios</legend>
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.PnpEnterPriceM, new { @class = "control-label" })
+        </div>
+        <div class="col-md-8">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpEnterPriceM, new { @class = "form-control input-sm" })
+                <div class="input-group-append">
+                    <span class="input-group-text">COP</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.PnpMediumPriceM, new { @class = "control-label" })
+        </div>
+        <div class="col-md-8">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpMediumPriceM, new { @class = "form-control input-sm" })
+                <div class="input-group-append">
+                    <span class="input-group-text">COP</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.PnpPremiumPriceM, new { @class = "control-label" })
+        </div>
+        <div class="col-md-8">
+            <div class="input-group mb-1">
+                @Html.TextBoxFor(m => m.PnpPremiumPriceM, new { @class = "form-control input-sm" })
+                <div class="input-group-append">
+                    <span class="input-group-text">COP</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>

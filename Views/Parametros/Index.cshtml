@@ -1,0 +1,176 @@
+﻿@model AppWebHojaCosto.Models.PARAMETROS_PN
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@section Scripts {
+    <script src="~/Scripts/JS/js-parametros-producido.js"></script>
+    <script>
+    </script>
+
+    @if (ViewBag.marca != null && ViewBag.coleccion != null && ViewBag.linea != null && ViewBag.sublinea != null)
+    {
+        <script type="text/javascript">
+            $("#marca").val('@ViewBag.marca');
+            $("#coleccion").val('@ViewBag.coleccion');
+            $("#linea").val('@ViewBag.linea');
+            $("#sublinea").val('@ViewBag.sublinea');
+            FiltroMarca();
+            FiltroColeccion();
+            FiltroLinea();
+            FiltroSublinea("");
+        </script>
+    }
+    @if (ViewBag.alerta != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alerta("Alerta!", '@ViewBag.alerta');
+        };
+        </script>
+    }
+    @if (ViewBag.error != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alerta("Error!", '@ViewBag.error');
+        };
+        </script>
+    }
+    @if (ViewBag.exito != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alerta("Exito!", '@ViewBag.exito');
+        };
+        </script>
+    }
+    @if (ViewBag.habilitar != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                $('#btnCargar').prop("disabled", false);
+                $('#btnActualizar').prop("disabled", false);
+                $('#Contenedor input').prop("disabled", false);
+            };
+        </script>
+    }
+
+    @if (ViewBag.warning != null)
+    {
+        <script type="text/javascript">
+        window.onload = function () {
+            alerta("Alerta!", '@ViewBag.warning');
+        };
+        </script>
+    }
+    @if (ViewBag.estado != null && ViewBag.estado == "W")
+    {
+        <script type="text/javascript">
+        window.onload = function () {
+            alerta("Mensaje", "@ViewBag.mensaje");
+            $('#modalLogs').modal('show');
+        };
+        </script>
+    }
+    @if (ViewBag.estado != null && ViewBag.estado == "E")
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+            alerta("Exito!", '@ViewBag.mensaje');
+        };
+        </script>
+    }
+}
+
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="@Url.Action("Index","Home")">Inicio</a>
+    </li>
+</ol>
+
+<div id="formConsultar">
+    @{Html.RenderPartial("_Consultar", Model);}
+</div>
+
+<br />
+
+<div id="myform">
+    @{Html.RenderPartial("_Formulario", Model);}
+</div>
+
+<!-- Modal cargar archivo -->
+<div class="modal fade" id="modalCargar" tabindex="-1" role="dialog" aria-labelledby="modalCargar" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalBorrar">Cargar documento</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("Upload", "Parametros", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input type="file" name="UploadedFile" class="form-control" />
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row" style="text-align:center;">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-sm btn-dark"><span class="fa fa-save"></span> Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-sm btn-dark" type="button" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal cargar archivo -->
+<div class="modal fade" id="modalLogs" tabindex="-1" role="dialog" aria-labelledby="modalLogs" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLogs">Estado cargue</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <br />
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Mensaje</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (ViewBag.lstStatus != null)
+                        {
+                            foreach (var data in ViewBag.lstStatus)
+                            {
+                                <tr>
+                                    <td>@data</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+                <br />
+            </div>
+        </div>
+    </div>
+</div>
+
+<br />
+<br />

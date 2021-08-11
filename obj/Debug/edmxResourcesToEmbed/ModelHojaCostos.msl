@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="bdHojaCostosModelStoreContainer" CdmEntityContainer="bdHojaCostosEntities">
+    <EntitySetMapping Name="tblModulos">
+      <EntityTypeMapping TypeName="bdHojaCostosModel.tblModulos">
+        <MappingFragment StoreEntitySet="tblModulos">
+          <ScalarProperty Name="MoCodigoN" ColumnName="MoCodigoN" />
+          <ScalarProperty Name="MoNombreS" ColumnName="MoNombreS" />
+          <ScalarProperty Name="MoDescripS" ColumnName="MoDescripS" />
+          <ScalarProperty Name="MoFecCreD" ColumnName="MoFecCreD" />
+          <ScalarProperty Name="MoEstadoB" ColumnName="MoEstadoB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUsuarios">
+      <EntityTypeMapping TypeName="bdHojaCostosModel.tblUsuarios">
+        <MappingFragment StoreEntitySet="tblUsuarios">
+          <ScalarProperty Name="UsCodigoN" ColumnName="UsCodigoN" />
+          <ScalarProperty Name="UsNombreS" ColumnName="UsNombreS" />
+          <ScalarProperty Name="UsEmailS" ColumnName="UsEmailS" />
+          <ScalarProperty Name="UsFecCreD" ColumnName="UsFecCreD" />
+          <ScalarProperty Name="UsEstadoB" ColumnName="UsEstadoB" />
+          <ScalarProperty Name="UsUsuarioS" ColumnName="UsUsuarioS" />
+          <ScalarProperty Name="UsClaveS" ColumnName="UsClaveS" />
+          <ScalarProperty Name="MoCodigoN" ColumnName="MoCodigoN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="spConsultarModulos" FunctionName="bdHojaCostosModel.Store.spConsultarModulos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="bdHojaCostosModel.spConsultarModulos_Result">
+          <ScalarProperty Name="MoCodigoN" ColumnName="MoCodigoN" />
+          <ScalarProperty Name="MoNombreS" ColumnName="MoNombreS" />
+          <ScalarProperty Name="MoDescripS" ColumnName="MoDescripS" />
+          <ScalarProperty Name="MoFecCreD" ColumnName="MoFecCreD" />
+          <ScalarProperty Name="MoEstadoB" ColumnName="MoEstadoB" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spConsultarUsuarios" FunctionName="bdHojaCostosModel.Store.spConsultarUsuarios">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="bdHojaCostosModel.spConsultarUsuarios_Result">
+          <ScalarProperty Name="UsCodigoN" ColumnName="UsCodigoN" />
+          <ScalarProperty Name="UsNombreS" ColumnName="UsNombreS" />
+          <ScalarProperty Name="UsEmailS" ColumnName="UsEmailS" />
+          <ScalarProperty Name="UsFecCreD" ColumnName="UsFecCreD" />
+          <ScalarProperty Name="UsEstadoB" ColumnName="UsEstadoB" />
+          <ScalarProperty Name="UsUsuarioS" ColumnName="UsUsuarioS" />
+          <ScalarProperty Name="UsClaveS" ColumnName="UsClaveS" />
+          <ScalarProperty Name="MoCodigoN" ColumnName="MoCodigoN" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

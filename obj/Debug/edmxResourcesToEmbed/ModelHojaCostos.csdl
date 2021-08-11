@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="bdHojaCostosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tblModulos">
+    <Key>
+      <PropertyRef Name="MoCodigoN" />
+      <PropertyRef Name="MoNombreS" />
+      <PropertyRef Name="MoDescripS" />
+      <PropertyRef Name="MoFecCreD" />
+      <PropertyRef Name="MoEstadoB" />
+    </Key>
+    <Property Name="MoCodigoN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MoNombreS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MoDescripS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MoFecCreD" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="MoEstadoB" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblUsuarios">
+    <Key>
+      <PropertyRef Name="UsCodigoN" />
+      <PropertyRef Name="UsNombreS" />
+      <PropertyRef Name="UsEmailS" />
+      <PropertyRef Name="UsFecCreD" />
+      <PropertyRef Name="UsEstadoB" />
+      <PropertyRef Name="UsUsuarioS" />
+      <PropertyRef Name="UsClaveS" />
+    </Key>
+    <Property Name="UsCodigoN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UsNombreS" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UsEmailS" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UsFecCreD" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="UsEstadoB" Type="Boolean" Nullable="false" />
+    <Property Name="UsUsuarioS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UsClaveS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MoCodigoN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="bdHojaCostosEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblModulos" EntityType="Self.tblModulos" />
+    <EntitySet Name="tblUsuarios" EntityType="Self.tblUsuarios" />
+    <FunctionImport Name="spConsultarModulos" ReturnType="Collection(bdHojaCostosModel.spConsultarModulos_Result)" />
+    <FunctionImport Name="spConsultarUsuarios" ReturnType="Collection(bdHojaCostosModel.spConsultarUsuarios_Result)" />
+  </EntityContainer>
+  <ComplexType Name="spConsultarModulos_Result">
+    <Property Type="Int32" Name="MoCodigoN" Nullable="false" />
+    <Property Type="String" Name="MoNombreS" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="MoDescripS" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="MoFecCreD" Nullable="false" />
+    <Property Type="Boolean" Name="MoEstadoB" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spConsultarUsuarios_Result">
+    <Property Type="Int32" Name="UsCodigoN" Nullable="false" />
+    <Property Type="String" Name="UsNombreS" Nullable="false" MaxLength="60" />
+    <Property Type="String" Name="UsEmailS" Nullable="false" MaxLength="30" />
+    <Property Type="DateTime" Name="UsFecCreD" Nullable="false" />
+    <Property Type="Boolean" Name="UsEstadoB" Nullable="false" />
+    <Property Type="String" Name="UsUsuarioS" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="UsClaveS" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="MoCodigoN" Nullable="true" MaxLength="20" />
+  </ComplexType>
+</Schema>

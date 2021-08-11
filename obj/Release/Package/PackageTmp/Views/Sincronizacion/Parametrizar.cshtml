@@ -1,0 +1,101 @@
+﻿@model List<AppWebHojaCosto.Models.TBL_REF_SINC>
+
+@{
+    ViewBag.Title = "Parametrizar";
+}
+
+@section Scripts {
+<script src="~/Scripts/JS/js-sincronizacion.js"></script>
+}
+
+<div>
+    <fieldset style="border-width:2px; border-style:groove; padding:10px;">
+        <legend style="padding: 2px; width:auto;">Consulta</legend>
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.FirstOrDefault().RsTipoInventarioS, new { @class = "control-label" })
+                <select id="Inventario" class="form-control input-sm">
+                    <option value="" selected>Seleccione...</option>
+                    <option value="Precosteo">Precosteo</option>
+                    <option value="Producido">Producido</option>
+                    <option value="NoProducido">No Producido</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.FirstOrDefault().RsReferenciaS, new { @class = "control-label" })
+                <input type="text" class="form-control input-sm" id="Referencia" />
+            </div>
+            <div class="col-md-4">
+                <div style="height:33px; width:10px;">
+                </div>
+                <button type="button" id="Sinc" class="btn btn-sm btn-dark">
+                    <span class="fa fa-retweet"></span> Sincronizar Referencia
+                </button>
+            </div>
+        </div>
+    </fieldset>
+</div>
+
+<br />
+
+@*<div>
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+
+            <!-- Our markup, the important part here! -->
+            <div id="drag-and-drop-zone" class="dm-uploader p-5">
+                <h3 class="mb-5 mt-5 text-muted">Arrastar &amp; soltar archivos aquí</h3>
+
+                <div class="btn btn-dark btn-block mb-5">
+                    <span>Abrir explorador de archivos</span>
+                    <input type="file" title='Click to add Files' />
+                </div>
+            </div><!-- /uploader -->
+
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <div class="card h-100">
+                <div class="card-header">
+                    Lista archivos cargados
+                </div>
+
+                <ul class="list-unstyled p-2 d-flex flex-column col" id="files">
+                    <li class="text-muted text-center empty">No hay archivos cargados.</li>
+                </ul>
+            </div>
+        </div>
+    </div><!-- /file list -->
+</div> <!-- /container -->
+<!-- File item template -->
+<script type="text/html" id="files-template">
+    <li class="media">
+        <div class="media-body mb-1">
+            <p class="mb-2">
+                <strong>%%filename%%</strong> - Status: <span class="text-muted">Waiting</span>
+            </p>
+            <div class="progress mb-2">
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary"
+                     role="progressbar"
+                     style="width: 0%"
+                     aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                </div>
+            </div>
+            <hr class="mt-1 mb-1" />
+        </div>
+    </li>
+</script>
+
+<!-- Debug item template -->
+<script type="text/html" id="debug-template">
+    <li class="list-group-item text-%%color%%"><strong>%%date%%</strong>: %%message%%</li>
+</script>
+
+<div class="modal fade" id="modalLoading" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static" data-keyboard="false" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img src="~/Images/loading.gif" />
+            </div>
+        </div>
+    </div>
+</div>*@

@@ -1,0 +1,27 @@
+﻿@model AppWebHojaCosto.Models.HOJA_COSTO_PRECOSTEO
+
+<div>
+    <fieldset style="border-width:2px; border-style:groove; padding:10px;">
+        <legend style="padding: 2px; width:auto;">Acciones</legend>
+        <div class="row">
+            <div class="col-md-12">
+                <input type="submit" class="btn btn-sm btn-dark" value="Guardar" style="width:100%" />
+            </div>
+        </div>
+        <div class="row" style="padding-top:10px;">
+            <div class="col-md-12">
+                <input type="submit" id="Exportar" class="btn btn-sm btn-dark" formaction="Export" value="Exportar" style="width:100%" formnovalidate />
+            </div>
+        </div>
+        <div class="row" style="padding-top:10px;">
+            <div class="col-md-12">
+                <input type="submit" id="Imprimir" class="btn btn-sm btn-dark" formaction="GenerarPdf" value="Imprimir" style="width:100%" formnovalidate />
+            </div>
+        </div>
+        <div class="row" style="padding-top:10px;">
+            <div class="col-md-12">
+                <input type="submit" class="btn btn-sm btn-dark" onclick="return false;" value="Volver" style="width:100%" />
+            </div>
+        </div>
+    </fieldset>
+</div>
