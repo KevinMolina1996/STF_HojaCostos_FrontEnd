@@ -114,19 +114,19 @@ namespace AppWebHojaCosto.Controllers
         public ActionResult ValidarTiempo()
         {
             ClaimsIdentity claims = (ClaimsIdentity)HttpContext.User.Identity;
-            if (!claims.IsAuthenticated)
-            {
-                HttpContext.GetOwinContext().Authentication.SignOut();
-                Guid state = Guid.NewGuid();
-                string url = "X";//GetAuthorizationUrl(state.ToString());
-                return Json(new { ruta = url }, JsonRequestBehavior.AllowGet);
-            }
-            else
-            {
+            //if (!claims.IsAuthenticated)
+            //{
+            //    HttpContext.GetOwinContext().Authentication.SignOut();
+            //    Guid state = Guid.NewGuid();
+            //    string url = "X";//GetAuthorizationUrl(state.ToString());
+            //    return Json(new { ruta = url }, JsonRequestBehavior.AllowGet);
+            //}
+            //else
+            //{
                 string usuario = GetSpecificClaim(claims, "FirstName") + " " + GetSpecificClaim(claims, "LastName");
                 string permisos = GetSpecificClaim(claims, "Permission");
                 return Json(new { usuario, permisos }, JsonRequestBehavior.AllowGet);
-            }
+            //}
         }
 
         public static string GetSpecificClaim(ClaimsIdentity claimsIdentity, string claimType)

@@ -631,3 +631,10 @@ D:\repos\STUDIO F\STF_HojaCostos_FrontEnd\AppWebHojaCosto\obj\Debug\AppWebHojaCo
 D:\repos\STUDIO F\STF_HojaCostos_FrontEnd\AppWebHojaCosto\obj\Debug\AppWebHojaCosto.dll
 D:\repos\STUDIO F\STF_HojaCostos_FrontEnd\AppWebHojaCosto\obj\Debug\AppWebHojaCosto.pdb
 D:\repos\STUDIO F\STF_HojaCostos_FrontEnd\AppWebHojaCosto\obj\Debug\AppWebHojaCosto.csproj.AssemblyReference.cache
+D:\repos\STUDIO F\STF_HojaCostos_FrontEnd\AppWebHojaCosto\bin\Templates\emailError.html
+D:\repos\STUDIO F\STF_HojaCostos_FrontEnd\AppWebHojaCosto\bin\ClassLibraryService.dll
+D:\repos\STUDIO F\STF_HojaCostos_FrontEnd\AppWebHojaCosto\bin\ClassLibraryBussiness.dll
+D:\repos\STUDIO F\STF_HojaCostos_FrontEnd\AppWebHojaCosto\bin\ClassLibraryConnection.dll
+D:\repos\STUDIO F\STF_HojaCostos_FrontEnd\AppWebHojaCosto\bin\ClassLibraryService.pdb
+D:\repos\STUDIO F\STF_HojaCostos_FrontEnd\AppWebHojaCosto\bin\ClassLibraryBussiness.pdb
+D:\repos\STUDIO F\STF_HojaCostos_FrontEnd\AppWebHojaCosto\bin\ClassLibraryConnection.pdb

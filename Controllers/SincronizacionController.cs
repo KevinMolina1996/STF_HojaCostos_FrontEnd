@@ -1,6 +1,7 @@
 ﻿using AppWebHojaCosto.Models.Json;
 using AppWebHojaCosto.Models.Response;
 using AppWebHojaCosto.Services;
+using ClassLibraryService;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -50,17 +51,19 @@ namespace AppWebHojaCosto.Controllers
             HelperResponse _response = new HelperResponse();
             try
             {
-                string json = JSONOutput.GETJson(JSONOutput.GETUrl("SincronizacionManual", new object[]{
-                    "Inventario=" + Inventario,
-                    "&Referencia=" + Referencia
-                }));
-                _response = JsonConvert.DeserializeObject<HelperResponse>(json);
+                RunProcessService service = new RunProcessService();
+                var respuesta = service.RunService(Referencia, Inventario);
+
+                if (!respuesta)
+                {
+                    return Json(new { estado = 0, mensaje = "Proceso finalizado con problemas, por favor intente nuevamente."/*ex.Message.ToString()*/ });
+                }
             }
             catch (Exception)
             {
                 return Json(new { estado = 0, mensaje = "Error en comunicación con el servicio, intente nuevamente."/*ex.Message.ToString()*/ });
             }
-            return Json(new { estado = _response._respuesta, mensaje = _response._mensaje });
+            return Json(new { estado = 1, mensaje = "El proceso finalizó correctamente" });
         }
     }
 }
